@@ -1,0 +1,15 @@
+<section class="hero">
+  <h1>IA Hub</h1>
+  <p>Un panel con 10 IAs distintas para comparar y aprender a usarlas con cabeza. 👀</p>
+</section>
+
+<section class="grid">
+  <a class="card" *ngFor="let ai of ais" [routerLink]="ai.path">
+    <div class="top">
+      <h2>{{ ai.name }}</h2>
+      <span class="tag">{{ ai.tag }}</span>
+    </div>
+    <p class="desc">{{ ai.desc }}</p>
+    <span class="cta">Entrar →</span>
+  </a>
+</section>

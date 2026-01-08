@@ -1,0 +1,21 @@
+<header class="topbar">
+  <a class="brand" routerLink="/">IA Hub</a>
+
+  <nav class="nav">
+    <a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">Home</a>
+    <a routerLink="/chatgpt" routerLinkActive="active">ChatGPT</a>
+    <a routerLink="/claude" routerLinkActive="active">Claude</a>
+    <a routerLink="/gemini" routerLinkActive="active">Gemini</a>
+    <a routerLink="/copilot" routerLinkActive="active">Copilot</a>
+    <a routerLink="/mistral" routerLinkActive="active">Mistral</a>
+    <a routerLink="/llama" routerLinkActive="active">Llama</a>
+    <a routerLink="/perplexity" routerLinkActive="active">Perplexity</a>
+    <a routerLink="/grok" routerLinkActive="active">Grok</a>
+    <a routerLink="/midjourney" routerLinkActive="active">Midjourney</a>
+    <a routerLink="/stable-diffusion" routerLinkActive="active">Stable Diffusion</a>
+  </nav>
+</header>
+
+<main class="page">
+  <router-outlet></router-outlet>
+</main>
