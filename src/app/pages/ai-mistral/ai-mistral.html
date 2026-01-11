@@ -1,1 +1,119 @@
-<p>ai-mistral works!</p>
+<div class="page">
+  <a class="back" routerLink="/">← Volver</a>
+
+  <header class="hero">
+    <div class="heroText">
+      <h1>{{ title }}</h1>
+      <p>{{ subtitle }}</p>
+
+      <div class="chips">
+        <span class="chip mis">Dev</span>
+        <span class="chip mis">Docs</span>
+        <span class="chip mis">Arquitectura</span>
+        <span class="chip mis">Prototipos</span>
+      </div>
+    </div>
+  </header>
+
+  <section class="card">
+    <h2>Ventajas vs Desventajas</h2>
+
+    <div class="tableWrap">
+      <table>
+        <thead>
+          <tr>
+            <th>✅ Ventajas</th>
+            <th>⚠️ Desventajas</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <tr *ngFor="let row of proConRows">
+            <td>{{ row.pro || '' }}</td>
+            <td>{{ row.con || '' }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section class="card">
+    <h2>Cuándo usar Mistral (y cuándo no)</h2>
+    <p class="muted">Aquí es donde se nota que esto no es “enciclopedia”: es práctico.</p>
+
+    <div class="grid2">
+      <article class="mini" *ngFor="let u of useCases">
+        <div class="miniTop">
+          <h3>{{ u.title }}</h3>
+          <span class="badge">{{ u.badge }}</span>
+        </div>
+
+        <p class="miniWhy">{{ u.why }}</p>
+        <ul class="bullets">
+          <li *ngFor="let b of u.bullets">{{ b }}</li>
+        </ul>
+      </article>
+    </div>
+  </section>
+
+  <section class="card">
+    <h2>Prompts que funcionan (copiar/pegar)</h2>
+    <p class="muted">Prompts cortos, claros y con estructura. Te ahorran tiempo real.</p>
+
+    <div class="promptGrid">
+      <article class="prompt" *ngFor="let p of prompts">
+        <div class="promptTop">
+          <h3>{{ p.title }}</h3>
+          <span class="badge">{{ p.badge }}</span>
+        </div>
+
+        <div class="promptBox">{{ p.prompt }}</div>
+      </article>
+    </div>
+  </section>
+
+  <section class="card">
+    <h2>Recursos útiles</h2>
+
+    <div class="grid2">
+      <article class="mini" *ngFor="let r of resources">
+        <div class="miniTop">
+          <h3>{{ r.title }}</h3>
+          <span class="badge">{{ r.badge }}</span>
+        </div>
+
+        <div class="linkRow">
+          <a
+            class="linkItem"
+            *ngFor="let l of r.links"
+            [href]="l.url"
+            target="_blank"
+            rel="noreferrer"
+          >
+            {{ l.label }} →
+          </a>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <section class="card">
+    <h2>Planes y precios (sin drama)</h2>
+    <p class="muted">{{ pricingNote }}</p>
+
+    <div class="planRow">
+      <article class="planMini" *ngFor="let plan of plans">
+        <div class="planTop">
+          <h3>{{ plan.tier }}</h3>
+          <span class="price">{{ plan.priceText }}</span>
+        </div>
+        <p class="muted">{{ plan.note }}</p>
+      </article>
+    </div>
+
+    <div class="links">
+      <a class="btn" href="https://chat.mistral.ai/" target="_blank" rel="noreferrer">Abrir Le Chat</a>
+      <a class="btn ghost" href="https://docs.mistral.ai/" target="_blank" rel="noreferrer">Ver docs</a>
+    </div>
+  </section>
+</div>
