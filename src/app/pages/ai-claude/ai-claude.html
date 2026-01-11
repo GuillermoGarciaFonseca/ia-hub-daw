@@ -1,1 +1,101 @@
-<p>ai-claude works!</p>
+<div class="page">
+
+  <a class="back" routerLink="/">← Volver</a>
+
+  <header class="hero">
+    <div class="heroText">
+      <h1>{{ title }}</h1>
+      <p>{{ subtitle }}</p>
+
+      <div class="chips">
+        <span class="chip orange">Escritura</span>
+        <span class="chip orange">Análisis</span>
+        <span class="chip orange">Código</span>
+        <span class="chip orange">Documentos</span>
+      </div>
+    </div>
+  </header>
+
+  <section class="card">
+    <h2>Ventajas vs Desventajas</h2>
+
+    <div class="tableWrap">
+      <table>
+        <thead>
+          <tr>
+            <th>✅ Ventajas</th>
+            <th>⚠️ Desventajas</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <tr *ngFor="let row of proConRows">
+            <td>{{ row.pro || '' }}</td>
+            <td>{{ row.con || '' }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section class="card">
+    <h2>Lenguajes recomendados (dónde Claude brilla)</h2>
+    <p class="muted">Para tu TFG: te ahorra horas con bugs y estructura.</p>
+
+    <div class="curiosGrid">
+      <article class="mini miniLink" *ngFor="let l of languages">
+        <div class="miniTop">
+          <h3>{{ l.name }}</h3>
+          <span class="badge orange">{{ l.badge }}</span>
+        </div>
+
+        <p class="miniWhy">{{ l.why }}</p>
+
+        <div class="pillRow">
+          <span class="pill" *ngFor="let ex of l.examples">{{ ex }}</span>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <section class="card">
+    <h2>Ideas reales + recursos</h2>
+    <p class="muted">Links útiles y cosas aplicables.</p>
+
+    <div class="curiosGrid">
+      <article class="mini miniLink" *ngFor="let r of resources">
+        <div class="miniTop">
+          <h3>{{ r.title }}</h3>
+          <span class="badge orange">{{ r.badge }}</span>
+        </div>
+
+        <div class="linkList">
+          <a *ngFor="let l of r.links" class="linkItem" [href]="l.url" target="_blank" rel="noreferrer">
+            {{ l.label }} →
+          </a>
+        </div>
+      </article>
+    </div>
+  </section>
+
+ <section class="card">
+  <h2>Planes (resumen)</h2>
+  <p class="muted">{{ pricingNote }}</p>
+
+  <div class="planGrid two">
+    <article class="plan" *ngFor="let plan of plans">
+      <div class="planTop">
+        <h3>{{ plan.tier }}</h3>
+      </div>
+
+      <p class="muted">{{ plan.forWho }}</p>
+    </article>
+  </div>
+
+  <div class="links">
+    <a class="btn orange" href="https://claude.ai/" target="_blank" rel="noreferrer">Abrir Claude</a>
+  </div>
+</section>
+
+
+</div>

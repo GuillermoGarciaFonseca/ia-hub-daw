@@ -1,0 +1,325 @@
+/* ✅ Fondo naranja SOLO para esta página */
+:host {
+  --claude: #f97316;
+  --claude-soft: rgba(249, 115, 22, 0.12);
+  --ink: #0f172a;
+
+  display: block;
+  min-height: 100vh;
+  padding-bottom: 18px;
+
+  background:
+    radial-gradient(1200px 650px at 12% 0%, rgba(249,115,22,0.34), transparent 60%),
+    radial-gradient(900px 520px at 88% 10%, rgba(249,115,22,0.22), transparent 58%),
+    linear-gradient(180deg, rgba(255,237,213,1), rgba(255,247,237,1));
+}
+
+.back {
+  display: inline-block;
+  margin-bottom: 10px;
+  text-decoration: none;
+  opacity: 0.8;
+
+  &:hover { opacity: 1; }
+}
+
+.hero {
+  border: 1px solid rgba(249, 115, 22, 0.18);
+  border-radius: 18px;
+  padding: 16px;
+  box-shadow: 0 10px 28px rgba(15, 23, 42, 0.10);
+  margin-bottom: 14px;
+
+  /* ✅ Fondo naranja + opcional imagen */
+  background-image:
+    linear-gradient(120deg, rgba(255,255,255,0.78), rgba(255,255,255,0.35)),
+    radial-gradient(1000px 280px at 20% 0%, rgba(249,115,22,0.30), transparent 55%),
+    radial-gradient(900px 260px at 80% 10%, rgba(249,115,22,0.18), transparent 55%),
+    url('/img/claude/fondoclaude.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  h1 {
+    margin: 0 0 8px;
+    font-size: 30px;
+    letter-spacing: -0.5px;
+  }
+
+  p {
+    margin: 0;
+    opacity: 0.88;
+    max-width: 85ch;
+  }
+}
+
+.chips {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin-top: 12px;
+}
+
+.chip {
+  font-size: 12px;
+  padding: 6px 10px;
+  border-radius: 999px;
+  background: rgba(15, 23, 42, 0.06);
+}
+
+.chip.orange {
+  background: var(--claude-soft);
+  border: 1px solid rgba(249, 115, 22, 0.22);
+}
+
+/* ✅ Cards glass */
+.card {
+  border: 1px solid rgba(249, 115, 22, 0.18);
+  border-radius: 18px;
+  padding: 16px;
+
+  background: rgba(255, 255, 255, 0.84);
+  backdrop-filter: blur(10px);
+
+  box-shadow: 0 10px 28px rgba(15, 23, 42, 0.10);
+  margin-bottom: 14px;
+
+  h2 {
+    margin: 0 0 12px;
+    font-size: 18px;
+  }
+}
+
+.muted {
+  opacity: 0.78;
+  margin-top: -6px;
+}
+
+.tableWrap {
+  overflow: auto;
+  border-radius: 14px;
+  border: 1px solid rgba(249, 115, 22, 0.16);
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 720px;
+
+  th, td {
+    text-align: left;
+    padding: 12px 12px;
+    vertical-align: top;
+  }
+
+  thead th {
+    background: rgba(249, 115, 22, 0.08);
+    font-weight: 800;
+  }
+
+  tbody tr:nth-child(even) td {
+    background: rgba(15, 23, 42, 0.02);
+  }
+
+  td { opacity: 0.92; }
+}
+
+.curiosGrid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+
+  @media (max-width: 800px) { grid-template-columns: 1fr; }
+}
+
+.mini {
+  border: 1px solid rgba(249, 115, 22, 0.16);
+  border-radius: 16px;
+  padding: 14px;
+
+  background: rgba(255, 255, 255, 0.86);
+  backdrop-filter: blur(10px);
+
+  h3 {
+    margin: 0 0 8px;
+    font-size: 16px;
+  }
+
+  p, li { opacity: 0.88; }
+  ul { margin: 0; padding-left: 18px; }
+}
+
+.miniTop {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.badge {
+  font-size: 12px;
+  padding: 4px 8px;
+  border-radius: 999px;
+  background: rgba(15, 23, 42, 0.06);
+  white-space: nowrap;
+}
+
+.badge.orange {
+  background: var(--claude-soft);
+  border: 1px solid rgba(249, 115, 22, 0.22);
+}
+
+.linkList {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-top: 10px;
+}
+
+.linkItem {
+  text-decoration: none;
+  font-weight: 800;
+  opacity: 0.9;
+}
+
+.linkItem:hover {
+  opacity: 1;
+  text-decoration: underline;
+}
+
+.miniWhy { margin: 8px 0 0; }
+
+.pillRow {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 10px;
+}
+
+.pill {
+  font-size: 12px;
+  padding: 6px 10px;
+  border-radius: 999px;
+  background: rgba(249, 115, 22, 0.10);
+  border: 1px solid rgba(249, 115, 22, 0.14);
+}
+
+.planGrid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 12px;
+
+  @media (max-width: 980px) { grid-template-columns: 1fr; }
+}
+
+.plan {
+  border: 1px solid rgba(249, 115, 22, 0.16);
+  border-radius: 18px;
+  padding: 14px;
+
+  background: rgba(255, 255, 255, 0.86);
+  backdrop-filter: blur(10px);
+}
+
+.planImg {
+  width: 100%;
+  height: auto;
+  border-radius: 14px;
+  border: 1px solid rgba(15, 23, 42, 0.06);
+  margin-bottom: 10px;
+}
+
+.planTop {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 10px;
+
+  h3 { margin: 0; }
+}
+
+.price {
+  font-weight: 900;
+  letter-spacing: -0.2px;
+}
+
+.price.orange { color: var(--claude); }
+
+.miniHighlights {
+  border: 1px solid rgba(249, 115, 22, 0.16);
+  border-radius: 14px;
+  padding: 12px;
+  background: rgba(249, 115, 22, 0.06);
+  margin: 10px 0 12px;
+
+  h4 { margin: 0 0 8px; font-size: 14px; }
+  ul { margin: 0; padding-left: 18px; }
+}
+
+.cols {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+
+  @media (max-width: 980px) { grid-template-columns: 1fr; }
+
+  h4 { margin: 10px 0 8px; font-size: 14px; }
+  ul { margin: 0; padding-left: 18px; }
+}
+
+.links {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-top: 10px;
+}
+
+.btn {
+  display: inline-block;
+  text-decoration: none;
+  padding: 10px 12px;
+  border-radius: 14px;
+  background: #0f172a;
+  color: #fff;
+  font-weight: 800;
+}
+
+.btn.orange {
+  background: var(--claude);
+  color: #0f172a;
+  transition: transform 140ms ease, box-shadow 140ms ease, filter 140ms ease;
+}
+
+.btn.orange:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 14px 30px rgba(249, 115, 22, 0.22);
+  filter: brightness(1.02);
+}
+
+.btn.ghost {
+  background: rgba(15, 23, 42, 0.06);
+  color: #0f172a;
+}
+
+.btn.ghost.orange {
+  border: 1px solid rgba(249, 115, 22, 0.22);
+  transition: transform 140ms ease, box-shadow 140ms ease;
+}
+
+.btn.ghost.orange:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 14px 30px rgba(249, 115, 22, 0.14);
+}
+.page {
+  padding: 16px;
+background: transparent;
+
+}
+.planGrid.two {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+@media (max-width: 980px) {
+  .planGrid.two { grid-template-columns: 1fr; }
+}
+
