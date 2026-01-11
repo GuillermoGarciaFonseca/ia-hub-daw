@@ -56,7 +56,6 @@ export class AiChatgpt {
     }));
   }
 
-  // ✅ Curiosidades ahora es “cosas reales + links”
   curiosities: Curiosity[] = [
     {
       title: 'Vídeo “Top 10 jugadores CS:GO” (guion + estructura + voz)',

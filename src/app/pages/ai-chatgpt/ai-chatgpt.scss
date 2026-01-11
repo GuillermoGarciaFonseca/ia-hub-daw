@@ -3,19 +3,15 @@
   margin-bottom: 10px;
   text-decoration: none;
   opacity: 0.8;
-
   &:hover { opacity: 1; }
 }
-
 .hero {
   border: 1px solid rgba(15, 23, 42, 0.08);
   border-radius: 18px;
   padding: 16px;
   box-shadow: 0 8px 22px rgba(15, 23, 42, 0.06);
   margin-bottom: 14px;
-
   background-color: #fff;
-
   background-image:
     linear-gradient(120deg, rgba(255,255,255,0.55), rgba(255,255,255,0.20)),
     url('/img/chatgpt/fondodeaguachatgpt.png');
@@ -35,9 +31,6 @@
     max-width: 85ch;
   }
 }
-
-
-
 .chips {
   display: flex;
   gap: 8px;
@@ -242,7 +235,6 @@ table {
   text-decoration: underline;
 }
 
-/* Planes -> bloque “Qué cambia” */
 .miniHighlights {
   border: 1px solid rgba(15, 23, 42, 0.08);
   border-radius: 14px;
