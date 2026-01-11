@@ -11,9 +11,17 @@
   border: 1px solid rgba(15, 23, 42, 0.08);
   border-radius: 18px;
   padding: 16px;
-  background: #fff;
   box-shadow: 0 8px 22px rgba(15, 23, 42, 0.06);
   margin-bottom: 14px;
+
+  background-color: #fff;
+
+  background-image:
+    linear-gradient(120deg, rgba(255,255,255,0.55), rgba(255,255,255,0.20)),
+    url('/img/chatgpt/fondodeaguachatgpt.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
 
   h1 {
     margin: 0 0 8px;
@@ -27,6 +35,8 @@
     max-width: 85ch;
   }
 }
+
+
 
 .chips {
   display: flex;
@@ -197,4 +207,56 @@ table {
 .btn.ghost {
   background: rgba(15, 23, 42, 0.06);
   color: #0f172a;
+}
+/* Curiosidades -> tarjetas con badge + links */
+.miniTop {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.badge {
+  font-size: 12px;
+  padding: 4px 8px;
+  border-radius: 999px;
+  background: rgba(15, 23, 42, 0.06);
+  white-space: nowrap;
+}
+
+.miniLink .linkList {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-top: 10px;
+}
+
+.linkItem {
+  text-decoration: none;
+  font-weight: 700;
+  opacity: 0.9;
+}
+
+.linkItem:hover {
+  opacity: 1;
+  text-decoration: underline;
+}
+
+/* Planes -> bloque “Qué cambia” */
+.miniHighlights {
+  border: 1px solid rgba(15, 23, 42, 0.08);
+  border-radius: 14px;
+  padding: 12px;
+  background: rgba(15, 23, 42, 0.02);
+  margin: 10px 0 12px;
+
+  h4 {
+    margin: 0 0 8px;
+    font-size: 14px;
+  }
+
+  ul {
+    margin: 0;
+    padding-left: 18px;
+  }
 }

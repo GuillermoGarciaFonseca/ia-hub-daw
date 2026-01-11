@@ -37,33 +37,34 @@
 </section>
 
 <section class="card">
-  <h2>Curiosidades</h2>
+  <h2>Ideas reales + comunidad + recursos</h2>
+  <p class="muted">Cero chapa: entra, mira, copia ideas y crea cosas.</p>
 
   <div class="curiosGrid">
-    <article class="mini" *ngFor="let c of curiosities">
-      <h3>{{ c.title }}</h3>
-      <p>{{ c.text }}</p>
+    <article class="mini miniLink" *ngFor="let c of curiosities">
+      <div class="miniTop">
+        <h3>{{ c.title }}</h3>
+        <span class="badge">{{ c.badge }}</span>
+      </div>
+
+      <div class="linkList">
+        <a
+          *ngFor="let l of c.links"
+          class="linkItem"
+          [href]="l.url"
+          target="_blank"
+          rel="noreferrer">
+          {{ l.label }} →
+        </a>
+      </div>
     </article>
   </div>
 </section>
 
 <section class="card">
-  <h2>¿Qué pasa si lo usas gratis? (y qué cambia al subir de plan)</h2>
-
-  <div class="miniGrid">
-    <article class="mini" *ngFor="let block of freeVsPaid">
-      <h3>{{ block.title }}</h3>
-      <ul>
-        <li *ngFor="let p of block.points">{{ p }}</li>
-      </ul>
-    </article>
-  </div>
-</section>
-
-<section class="card">
-  <h2>Planes y precios</h2>
+  <h2>Planes (qué cambia) + precios</h2>
   <p class="muted">
-    Nota: precios en USD y pueden variar por región/impuestos. Plus se anuncia a $20/mes y Pro a $200/mes.
+    Elige según cuánto lo uses. Precios en USD y pueden variar por región/impuestos.
   </p>
 
   <div class="planGrid">
@@ -76,6 +77,13 @@
       </div>
 
       <p class="muted">{{ plan.forWho }}</p>
+
+      <div class="miniHighlights">
+        <h4>Qué cambia</h4>
+        <ul>
+          <li *ngFor="let h of plan.highlights">{{ h }}</li>
+        </ul>
+      </div>
 
       <div class="cols">
         <div>

@@ -7,11 +7,19 @@ type Plan = {
   priceText: string;
   img: string;
   forWho: string;
+
+  // 👇 NUEVO: “qué cambia” sin repetir secciones
+  highlights: string[];
+
   includes: string[];
   limitations: string[];
 };
 
-type Curiosity = { title: string; text: string };
+type Curiosity = {
+  title: string;
+  badge: string;
+  links: { label: string; url: string }[];
+};
 
 @Component({
   selector: 'app-ai-chatgpt',
@@ -28,8 +36,8 @@ export class AiChatgpt {
     'Muy versátil: texto, ideas, resúmenes, emails, guiones…',
     'Muy útil para programar: ejemplos, refactors, explicaciones.',
     'Iteración rápida: le dices “mejor esto” y lo afina.',
-    'Puede ayudarte a estructurar proyectos (como este TFG).',
-    'Ahorra tiempo en tareas repetitivas (documentación, plantillas).'
+    'Puede ayudarte a estructurar proyectos.',
+    'Ahorra tiempo en tareas repetitivas (documentación, plantillas).',
   ];
 
   cons: string[] = [
@@ -37,104 +45,111 @@ export class AiChatgpt {
     'Si el prompt es vago, el resultado suele ser meh.',
     'No sustituye criterio profesional (tú mandas).',
     'En gratis suele ir más limitado (capacidad/velocidad).',
-    'Temas sensibles: mejor contrastar con fuentes oficiales.'
+    'Temas sensibles: mejor contrastar con fuentes oficiales.',
   ];
 
   get proConRows(): ProConRow[] {
     const len = Math.max(this.pros.length, this.cons.length);
     return Array.from({ length: len }, (_, i) => ({
       pro: this.pros[i],
-      con: this.cons[i]
+      con: this.cons[i],
     }));
   }
 
+  // ✅ Curiosidades ahora es “cosas reales + links”
   curiosities: Curiosity[] = [
     {
-      title: 'GPT significa “Generative Pre-trained Transformer”',
-      text: 'Es un tipo de modelo basado en Transformers. En la práctica: predice/compone texto de forma súper competente.'
+      title: 'Vídeo “Top 10 jugadores CS:GO” (guion + estructura + voz)',
+      badge: '🎬 Real',
+      links: [
+        { label: 'CapCut (plantillas de vídeo)', url: 'https://www.capcut.com/' },
+        { label: 'Pexels (vídeo e imágenes gratis)', url: 'https://www.pexels.com/' },
+      ],
     },
     {
-      title: 'No es “Google”: no garantiza verdad',
-      text: 'Es buenísimo generando y razonando, pero si necesitas precisión (precios, leyes, datos), verifica con fuentes.'
+      title: 'Fondos, mockups e imágenes(sin pagar)',
+      badge: '🖼️ Visual',
+      links: [
+        { label: 'Unsplash (imágenes top)', url: 'https://unsplash.com/' },
+        { label: 'Canva (diseño rápido)', url: 'https://www.canva.com/' },
+      ],
     },
     {
-      title: 'Tu prompt es el volante',
-      text: 'Si le das contexto, formato esperado, ejemplos y restricciones, el salto de calidad es brutal.'
+      title: 'Prompts buenos de la comunidad (ideas listas)',
+      badge: '🧠 Comunidad',
+      links: [
+        { label: 'Awesome ChatGPT Prompts (GitHub)', url: 'https://github.com/f/awesome-chatgpt-prompts' },
+        { label: 'Reddit r/ChatGPT', url: 'https://www.reddit.com/r/ChatGPT/' },
+      ],
     },
     {
-      title: 'Puede ayudarte a estudiar de verdad',
-      text: 'Pídele: “Explícamelo paso a paso”, “hazme preguntas tipo examen”, “corrige mi solución y dime por qué”.'
-    }
+      title: 'Programación: ejemplos reales y guías (nivel pro)',
+      badge: '💻 Dev',
+      links: [
+        { label: 'OpenAI Cookbook (GitHub)', url: 'https://github.com/openai/openai-cookbook' },
+        { label: 'Docs OpenAI', url: 'https://platform.openai.com/docs' },
+      ],
+    },
   ];
 
   plans: Plan[] = [
     {
       tier: 'Gratis',
       priceText: '$0 / mes',
-      img: '/img/chatgpt/free.svg',
+      img: '/img/chatgpt/freechatgpt.png',
       forWho: 'Para probar, tareas puntuales y uso ligero.',
+      highlights: [
+        'Perfecto para empezar y aprender a “promptear”',
+        'Puede ir más limitado en horas punta',
+        'Ideal para tareas simples',
+      ],
       includes: [
         'Acceso a ChatGPT sin pagar',
-        'Funciones básicas para chat y productividad'
+        'Funciones básicas para chat y productividad',
       ],
       limitations: [
         'Menos capacidad/beneficios que los planes de pago',
-        'Suele tener más límites en horas punta'
-      ]
+        'Suele tener más límites en horas punta',
+      ],
     },
     {
       tier: 'Plus',
       priceText: '$20 / mes',
-      img: '/img/chatgpt/plus.svg',
+      img: '/img/chatgpt/pluschatgpt.png',
       forWho: 'Si lo usas a diario: estudio, curro, creación de contenido, programación.',
+      highlights: [
+        'Recomendado si lo usas varias veces por semana',
+        'Más potencia y mejor experiencia general',
+        'Suele compensar para estudio/código/productividad',
+      ],
       includes: [
         'Experiencia más potente que Gratis',
-        'Mejor acceso a modelos y funciones avanzadas'
+        'Mejor acceso a modelos y funciones avanzadas',
       ],
       limitations: [
         'Sigue habiendo límites (aunque mejores que gratis)',
-        'Precio puede variar por región/impuestos'
-      ]
+        'Precio puede variar por región/impuestos',
+      ],
     },
     {
       tier: 'Pro',
       priceText: '$200 / mes',
-      img: '/img/chatgpt/pro.svg',
+      img: '/img/chatgpt/prochatgpt.png',
       forWho: 'Uso intensivo/avanzado: gente que exprime modelos y herramientas a saco.',
+      highlights: [
+        'Para uso intensivo/profesional',
+        'Más acceso para tareas exigentes',
+        'Solo compensa si lo amortizas',
+      ],
       includes: [
         'Acceso escalado a lo “top” y herramientas avanzadas',
-        'Pensado para tareas exigentes y mayor uso'
+        'Pensado para tareas exigentes y mayor uso',
       ],
       limitations: [
         'Precio alto: solo compensa si lo amortizas',
-        'No es “magia”: sigue necesitando prompts buenos'
-      ]
-    }
-  ];
-
-  freeVsPaid = [
-    {
-      title: 'Si lo usas GRATIS',
-      points: [
-        'Perfecto para empezar y tareas simples',
-        'Puede ir más limitado en capacidad y en horas punta',
-        'Buenísimo para aprender a “promptear”'
-      ]
+        'No es “magia”: sigue necesitando prompts buenos',
+      ],
     },
-    {
-      title: 'Precio “medio” (PLUS)',
-      points: [
-        'Recomendado si lo usas varias veces por semana',
-        'Más potencia y mejor experiencia general',
-        'Suele compensar para estudio/código/productividad'
-      ]
-    },
-    {
-      title: 'Precio “alto” (PRO)',
-      points: [
-        'Para uso intensivo/profesional con necesidad de más acceso',
-        'No es para todo el mundo: es para exprimirlo fuerte'
-      ]
-    }
   ];
 }
+
