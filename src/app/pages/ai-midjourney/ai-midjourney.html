@@ -1,1 +1,117 @@
-<p>ai-midjourney works!</p>
+<div class="page">
+  <a class="back" routerLink="/">← Volver</a>
+
+  <header class="hero" [style.background-image]="'linear-gradient(120deg, rgba(0,0,0,0.60), rgba(0,0,0,0.18)), url(' + heroGif + ')'">
+    <div class="heroText">
+      <h1>{{ title }}</h1>
+      <p>{{ subtitle }}</p>
+
+      <div class="chips">
+        <span class="chip">Imágenes</span>
+        <span class="chip">Estilos</span>
+        <span class="chip">Prompts</span>
+        <span class="chip">Parámetros</span>
+      </div>
+    </div>
+  </header>
+
+  <section class="card">
+    <h2>Galería (tus gifs)</h2>
+
+    <div class="gallery">
+      <div class="gifWrap" *ngFor="let g of gallery">
+        <img class="gif" loading="lazy" [src]="g.src" [alt]="g.alt" />
+      </div>
+    </div>
+  </section>
+
+  <section class="card">
+    <div class="headRow">
+      <h2>Constructor de prompt (pro)</h2>
+
+      <button class="btn" type="button" (click)="copyPrompt()">
+        {{ copied ? '✅ Copiado' : '📋 Copiar prompt' }}
+      </button>
+    </div>
+
+    <div class="builder">
+      <div class="col">
+        <h3>1) Tema</h3>
+        <textarea class="input" rows="4" [value]="subject" (input)="subject = ($any($event.target).value)"></textarea>
+
+        <p class="hint">Tip: mete contexto (luz, cámara, ambiente, materiales) y el resultado sube muchísimo.</p>
+      </div>
+
+      <div class="col">
+        <h3>2) Estilo</h3>
+        <div class="pickRow">
+          <button
+            type="button"
+            class="pill"
+            *ngFor="let s of styles"
+            [class.active]="s.id === selectedStyle"
+            (click)="setStyle(s.id)">
+            {{ s.name }}
+            <span class="pillMini">{{ s.vibe }}</span>
+          </button>
+        </div>
+
+        <h3 style="margin-top:12px;">3) Formato</h3>
+        <div class="pickRow">
+          <button
+            type="button"
+            class="pill"
+            *ngFor="let a of arOptions"
+            [class.active]="a.id === selectedAr"
+            (click)="setAr(a.id)">
+            {{ a.label }}
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <div class="params">
+      <div class="param">
+        <div class="paramTop">
+          <strong>Stylize</strong>
+          <span class="value">{{ stylize }}</span>
+        </div>
+        <div class="paramBtns">
+          <button type="button" class="btn ghost" (click)="setStylize(-25)">-25</button>
+          <button type="button" class="btn ghost" (click)="setStylize(+25)">+25</button>
+          <button type="button" class="btn ghost" (click)="setStylize(+100)">+100</button>
+        </div>
+      </div>
+
+      <div class="param">
+        <div class="paramTop">
+          <strong>Chaos</strong>
+          <span class="value">{{ chaos }}</span>
+        </div>
+        <div class="paramBtns">
+          <button type="button" class="btn ghost" (click)="setChaos(-5)">-5</button>
+          <button type="button" class="btn ghost" (click)="setChaos(+5)">+5</button>
+          <button type="button" class="btn ghost" (click)="setChaos(+15)">+15</button>
+        </div>
+      </div>
+
+      <div class="param">
+        <div class="paramTop">
+          <strong>Seed</strong>
+          <span class="value">{{ seed === null ? 'auto' : seed }}</span>
+        </div>
+        <div class="paramBtns">
+          <button type="button" class="btn ghost" (click)="randomSeed()">Random</button>
+          <button type="button" class="btn ghost" (click)="clearSeed()">Quitar</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="promptBox">{{ builtPrompt }}</div>
+
+    <div class="links">
+      <a class="btn ghost" href="https://www.midjourney.com/" target="_blank" rel="noreferrer">Abrir Midjourney</a>
+      <a class="btn ghost" href="https://docs.midjourney.com/" target="_blank" rel="noreferrer">Docs / Guía</a>
+    </div>
+  </section>
+</div>
