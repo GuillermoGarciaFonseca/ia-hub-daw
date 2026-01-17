@@ -1,1 +1,137 @@
-<p>ai-stable-diffusion works!</p>
+<div class="page">
+  <a class="back" routerLink="/">← Volver</a>
+
+  <header class="hero">
+    <div class="heroText">
+      <h1>{{ title }}</h1>
+      <p>{{ subtitle }}</p>
+
+      <div class="chips">
+        <span class="chip sd" *ngFor="let c of chips">{{ c }}</span>
+      </div>
+    </div>
+  </header>
+
+  <section class="card">
+    <h2>Ventajas vs Desventajas</h2>
+
+    <div class="tableWrap">
+      <table>
+        <thead>
+          <tr>
+            <th>✅ Ventajas</th>
+            <th>⚠️ Desventajas</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <tr *ngFor="let row of proConRows">
+            <td>{{ row.pro || '' }}</td>
+            <td>{{ row.con || '' }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section class="card">
+    <div class="headRow">
+      <div>
+        <h2>Modo “pro”: funciones clave</h2>
+        <p class="muted">Aquí está la gracia real de Stable Diffusion: control fino + workflows.</p>
+      </div>
+    </div>
+
+    <div class="grid2">
+      <article class="mini" *ngFor="let f of features">
+        <div class="miniTop">
+          <h3>{{ f.title }}</h3>
+          <span class="badge">{{ f.badge }}</span>
+        </div>
+
+        <p class="miniWhy">{{ f.desc }}</p>
+        <ul class="bullets">
+          <li *ngFor="let b of f.bullets">{{ b }}</li>
+        </ul>
+      </article>
+    </div>
+  </section>
+
+  <section class="card">
+    <div class="headRow">
+      <div>
+        <h2>Guía rápida (ajustes que no fallan)</h2>
+        <p class="muted">Si no quieres volverte loco al empezar: usa esto como base.</p>
+      </div>
+    </div>
+
+    <div class="quickGrid">
+      <article class="quick" *ngFor="let q of quickStart">
+        <div class="quickKey">{{ q.k }}</div>
+        <div class="quickVal">{{ q.v }}</div>
+      </article>
+    </div>
+  </section>
+
+  <section class="card">
+    <div class="headRow">
+      <div>
+        <h2>Prompts que funcionan (copiar/pegar)</h2>
+        <p class="muted">Cortos, claros y con estructura. Te ahorran tiempo real.</p>
+      </div>
+
+      <button class="btn ghost" (click)="copy(negativePrompt)">Copiar negative prompt</button>
+    </div>
+
+    <div class="promptGrid">
+      <article class="prompt" *ngFor="let p of prompts">
+        <div class="promptTop">
+          <div>
+            <h3>{{ p.title }}</h3>
+            <span class="badge">{{ p.badge }}</span>
+          </div>
+
+          <button class="btn" (click)="copy(p.prompt)">Copiar</button>
+        </div>
+
+        <div class="promptBox">{{ p.prompt }}</div>
+      </article>
+    </div>
+
+    <div class="negBox">
+      <div class="negTitle">Negative prompt recomendado</div>
+      <div class="negText">{{ negativePrompt }}</div>
+    </div>
+  </section>
+
+  <section class="card">
+    <h2>Recursos (de verdad)</h2>
+    <p class="muted">Modelos, LoRAs, interfaces y guías. Sin relleno.</p>
+
+    <div class="grid2">
+      <article class="mini" *ngFor="let r of resources">
+        <div class="miniTop">
+          <h3>{{ r.title }}</h3>
+          <span class="badge">{{ r.badge }}</span>
+        </div>
+
+        <div class="linkRow">
+          <a
+            class="linkItem"
+            *ngFor="let l of r.links"
+            [href]="l.url"
+            target="_blank"
+            rel="noreferrer"
+          >
+            {{ l.label }} →
+          </a>
+        </div>
+      </article>
+    </div>
+
+    <div class="links">
+      <a class="btn" href="https://stability.ai/" target="_blank" rel="noreferrer">Stability (oficial)</a>
+      <a class="btn ghost" href="https://civitai.com/" target="_blank" rel="noreferrer">Explorar modelos</a>
+    </div>
+  </section>
+</div>
