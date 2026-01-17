@@ -1,0 +1,110 @@
+/* Fondo lila SOLO para esta página */
+:host {
+  --llama: #8b5cf6;
+  --llama2: #22c55e;
+  --ink: #0b1220;
+
+  display: block;
+  min-height: 100vh;
+  padding-bottom: 18px;
+
+  background:
+    radial-gradient(1200px 650px at 12% 0%, rgba(139,92,246,0.35), transparent 60%),
+    radial-gradient(900px 520px at 88% 10%, rgba(34,197,94,0.18), transparent 58%),
+    radial-gradient(1000px 600px at 50% 80%, rgba(168,85,247,0.22), transparent 60%),
+    linear-gradient(180deg, #2a1546, #120a22);
+}
+
+.page {
+  padding: 16px;
+  background: transparent;
+  color: rgba(255, 255, 255, 0.92);
+}
+
+/* Hero con overlay para legibilidad */
+.hero {
+  position: relative; /* 🔥 necesario para el ::before */
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  border-radius: 18px;
+  padding: 16px;
+  margin-bottom: 14px;
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(10px);
+  box-shadow: 0 16px 40px rgba(0,0,0,0.30);
+
+  /* 👇 overlay “pro” para legibilidad */
+  &::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+
+    /* Opción CLARA (texto oscuro) */
+    background: linear-gradient(
+      90deg,
+      rgba(255,255,255,0.78) 0%,
+      rgba(255,255,255,0.56) 48%,
+      rgba(255,255,255,0.00) 78%
+    );
+    border-radius: 18px;
+  }
+
+  /* subimos el contenido por encima del overlay */
+  .heroText {
+    position: relative;
+    z-index: 1;
+  }
+
+  /* texto en oscuro elegante */
+  h1 {
+    margin: 0 0 8px;
+    font-size: 30px;
+    letter-spacing: -0.6px;
+    color: #0b1220;
+    text-shadow: 0 10px 26px rgba(0,0,0,0.18);
+  }
+
+  p {
+    margin: 0;
+    max-width: 85ch;
+    color: rgba(11,18,32,0.88);
+    text-shadow: 0 8px 20px rgba(0,0,0,0.12);
+  }
+}
+
+/* Cards glass */
+.card,
+.mini,
+.prompt {
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(10px);
+  box-shadow: 0 16px 40px rgba(0,0,0,0.30);
+  color: rgba(255,255,255,0.92);
+}
+
+.muted { color: rgba(255,255,255,0.78); }
+
+.tableWrap {
+  overflow: auto;
+  border-radius: 14px;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 720px;
+
+  th, td {
+    text-align: left;
+    padding: 12px 12px;
+    vertical-align: top;
+  }
+
+  thead th { background: rgba(139,92,246,0.14); color: #fff; font-weight: 900; }
+  tbody tr:nth-child(even) td { background: rgba(255,255,255,0.04); }
+  td { color: rgba(255,255,255,0.90); }
+}
+
+.linkItem { color: rgba(255,255,255,0.92); }
