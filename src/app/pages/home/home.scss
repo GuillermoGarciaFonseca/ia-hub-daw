@@ -71,3 +71,8 @@
 .cta {
   font-weight: 600;
 }
+
+/* Cada tarjeta lleva el color de su IA en el borde superior. */
+.card {
+  border-top: 3px solid var(--accent, rgba(15, 23, 42, 0.2));
+}
