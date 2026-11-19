@@ -49,6 +49,21 @@ En **Workers & Pages → Create application → Pages → Import an existing Git
 - `npm run build` ejecuta después `scripts/check-pages-build.mjs` (`postbuild`), que hace fallar el build si la salida no
   está en `dist/ia-hub/browser` o si alguien añade un `404.html` (eso desactivaría el modo SPA).
 
+### Alternativa: Cloudflare Workers
+
+Si el panel de Cloudflare te lleva al formulario de **Worker** ("Configure your Worker project", con un campo
+*Deploy command*), también vale. El archivo `wrangler.jsonc` ya tiene lo necesario: publica `dist/ia-hub/browser`
+con `not_found_handling: "single-page-application"`, así que recargar `/ia/claude` tampoco da 404.
+
+| Opción | Valor |
+|---|---|
+| Project name | `web-ia` (tiene que coincidir con `name` en `wrangler.jsonc`) |
+| Build command | `npm run build` |
+| Deploy command | `npx wrangler deploy` |
+| Path | `/` |
+
+Pages ignora `wrangler.jsonc` (no tiene `pages_build_output_dir`), así que no afecta si usas Pages.
+
 Para probarlo en local tal y como lo sirve Cloudflare:
 
 ```bash
