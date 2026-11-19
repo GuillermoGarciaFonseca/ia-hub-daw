@@ -29,6 +29,33 @@ La portada (con su filtro por categoría, `/?categoria=Imagen`), el menú desple
 imágenes, vídeos ni audios por derechos de autor) y el `prompt` se copia tal cual lo publican. Si la web no
 publica el prompt, se deja vacío; si solo se copia una parte, se marca con `promptExcerpt: true`.
 
+## Publicar en Cloudflare Pages
+
+En **Workers & Pages → Create application → Pages → Import an existing Git repository**, elige este repo y pon:
+
+| Opción | Valor |
+|---|---|
+| Production branch | `main` |
+| Framework preset | `None` (el preset de Angular espera otra carpeta de salida) |
+| Build command | `npm run build` |
+| Build output directory | `dist/ia-hub/browser` |
+| Root directory | *(vacío)* |
+
+- **Node**: el archivo `.node-version` fija Node 22, que es lo que pide Angular 21. Cloudflare lo lee solo. Si tu
+  proyecto usa una imagen de build antigua (v1 o v2, con Node 12 o 18), cámbiala a la v3 en *Settings → Build*.
+- **Recargar `/ia/claude` no da 404**: como no hay un `404.html` en la raíz de la salida, Cloudflare Pages trata la web
+  como SPA y sirve `index.html` en cualquier ruta que no sea un archivo; luego Angular pinta la página correcta. No hace
+  falta `_redirects`. Ver [Serving Pages](https://developers.cloudflare.com/pages/configuration/serving-pages/).
+- `npm run build` ejecuta después `scripts/check-pages-build.mjs` (`postbuild`), que hace fallar el build si la salida no
+  está en `dist/ia-hub/browser` o si alguien añade un `404.html` (eso desactivaría el modo SPA).
+
+Para probarlo en local tal y como lo sirve Cloudflare:
+
+```bash
+npm run build
+npx wrangler@4.156.0 pages dev dist/ia-hub/browser
+```
+
 ---
 
 This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 21.0.5.
