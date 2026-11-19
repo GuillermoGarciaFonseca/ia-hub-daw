@@ -148,6 +148,11 @@ export interface AiProfile {
   title: string;
   subtitle: string;
   chips: string[];
+  /**
+   * Fecha (AAAA-MM-DD) en la que se revisaron por última vez modelos, planes y precios
+   * en las webs oficiales. Se muestra en la página de detalle como "Última revisión".
+   */
+  lastReviewed: string;
   theme: AiTheme;
   sections: AiSection[];
 }

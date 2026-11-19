@@ -9,6 +9,7 @@ export const MISTRAL: AiProfile = {
   subtitle:
     'IA europea con enfoque muy “dev”: rápida, directa y perfecta si te mola control + modelos abiertos. Ideal para prototipar, construir features y entender código sin humo.',
   chips: ['Dev', 'Docs', 'Arquitectura', 'Prototipos'],
+  lastReviewed: '2026-11-19',
   theme: {
     mode: 'dark',
     accent: '#a3b466',
@@ -129,7 +130,7 @@ export const MISTRAL: AiProfile = {
           badge: '🌍',
           links: [
             { label: 'Mistral (web oficial)', url: 'https://mistral.ai/' },
-            { label: 'Le Chat (chat)', url: 'https://chat.mistral.ai/' },
+            { label: 'Vibe (antes Le Chat)', url: 'https://chat.mistral.ai/' },
           ],
         },
         {
@@ -154,18 +155,44 @@ export const MISTRAL: AiProfile = {
       type: 'plans',
       title: 'Planes y precios (sin drama)',
       intro:
-        'Resumen simple: en Mistral lo importante no es “el plan”, es el enfoque (dev + control + modelos). Si tu uso es normal, con Gratis muchas veces vas sobrado.',
+        'Su asistente, que antes se llamaba Le Chat, ahora se llama Vibe. Precios de la web oficial para España, IVA incluido. Si tu uso es normal, con el gratis muchas veces vas sobrado.',
       plans: [
-        { tier: 'Gratis', price: '€0', forWho: 'Perfecto para usarlo a diario sin complicarte.' },
         {
-          tier: 'De pago',
-          price: 'Según plan',
-          forWho: 'Normalmente pagas por más uso / más límites / más prioridad.',
+          tier: 'Gratis',
+          price: '0 €',
+          forWho: 'Perfecto para usarlo a diario sin complicarte.',
+          includes: ['Web y móvil', 'Generación y edición de imágenes básica', 'Más de 100 conectores'],
+          limitations: ['Mensajes, búsquedas web y sesiones de código limitados'],
+        },
+        {
+          tier: 'Pro',
+          price: '18,14 € / mes',
+          forWho: 'Si lo usas mucho, sobre todo para programar.',
+          includes: [
+            'Más mensajes, búsquedas y respuestas más rápidas',
+            'Programar todo el día en la terminal, el IDE o la web',
+            'Crear hojas de cálculo y presentaciones',
+            'Créditos de API incluidos cada mes',
+          ],
+          notes: [
+            'Hay plan para estudiantes verificados (hasta 12 meses): precio en la web oficial',
+          ],
+        },
+        {
+          tier: 'Team',
+          price: '30,24 € / usuario / mes',
+          forWho: 'Para equipos que trabajan juntos con IA.',
+          includes: ['Límites aún más altos', 'Hasta 30 GB por usuario', 'Verificación de dominio y exportación de datos'],
+        },
+        {
+          tier: 'Enterprise',
+          price: 'Consultar web oficial',
+          forWho: 'Despliegues privados con modelos y agentes a medida.',
         },
       ],
       buttons: [
-        { label: 'Abrir Le Chat', url: 'https://chat.mistral.ai/', variant: 'primary' },
-        { label: 'Ver docs', url: 'https://docs.mistral.ai/', variant: 'ghost' },
+        { label: 'Abrir Vibe', url: 'https://chat.mistral.ai/', variant: 'primary' },
+        { label: 'Ver precios oficiales', url: 'https://mistral.ai/pricing', variant: 'ghost' },
       ],
     },
   ],

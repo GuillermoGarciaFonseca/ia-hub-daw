@@ -7,8 +7,9 @@ export const LLAMA: AiProfile = {
   summary: 'Ecosistema grande, fine-tuning y comunidad.',
   title: 'Llama (Meta)',
   subtitle:
-    'Modelo open-ish muy usado en el mundo “local / open-source”: ideal si quieres control, privacidad y montar cosas a tu manera (Ollama, LM Studio, servidores propios).',
+    'Familia de modelos de pesos abiertos de Meta, muy usada en el mundo “local / open-source”: ideal si quieres control, privacidad y montar cosas a tu manera (Ollama, LM Studio, servidores propios). La última generación es Llama 4.',
   chips: ['Local', 'Open-source', 'Privacidad', 'RAG'],
+  lastReviewed: '2026-11-19',
   theme: {
     mode: 'dark',
     accent: '#8b5cf6',
@@ -32,6 +33,20 @@ export const LLAMA: AiProfile = {
         'Más fácil liarla con configs/latencia si vas en local.',
         'Para datos actuales: necesitas RAG o fuentes externas.',
       ],
+    },
+    {
+      type: 'keyValues',
+      title: 'Cómo está Llama ahora mismo',
+      intro:
+        'Meta ha cambiado de estrategia: llama.com ahora te lleva a su web de desarrolladores, donde los protagonistas son los modelos Muse.',
+      items: [
+        { key: 'Última versión de Llama', value: 'Llama 4 (multimodal, arquitectura mixture-of-experts)' },
+        { key: 'Versiones anteriores', value: 'Llama 3 (3.1, 3.2 y 3.3) y Llama 2 siguen disponibles' },
+        { key: 'Dónde se descarga', value: 'Hugging Face y Kaggle, aceptando la licencia de cada versión' },
+        { key: 'Licencia', value: 'Licencia propia de Meta por versión (no es open source “puro”)' },
+        { key: 'Lo nuevo de Meta', value: 'Familia Muse; su modelo de pesos abiertos es Muse Spark Open' },
+      ],
+      buttons: [{ label: 'Docs oficiales de Llama', url: 'https://dev.meta.ai/llama', variant: 'primary' }],
     },
     {
       type: 'cards',
@@ -137,7 +152,7 @@ Reglas: sin inventar datos, si falta algo pon null.`,
           badge: '🌍 Open',
           links: [
             { label: 'Hugging Face', url: 'https://huggingface.co/' },
-            { label: 'Llama (Meta AI)', url: 'https://ai.meta.com/llama/' },
+            { label: 'Llama (docs de Meta)', url: 'https://dev.meta.ai/llama' },
           ],
         },
         {
