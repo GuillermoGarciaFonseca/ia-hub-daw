@@ -1,0 +1,229 @@
+@if (ai(); as ai) {
+  <div class="aiPage" [class.dark]="ai.theme.mode === 'dark'" [style]="themeVars()">
+    <a class="back" routerLink="/">← Volver</a>
+
+    <header class="hero" [class.withImage]="!!ai.theme.heroImage">
+      <h1>{{ ai.title }}</h1>
+      <p>{{ ai.subtitle }}</p>
+
+      <div class="chips">
+        @for (chip of ai.chips; track chip) {
+          <span class="chip">{{ chip }}</span>
+        }
+      </div>
+    </header>
+
+    @for (section of ai.sections; track $index; let s = $index) {
+      <section class="card">
+        <div class="cardHead">
+          <div>
+            <h2>{{ section.title }}</h2>
+            @if (section.intro) {
+              <p class="muted">{{ section.intro }}</p>
+            }
+          </div>
+
+          @if (section.type === 'prompts' && section.negativePrompt) {
+            <button class="btn ghost" type="button" (click)="copy(section.negativePrompt, 'neg-' + s)">
+              {{ copiedKey() === 'neg-' + s ? '✅ Copiado' : 'Copiar negative prompt' }}
+            </button>
+          }
+        </div>
+
+        @switch (section.type) {
+          @case ('prosCons') {
+            <div class="tableWrap">
+              <table>
+                <thead>
+                  <tr>
+                    <th>✅ Ventajas</th>
+                    <th>⚠️ Desventajas</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  @for (row of proConRows(section); track $index) {
+                    <tr>
+                      <td data-label="✅ Ventaja">{{ row.pro || '' }}</td>
+                      <td data-label="⚠️ Desventaja">{{ row.con || '' }}</td>
+                    </tr>
+                  }
+                </tbody>
+              </table>
+            </div>
+          }
+
+          @case ('cards') {
+            <div class="grid2">
+              @for (card of section.cards; track card.title) {
+                <article class="mini">
+                  <div class="miniTop">
+                    <h3>{{ card.title }}</h3>
+                    @if (card.badge) {
+                      <span class="badge">{{ card.badge }}</span>
+                    }
+                  </div>
+
+                  @if (card.text) {
+                    <p class="miniText">{{ card.text }}</p>
+                  }
+
+                  @if (card.bullets?.length) {
+                    <ul class="bullets">
+                      @for (bullet of card.bullets; track bullet) {
+                        <li>{{ bullet }}</li>
+                      }
+                    </ul>
+                  }
+
+                  @if (card.pills?.length) {
+                    <div class="pillRow">
+                      @for (pill of card.pills; track pill) {
+                        <span class="pill">{{ pill }}</span>
+                      }
+                    </div>
+                  }
+
+                  @if (card.links?.length) {
+                    <div class="linkList">
+                      @for (link of card.links; track link.url + link.label) {
+                        <a class="linkItem" [href]="link.url" target="_blank" rel="noreferrer">{{ link.label }} →</a>
+                      }
+                    </div>
+                  }
+                </article>
+              }
+            </div>
+          }
+
+          @case ('prompts') {
+            <div class="grid2">
+              @for (item of section.prompts; track item.title; let p = $index) {
+                <article class="mini">
+                  <div class="miniTop">
+                    <h3>{{ item.title }}</h3>
+                    @if (item.badge) {
+                      <span class="badge">{{ item.badge }}</span>
+                    }
+                  </div>
+
+                  <pre class="promptBox">{{ item.prompt }}</pre>
+
+                  <button class="btn ghost small" type="button" (click)="copy(item.prompt, s + '-' + p)">
+                    {{ copiedKey() === s + '-' + p ? '✅ Copiado' : '📋 Copiar' }}
+                  </button>
+                </article>
+              }
+            </div>
+
+            @if (section.negativePrompt) {
+              <div class="negBox">
+                <div class="negTitle">Negative prompt recomendado</div>
+                <div class="negText">{{ section.negativePrompt }}</div>
+              </div>
+            }
+          }
+
+          @case ('plans') {
+            <div class="planGrid">
+              @for (plan of section.plans; track plan.tier) {
+                <article class="plan">
+                  @if (plan.img) {
+                    <img class="planImg" [src]="plan.img" [alt]="plan.tier" loading="lazy" />
+                  }
+
+                  <div class="planTop">
+                    <h3>{{ plan.tier }}</h3>
+                    @if (plan.price) {
+                      <span class="price">{{ plan.price }}</span>
+                    }
+                  </div>
+
+                  @if (plan.forWho) {
+                    <p class="muted">{{ plan.forWho }}</p>
+                  }
+
+                  @if (plan.highlights?.length) {
+                    <div class="highlights">
+                      <h4>Qué cambia</h4>
+                      <ul>
+                        @for (h of plan.highlights; track h) {
+                          <li>{{ h }}</li>
+                        }
+                      </ul>
+                    </div>
+                  }
+
+                  @if (plan.includes?.length || plan.limitations?.length) {
+                    <div class="cols">
+                      @if (plan.includes?.length) {
+                        <div>
+                          <h4>Incluye</h4>
+                          <ul>
+                            @for (it of plan.includes; track it) {
+                              <li>{{ it }}</li>
+                            }
+                          </ul>
+                        </div>
+                      }
+                      @if (plan.limitations?.length) {
+                        <div>
+                          <h4>Ojo</h4>
+                          <ul>
+                            @for (it of plan.limitations; track it) {
+                              <li>{{ it }}</li>
+                            }
+                          </ul>
+                        </div>
+                      }
+                    </div>
+                  }
+
+                  @if (plan.notes?.length) {
+                    <ul class="bullets">
+                      @for (n of plan.notes; track n) {
+                        <li>{{ n }}</li>
+                      }
+                    </ul>
+                  }
+                </article>
+              }
+            </div>
+          }
+
+          @case ('keyValues') {
+            <div class="kvGrid">
+              @for (item of section.items; track item.key) {
+                <article class="kv">
+                  <div class="kvKey">{{ item.key }}</div>
+                  <div class="kvValue">{{ item.value }}</div>
+                </article>
+              }
+            </div>
+          }
+
+          @case ('gallery') {
+            <div class="gallery">
+              @for (img of section.images; track img.src) {
+                <img class="galleryImg" loading="lazy" [src]="img.src" [alt]="img.alt" />
+              }
+            </div>
+          }
+
+          @case ('promptBuilder') {
+            <app-prompt-builder [config]="section.config" />
+          }
+        }
+
+        @if (section.buttons?.length) {
+          <div class="links">
+            @for (b of section.buttons; track b.url + b.label) {
+              <a class="btn" [class.ghost]="b.variant === 'ghost'" [href]="b.url" target="_blank" rel="noreferrer">
+                {{ b.label }}
+              </a>
+            }
+          </div>
+        }
+      </section>
+    }
+  </div>
+}

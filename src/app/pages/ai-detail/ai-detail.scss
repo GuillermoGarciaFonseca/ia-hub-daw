@@ -1,0 +1,473 @@
+/*
+ * Estilos comunes de todas las páginas de IA.
+ * Cada IA solo aporta sus colores (--accent, --accent2), su imagen (--hero-image)
+ * y si es clara u oscura (.dark). Todo lo demás sale de aquí.
+ */
+
+:host {
+  display: block;
+}
+
+.aiPage {
+  /* Tema claro (por defecto) */
+  --text: #0f172a;
+  --muted: rgba(15, 23, 42, 0.72);
+  --surface: rgba(255, 255, 255, 0.84);
+  --surface-strong: rgba(255, 255, 255, 0.9);
+  --border: color-mix(in srgb, var(--accent) 18%, transparent);
+  --soft: color-mix(in srgb, var(--accent) 12%, transparent);
+  --link: color-mix(in srgb, var(--accent) 70%, #000);
+  --code-bg: rgba(15, 23, 42, 0.05);
+  --hero-overlay: linear-gradient(120deg, rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0.4));
+  --shadow: 0 10px 28px rgba(15, 23, 42, 0.1);
+
+  color: var(--text);
+  min-height: 100vh;
+  padding: 16px;
+  border-radius: 20px;
+
+  background:
+    radial-gradient(1200px 650px at 12% 0%, color-mix(in srgb, var(--accent) 32%, transparent), transparent 60%),
+    radial-gradient(900px 520px at 88% 10%, color-mix(in srgb, var(--accent2) 20%, transparent), transparent 58%),
+    linear-gradient(180deg, color-mix(in srgb, var(--accent) 14%, #fff), color-mix(in srgb, var(--accent) 5%, #fff));
+
+  &.dark {
+    --text: rgba(255, 255, 255, 0.92);
+    --muted: rgba(255, 255, 255, 0.7);
+    --surface: rgba(255, 255, 255, 0.06);
+    --surface-strong: rgba(255, 255, 255, 0.08);
+    --border: rgba(255, 255, 255, 0.12);
+    --soft: color-mix(in srgb, var(--accent) 22%, transparent);
+    --link: color-mix(in srgb, var(--accent) 55%, #fff);
+    --code-bg: rgba(0, 0, 0, 0.25);
+    --hero-overlay: linear-gradient(120deg, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.2));
+    --shadow: 0 10px 28px rgba(0, 0, 0, 0.35);
+
+    background:
+      radial-gradient(1200px 650px at 12% 0%, color-mix(in srgb, var(--accent) 30%, transparent), transparent 60%),
+      radial-gradient(900px 520px at 88% 10%, color-mix(in srgb, var(--accent2) 18%, transparent), transparent 58%),
+      linear-gradient(180deg, #0b1220, #070d18);
+  }
+
+  @media (max-width: 600px) {
+    padding: 12px;
+    border-radius: 14px;
+  }
+}
+
+.back {
+  display: inline-block;
+  margin-bottom: 10px;
+  color: var(--link);
+  text-decoration: none;
+  opacity: 0.85;
+
+  &:hover {
+    opacity: 1;
+  }
+}
+
+/* ---------- Cabecera ---------- */
+
+.hero {
+  border: 1px solid var(--border);
+  border-radius: 18px;
+  padding: 16px;
+  margin-bottom: 14px;
+  box-shadow: var(--shadow);
+  background: var(--surface-strong);
+
+  &.withImage {
+    background-image: var(--hero-overlay), var(--hero-image);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+  }
+
+  h1 {
+    margin: 0 0 8px;
+    font-size: 30px;
+    letter-spacing: -0.5px;
+  }
+
+  p {
+    margin: 0;
+    opacity: 0.9;
+    max-width: 85ch;
+  }
+}
+
+.chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 12px;
+}
+
+.chip,
+.badge,
+.pill {
+  font-size: 12px;
+  border-radius: 999px;
+  background: var(--soft);
+  border: 1px solid var(--border);
+}
+
+.chip {
+  padding: 6px 10px;
+}
+
+/* ---------- Secciones ---------- */
+
+.card {
+  border: 1px solid var(--border);
+  border-radius: 18px;
+  padding: 16px;
+  margin-bottom: 14px;
+  background: var(--surface);
+  backdrop-filter: blur(10px);
+  box-shadow: var(--shadow);
+
+  h2 {
+    margin: 0 0 12px;
+    font-size: 18px;
+  }
+}
+
+.cardHead {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.muted {
+  color: var(--muted);
+  margin: -6px 0 12px;
+}
+
+.grid2 {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+
+  @media (max-width: 800px) {
+    grid-template-columns: 1fr;
+  }
+}
+
+.mini {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 14px;
+  background: var(--surface-strong);
+
+  h3 {
+    margin: 0;
+    font-size: 16px;
+  }
+}
+
+.miniTop {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.badge {
+  padding: 4px 8px;
+  white-space: nowrap;
+}
+
+.miniText {
+  margin: 0;
+  opacity: 0.9;
+}
+
+.bullets,
+.mini ul,
+.plan ul {
+  margin: 0;
+  padding-left: 18px;
+  opacity: 0.9;
+}
+
+.pillRow {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.pill {
+  padding: 6px 10px;
+}
+
+.linkList {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.linkItem {
+  color: var(--link);
+  font-weight: 700;
+  text-decoration: none;
+
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+/* ---------- Ventajas / desventajas ---------- */
+
+.tableWrap {
+  overflow-x: auto;
+  border-radius: 14px;
+  border: 1px solid var(--border);
+}
+
+table {
+  width: 100%;
+  min-width: 620px;
+  border-collapse: collapse;
+
+  th,
+  td {
+    text-align: left;
+    padding: 12px;
+    vertical-align: top;
+  }
+
+  thead th {
+    background: var(--soft);
+    font-weight: 800;
+  }
+
+  tbody tr:nth-child(even) td {
+    background: color-mix(in srgb, var(--text) 4%, transparent);
+  }
+
+  /* En móvil la tabla se apila: cada ventaja y desventaja ocupa su propia fila con su etiqueta. */
+  @media (max-width: 600px) {
+    min-width: 0;
+
+    thead {
+      display: none;
+    }
+
+    td {
+      display: block;
+      padding: 8px 12px;
+
+      &:empty {
+        display: none;
+      }
+
+      &::before {
+        content: attr(data-label);
+        display: block;
+        font-size: 12px;
+        font-weight: 800;
+        opacity: 0.7;
+      }
+    }
+
+    tbody tr td:first-child {
+      border-top: 1px solid var(--border);
+    }
+  }
+}
+
+/* ---------- Prompts ---------- */
+
+.promptBox {
+  margin: 0;
+  padding: 12px;
+  border-radius: 14px;
+  border: 1px solid var(--border);
+  background: var(--code-bg);
+  white-space: pre-wrap;
+  word-break: break-word;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono', monospace;
+  font-size: 12.5px;
+  line-height: 1.45;
+  flex: 1;
+}
+
+.negBox {
+  margin-top: 12px;
+  padding: 12px;
+  border-radius: 14px;
+  border: 1px dashed var(--border);
+  background: var(--soft);
+}
+
+.negTitle {
+  font-weight: 800;
+  margin-bottom: 6px;
+}
+
+.negText {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono', monospace;
+  font-size: 12.5px;
+}
+
+/* ---------- Planes ---------- */
+
+.planGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 12px;
+}
+
+.plan {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  border: 1px solid var(--border);
+  border-radius: 18px;
+  padding: 14px;
+  background: var(--surface-strong);
+
+  .muted {
+    margin: 0;
+  }
+
+  h4 {
+    margin: 0 0 8px;
+    font-size: 14px;
+  }
+}
+
+.planImg {
+  width: 100%;
+  height: auto;
+  border-radius: 14px;
+  border: 1px solid var(--border);
+}
+
+.planTop {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 6px 10px;
+
+  h3 {
+    margin: 0;
+  }
+}
+
+.price {
+  font-weight: 900;
+  color: var(--link);
+}
+
+.highlights {
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 12px;
+  background: var(--soft);
+}
+
+.cols {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+
+  @media (max-width: 980px) {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ---------- Guía rápida (clave / valor) ---------- */
+
+.kvGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 12px;
+}
+
+.kv {
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 12px;
+  background: var(--surface-strong);
+}
+
+.kvKey {
+  font-weight: 800;
+  color: var(--link);
+  margin-bottom: 4px;
+}
+
+.kvValue {
+  opacity: 0.9;
+}
+
+/* ---------- Galería ---------- */
+
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 12px;
+
+  @media (max-width: 800px) {
+    grid-template-columns: 1fr;
+  }
+}
+
+.galleryImg {
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  object-fit: cover;
+  border-radius: 14px;
+  border: 1px solid var(--border);
+}
+
+/* ---------- Botones ---------- */
+
+.links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 12px;
+}
+
+.btn {
+  display: inline-block;
+  padding: 10px 12px;
+  border-radius: 14px;
+  border: 1px solid transparent;
+  background: color-mix(in srgb, var(--accent) 82%, #000);
+  color: #fff;
+  font: inherit;
+  font-weight: 800;
+  text-decoration: none;
+  cursor: pointer;
+  transition:
+    transform 140ms ease,
+    box-shadow 140ms ease;
+
+  &:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 12px 26px color-mix(in srgb, var(--accent) 25%, transparent);
+  }
+
+  &.ghost {
+    background: var(--soft);
+    border-color: var(--border);
+    color: var(--text);
+  }
+
+  &.small {
+    align-self: flex-start;
+    padding: 6px 10px;
+    font-size: 13px;
+  }
+}

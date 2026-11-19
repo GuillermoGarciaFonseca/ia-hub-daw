@@ -1,0 +1,79 @@
+<div class="builder">
+  <div class="col">
+    <h3>1) Tema</h3>
+    <label class="srOnly" for="pb-subject">Tema de la imagen</label>
+    <textarea
+      id="pb-subject"
+      class="input"
+      rows="4"
+      [value]="subject()"
+      (input)="subject.set($any($event.target).value)"
+    ></textarea>
+    <p class="hint">Tip: mete contexto (luz, cámara, ambiente, materiales) y el resultado sube muchísimo.</p>
+  </div>
+
+  <div class="col">
+    <h3>2) Estilo</h3>
+    <div class="pickRow">
+      @for (s of config().styles; track s.id) {
+        <button type="button" class="pick" [class.active]="s.id === selectedStyle()" (click)="selectedStyle.set(s.id)">
+          {{ s.name }}
+          <span class="pickMini">{{ s.vibe }}</span>
+        </button>
+      }
+    </div>
+
+    <h3>3) Formato</h3>
+    <div class="pickRow">
+      @for (a of config().aspectRatios; track a.id) {
+        <button type="button" class="pick" [class.active]="a.id === selectedAr()" (click)="selectedAr.set(a.id)">
+          {{ a.label }}
+        </button>
+      }
+    </div>
+  </div>
+</div>
+
+<div class="params">
+  <div class="param">
+    <div class="paramTop">
+      <strong>Stylize</strong>
+      <span class="value">{{ stylize() }}</span>
+    </div>
+    <div class="paramBtns">
+      @for (step of config().stylize.steps; track step) {
+        <button type="button" class="btn ghost" (click)="changeStylize(step)">{{ signed(step) }}</button>
+      }
+    </div>
+  </div>
+
+  <div class="param">
+    <div class="paramTop">
+      <strong>Chaos</strong>
+      <span class="value">{{ chaos() }}</span>
+    </div>
+    <div class="paramBtns">
+      @for (step of config().chaos.steps; track step) {
+        <button type="button" class="btn ghost" (click)="changeChaos(step)">{{ signed(step) }}</button>
+      }
+    </div>
+  </div>
+
+  <div class="param">
+    <div class="paramTop">
+      <strong>Seed</strong>
+      <span class="value">{{ seed() === null ? 'auto' : seed() }}</span>
+    </div>
+    <div class="paramBtns">
+      <button type="button" class="btn ghost" (click)="randomSeed()">Random</button>
+      <button type="button" class="btn ghost" (click)="clearSeed()">Quitar</button>
+    </div>
+  </div>
+</div>
+
+<div class="result">
+  <pre class="promptBox">{{ builtPrompt() }}</pre>
+  <button class="btn" type="button" (click)="copyPrompt()">
+    {{ copied() ? '✅ Copiado' : '📋 Copiar prompt' }}
+  </button>
+</div>
