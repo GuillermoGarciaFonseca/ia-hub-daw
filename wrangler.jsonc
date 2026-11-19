@@ -1,0 +1,14 @@
+{
+  // Configuración para publicar en Cloudflare Workers (recursos estáticos).
+  // "name" tiene que coincidir con el nombre del proyecto en Cloudflare.
+  // Docs: https://developers.cloudflare.com/workers/static-assets/routing/single-page-application/
+  "name": "web-ia",
+  "compatibility_date": "2026-10-23",
+  "assets": {
+    // Carpeta que genera `npm run build`.
+    "directory": "./dist/ia-hub/browser",
+    // Modo SPA: cualquier ruta que no sea un archivo (p. ej. /ia/claude) devuelve index.html,
+    // así recargar la página no da 404 y Angular pinta la ficha correcta.
+    "not_found_handling": "single-page-application"
+  }
+}
