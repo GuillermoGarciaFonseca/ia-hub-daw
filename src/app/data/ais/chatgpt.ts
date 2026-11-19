@@ -3,7 +3,7 @@ import { AiProfile } from '../ai-model';
 export const CHATGPT: AiProfile = {
   slug: 'chatgpt',
   name: 'ChatGPT',
-  category: 'Texto',
+  category: 'Chat',
   summary: 'Chat conversacional, redacción, ideas, código.',
   title: 'ChatGPT',
   subtitle:

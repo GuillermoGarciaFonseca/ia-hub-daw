@@ -3,7 +3,7 @@ import { AiProfile } from '../ai-model';
 export const CLAUDE: AiProfile = {
   slug: 'claude',
   name: 'Claude',
-  category: 'Texto',
+  category: 'Chat',
   summary: 'Análisis largo, escritura clara, razonamiento.',
   title: 'Claude',
   subtitle:

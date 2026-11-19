@@ -3,7 +3,7 @@ import { AiProfile } from '../ai-model';
 export const PERPLEXITY: AiProfile = {
   slug: 'perplexity',
   name: 'Perplexity',
-  category: 'Búsqueda',
+  category: 'Productividad',
   summary: 'Respuestas con fuentes, estilo “investigación”.',
   title: 'Perplexity',
   subtitle:

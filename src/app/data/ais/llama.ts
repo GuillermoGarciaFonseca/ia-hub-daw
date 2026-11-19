@@ -3,7 +3,7 @@ import { AiProfile } from '../ai-model';
 export const LLAMA: AiProfile = {
   slug: 'llama',
   name: 'Llama',
-  category: 'Open',
+  category: 'Chat',
   summary: 'Ecosistema grande, fine-tuning y comunidad.',
   title: 'Llama (Meta)',
   subtitle:

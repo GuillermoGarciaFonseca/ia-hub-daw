@@ -47,6 +47,17 @@ describe('AiDetail', () => {
     expect(page.style.getPropertyValue('--accent')).toBe('#ff2bd6');
   });
 
+  it('should render a new AI (Suno) with its theme, plans and prompts', async () => {
+    const el = await render('suno');
+    const suno = findAiBySlug('suno')!;
+    const page = el.querySelector('.aiPage') as HTMLElement;
+    expect(page.classList).toContain('dark');
+    expect(page.style.getPropertyValue('--accent')).toBe(suno.theme.accent);
+    expect(el.querySelectorAll('section.card').length).toBe(suno.sections.length);
+    expect(el.querySelectorAll('.plan').length).toBe(3);
+    expect(el.querySelectorAll('.promptBox').length).toBe(3);
+  });
+
   it('should render the interactive prompt builder for Midjourney', async () => {
     const el = await render('midjourney');
     expect(el.querySelector('app-prompt-builder')).not.toBeNull();

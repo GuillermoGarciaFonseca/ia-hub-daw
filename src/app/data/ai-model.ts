@@ -135,13 +135,21 @@ export interface AiTheme {
   heroImage?: string;
 }
 
+/**
+ * Categorías del hub, en el orden en que salen en el menú y en el filtro de la portada.
+ * Cada IA pertenece a una sola categoría.
+ */
+export const AI_CATEGORIES = ['Chat', 'Productividad', 'Código', 'Imagen', 'Vídeo', 'Audio'] as const;
+
+export type AiCategory = (typeof AI_CATEGORIES)[number];
+
 export interface AiProfile {
   /** Identificador en la URL: /ia/<slug>. */
   slug: string;
   /** Nombre corto para el menú y la portada. */
   name: string;
-  /** Categoría que se muestra como etiqueta en la portada. */
-  category: string;
+  /** Categoría: agrupa la IA en el menú, en el filtro y en la etiqueta de la portada. */
+  category: AiCategory;
   /** Descripción corta para la tarjeta de la portada. */
   summary: string;
   /** Título largo de la página de detalle. */

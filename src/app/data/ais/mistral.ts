@@ -3,7 +3,7 @@ import { AiProfile } from '../ai-model';
 export const MISTRAL: AiProfile = {
   slug: 'mistral',
   name: 'Mistral',
-  category: 'Open',
+  category: 'Chat',
   summary: 'Modelos eficientes, self-hosting friendly.',
   title: 'Mistral',
   subtitle:

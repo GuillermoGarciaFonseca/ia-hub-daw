@@ -3,8 +3,33 @@
   <p>Un panel con {{ ais.length }} IAs distintas para comparar y aprender a usarlas con cabeza. 👀</p>
 </section>
 
+<div class="filters" role="group" aria-label="Filtrar por categoría">
+  <button type="button" class="filter" [class.active]="!selected()" [attr.aria-pressed]="!selected()" (click)="select(null)">
+    Todas <span class="count">{{ ais.length }}</span>
+  </button>
+  @for (c of categories; track c.category) {
+    <button
+      type="button"
+      class="filter"
+      [class.active]="selected() === c.category"
+      [attr.aria-pressed]="selected() === c.category"
+      (click)="select(c.category)"
+    >
+      {{ c.category }} <span class="count">{{ c.count }}</span>
+    </button>
+  }
+</div>
+
+<p class="resultCount" aria-live="polite">
+  @if (selected(); as category) {
+    Mostrando {{ visibleAis().length }} de {{ ais.length }} IAs · {{ category }}
+  } @else {
+    Mostrando las {{ ais.length }} IAs
+  }
+</p>
+
 <section class="grid">
-  @for (ai of ais; track ai.slug) {
+  @for (ai of visibleAis(); track ai.slug) {
     <a class="card" [routerLink]="['/ia', ai.slug]" [style.--accent]="ai.theme.accent">
       <div class="top">
         <h2>{{ ai.name }}</h2>

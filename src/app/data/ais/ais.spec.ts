@@ -1,4 +1,5 @@
-import { AIS, findAiBySlug } from './index';
+import { AI_CATEGORIES } from '../ai-model';
+import { AIS, aisByCategory, findAiBySlug } from './index';
 
 describe('AI data', () => {
   it('should have unique slugs', () => {
@@ -65,6 +66,50 @@ describe('AI data', () => {
     expect(copilot.title).toContain('Microsoft 365');
     expect(copilot.summary).not.toMatch(/IDE|autocompletado/i);
     expect(copilot.category).not.toBe('Código');
+  });
+
+  it('should include the 10 new AIs of phase 3 (20 in total)', () => {
+    const nuevas = ['deepseek', 'qwen', 'gemini-notebook', 'cursor', 'ideogram', 'flux', 'runway', 'kling', 'elevenlabs', 'suno'];
+    for (const slug of nuevas) {
+      expect(findAiBySlug(slug), slug).toBeDefined();
+    }
+    expect(AIS.length).toBe(20);
+  });
+
+  it('should only use the existing section types in the new AIs', () => {
+    const allowed = ['prosCons', 'cards', 'prompts', 'plans', 'keyValues', 'gallery'];
+    for (const slug of ['deepseek', 'qwen', 'gemini-notebook', 'cursor', 'ideogram', 'flux', 'runway', 'kling', 'elevenlabs', 'suno']) {
+      const ai = findAiBySlug(slug)!;
+      expect(ai.theme.mode, slug).toMatch(/^(light|dark)$/);
+      for (const section of ai.sections) {
+        expect(allowed, `${slug}: ${section.title}`).toContain(section.type);
+      }
+      // Todas empiezan con ventajas/desventajas y tienen planes, como el resto del hub.
+      expect(ai.sections[0].type, slug).toBe('prosCons');
+      expect(ai.sections.some((s) => s.type === 'plans'), slug).toBe(true);
+    }
+  });
+
+  it('should give each AI its own accent colour', () => {
+    const accents = AIS.map((ai) => ai.theme.accent.toLowerCase());
+    const repeated = accents.filter((a, i) => accents.indexOf(a) !== i);
+    // Midjourney y Stable Diffusion ya compartían color antes de la fase 3.
+    expect(repeated).toEqual(['#a855f7']);
+  });
+
+  it('should only use known categories, and every category should have AIs', () => {
+    for (const ai of AIS) {
+      expect(AI_CATEGORIES, ai.slug).toContain(ai.category);
+    }
+    expect(aisByCategory().map((g) => g.category)).toEqual([...AI_CATEGORIES]);
+  });
+
+  it('should group AIs by category keeping the registry order', () => {
+    const groups = aisByCategory();
+    expect(groups.flatMap((g) => g.ais)).toHaveLength(AIS.length);
+    for (const group of groups) {
+      expect(group.ais).toEqual(AIS.filter((ai) => ai.category === group.category));
+    }
   });
 
   it('should find AIs by slug', () => {

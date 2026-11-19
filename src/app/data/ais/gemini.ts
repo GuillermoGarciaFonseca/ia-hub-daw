@@ -3,7 +3,7 @@ import { AiProfile } from '../ai-model';
 export const GEMINI: AiProfile = {
   slug: 'gemini',
   name: 'Gemini',
-  category: 'Multimodal',
+  category: 'Chat',
   summary: 'Texto + imagen, enfoque Google.',
   title: 'Gemini',
   subtitle:

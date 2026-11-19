@@ -1,10 +1,40 @@
 <header class="topbar">
   <a class="brand" routerLink="/">IA Hub</a>
 
-  <nav class="nav">
-    <a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">Home</a>
-    @for (ai of ais; track ai.slug) {
-      <a [routerLink]="['/ia', ai.slug]" routerLinkActive="active">{{ ai.name }}</a>
+  <nav class="nav" aria-label="IAs por categoría">
+    <a class="navLink" routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">Home</a>
+
+    @for (group of groups; track group.category; let i = $index) {
+      <div class="dropdown">
+        <button
+          type="button"
+          class="navLink dropBtn"
+          [class.active]="activeCategory() === group.category"
+          [class.open]="openCategory() === group.category"
+          [attr.aria-expanded]="openCategory() === group.category"
+          [attr.aria-controls]="'menu-' + i"
+          (click)="toggle(group.category)"
+        >
+          {{ group.category }}
+          <span class="count">{{ group.ais.length }}</span>
+          <span class="caret" aria-hidden="true">▾</span>
+        </button>
+
+        @if (openCategory() === group.category) {
+          <ul class="menu" [id]="'menu-' + i">
+            @for (ai of group.ais; track ai.slug) {
+              <li>
+                <a [routerLink]="['/ia', ai.slug]" routerLinkActive="current" [style.--accent]="ai.theme.accent">
+                  <span class="dot" aria-hidden="true"></span>{{ ai.name }}
+                </a>
+              </li>
+            }
+            <li class="seeAll">
+              <a routerLink="/" [queryParams]="{ categoria: group.category }">Ver todas en la portada →</a>
+            </li>
+          </ul>
+        }
+      </div>
     }
   </nav>
 </header>

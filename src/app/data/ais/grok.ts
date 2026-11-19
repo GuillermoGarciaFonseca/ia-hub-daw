@@ -3,7 +3,7 @@ import { AiProfile } from '../ai-model';
 export const GROK: AiProfile = {
   slug: 'grok',
   name: 'Grok',
-  category: 'Social',
+  category: 'Chat',
   summary: 'Estilo directo, con búsqueda en tiempo real en la web y en X.',
   title: 'Grok',
   subtitle:
