@@ -35,6 +35,30 @@ export const QWEN: AiProfile = {
       ],
     },
     {
+      type: 'examples',
+      title: 'Ejemplos reales (de la web oficial)',
+      intro:
+        'Ejemplos del anuncio oficial de Qwen-Image-2.1 (septiembre de 2026). En la página se ve la imagen original y el resultado.',
+      examples: [
+        {
+          title: 'Tres ediciones a la vez con círculos',
+          kind: 'imagen',
+          description:
+            'Se marcan tres zonas de una foto con círculos de colores y se le pide un cambio distinto para cada una: el resto de la imagen se queda igual.',
+          prompt:
+            'Remove the metal watch in the blue circle, change the hair in the red circle to black, and replace the area in the green circle with gray short-sleeved linen pajamas.',
+          source: { label: 'Ver el ejemplo en qwen.ai', url: 'https://qwen.ai/blog?id=qwen-image-2.1' },
+        },
+        {
+          title: 'Cambiar el texto de una capa transparente',
+          kind: 'imagen',
+          description:
+            'Edita el texto de una imagen con fondo transparente: la palabra “BLOOM” se sustituye por “Qwen-Image” sin tocar el resto.',
+          source: { label: 'Ver el ejemplo en qwen.ai', url: 'https://qwen.ai/blog?id=qwen-image-2.1' },
+        },
+      ],
+    },
+    {
       type: 'cards',
       title: 'Qué puedes hacer',
       intro: 'Todo esto está dentro del mismo asistente.',

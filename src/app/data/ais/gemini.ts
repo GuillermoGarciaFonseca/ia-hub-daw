@@ -36,6 +36,32 @@ export const GEMINI: AiProfile = {
       ],
     },
     {
+      type: 'examples',
+      title: 'Ejemplos reales (de la web oficial)',
+      intro:
+        'Resultados publicados en la web oficial, con el prompt que se usó tal y como lo publican (normalmente en inglés). El resultado no se copia aquí: pulsa el enlace para verlo.',
+      examples: [
+        {
+          title: 'Vídeo con diálogo y sonido (Veo)',
+          kind: 'vídeo',
+          description:
+            'Vídeo generado con Veo, el modelo de vídeo de Google DeepMind (la página oficial invita a probarlo en Gemini): un búho y un tejón en un bosque de noche, con sonido ambiente y música generados a la vez.',
+          prompt:
+            'A follow shot of a wise old owl high in the air, peeking through the clouds in a moonlit sky above a forest. The wise old owl carefully circles a clearing looking around to the forest floor. After a few moments, it dives down to a moonlit path and sits next to a badger. Audio: wings flapping, birdsong, loud and pleasant wind rustling and the sound of intermittent pleasant sounds buzzing, twigs snapping underfoot, croaking. A light orchestral score with woodwinds throughout with a cheerful, optimistic rhythm, full of innocent curiosity.',
+          source: { label: 'Ver el vídeo en Google DeepMind', url: 'https://deepmind.google/models/veo/' },
+        },
+        {
+          title: 'Retrato de estudio retro',
+          kind: 'imagen',
+          description:
+            'Edición de imagen en Gemini (Nano Banana): subes una foto tuya y la convierte en un retrato de estudio de centro comercial con estética retro.',
+          prompt:
+            'Turn this into a retro-style mall studio portrait.',
+          source: { label: 'Ver el ejemplo en gemini.google', url: 'https://gemini.google/overview/image-generation/' },
+        },
+      ],
+    },
+    {
       type: 'cards',
       title: 'Lo diferencial (cloud + imágenes + precio)',
       intro: 'Aquí está el “porque” de Gemini.',

@@ -35,6 +35,32 @@ export const LLAMA: AiProfile = {
       ],
     },
     {
+      type: 'examples',
+      title: 'Ejemplos reales (de la web oficial)',
+      intro:
+        'Ejemplos de la guía oficial de prompting de Llama, con el prompt y la respuesta que publica Meta.',
+      examples: [
+        {
+          title: 'Responder solo en JSON',
+          kind: 'código',
+          description:
+            'Combinando un rol, unas reglas y un ejemplo, el modelo responde solo con el JSON pedido, sin texto de más. Respuesta publicada: {\'zip_code\': 94025}',
+          prompt:
+            'You are a robot that only outputs JSON. You reply in JSON format with the field \'zip_code\'.\nExample question: What is the zip code of the Empire State Building?\nExample answer: {\'zip_code\': 10118}\nQuestion: What is the zip code of Menlo Park?',
+          source: { label: 'Ver en la guía de prompting de Llama', url: 'https://dev.meta.ai/llama/docs/how-to-guides/prompting/' },
+        },
+        {
+          title: 'Calcular con código (PAL)',
+          kind: 'código',
+          description:
+            'Como a los modelos se les dan mal las cuentas, se les pide el código que las hace. Llama devuelve una función de Python que, al ejecutarla, da el resultado correcto.',
+          prompt:
+            'Only return Python code, nothing else.\nGenerate python code to calculate the following:\n((-5 + 93 * 4 - 0) * (4^4 + -7 + 0 * 5))',
+          source: { label: 'Ver en la guía de prompting de Llama', url: 'https://dev.meta.ai/llama/docs/how-to-guides/prompting/' },
+        },
+      ],
+    },
+    {
       type: 'keyValues',
       title: 'Cómo está Llama ahora mismo',
       intro:

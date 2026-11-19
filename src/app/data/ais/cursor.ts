@@ -35,6 +35,21 @@ export const CURSOR: AiProfile = {
       ],
     },
     {
+      type: 'examples',
+      title: 'Ejemplos reales (de la web oficial)',
+      intro:
+        'La portada de Cursor tiene una demo interactiva con tareas reales del agente. El prompt completo de cada tarea no se publica.',
+      examples: [
+        {
+          title: 'Crear una landing page',
+          kind: 'web',
+          description:
+            'En la demo, el agente termina la tarea “Crear landing page” y explica lo que ha hecho: precarga las fuentes en el head, mete el CSS crítico en línea y añade una etiqueta meta. Al lado se ven otras tareas, como planificar una funcionalidad en feature-prd.md.',
+          source: { label: 'Ver la demo en cursor.com', url: 'https://cursor.com/' },
+        },
+      ],
+    },
+    {
       type: 'cards',
       title: 'Cómo usarlo bien en DAW',
       intro: 'El truco es tratarlo como a un compañero: tareas pequeñas, claras y revisadas.',

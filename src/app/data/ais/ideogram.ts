@@ -35,6 +35,24 @@ export const IDEOGRAM: AiProfile = {
       ],
     },
     {
+      type: 'examples',
+      title: 'Ejemplos reales (de la web oficial)',
+      intro:
+        'Ejemplo de la página oficial de Ideogram 4.0, que usa prompts estructurados en JSON con cajas de posición.',
+      examples: [
+        {
+          title: 'Póster con mucho texto',
+          kind: 'imagen',
+          description:
+            'Póster de cine generado a partir de un prompt en JSON: cada bloque de texto tiene su caja (posición) y su descripción. Este es el texto de uno de esos bloques; en la página puedes ver el JSON completo.',
+          prompt:
+            'Small credit block in the top right corner. Centered alignment, uppercase serif font in a dark grey or black color.',
+          promptExcerpt: true,
+          source: { label: 'Ver el ejemplo en ideogram.ai', url: 'https://ideogram.ai/models/4.0/' },
+        },
+      ],
+    },
+    {
       type: 'keyValues',
       title: 'Modelos actuales',
       items: [

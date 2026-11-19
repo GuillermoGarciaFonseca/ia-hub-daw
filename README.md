@@ -23,7 +23,11 @@ Las rutas antiguas (`/claude`, `/chatgpt`…) redirigen a las nuevas (`/ia/claud
 4. Si usa imagen de cabecera, guárdala en `public/img/<slug>/` y ponla en `theme.heroImage`.
 
 La portada (con su filtro por categoría, `/?categoria=Imagen`), el menú desplegable por categoría y la ruta `/ia/<slug>` se generan solos. Tipos de sección disponibles:
-`prosCons`, `cards`, `prompts`, `plans`, `keyValues`, `gallery` y `promptBuilder`.
+`prosCons`, `cards`, `prompts`, `plans`, `keyValues`, `gallery`, `examples` y `promptBuilder`.
+
+`examples` son ejemplos reales publicados en la web oficial de la IA: el resultado se **enlaza** (no se copian
+imágenes, vídeos ni audios por derechos de autor) y el `prompt` se copia tal cual lo publican. Si la web no
+publica el prompt, se deja vacío; si solo se copia una parte, se marca con `promptExcerpt: true`.
 
 ---
 

@@ -35,6 +35,41 @@ export const FLUX: AiProfile = {
       ],
     },
     {
+      type: 'examples',
+      title: 'Ejemplos reales (de la web oficial)',
+      intro:
+        'Resultados publicados en la web oficial, con el prompt que se usó tal y como lo publican (normalmente en inglés). El resultado no se copia aquí: pulsa el enlace para verlo.',
+      examples: [
+        {
+          title: 'Retrato de estudio con texto en la camiseta',
+          kind: 'imagen',
+          description:
+            'Uno de los 15 ejemplos de FLUX 3 Image: retrato de estudio en el que el texto “Manager” sale escrito en la camiseta.',
+          prompt:
+            'A studio portrait of a woman in a cream tee printed Manager in red, with red and yellow cuffs, on cobalt blue.',
+          source: { label: 'Ver el ejemplo en bfl.ai', url: 'https://bfl.ai/models/flux-3-image' },
+        },
+        {
+          title: 'Ballet visto desde bastidores',
+          kind: 'imagen',
+          description:
+            'Imagen compuesta por un agente con FLUX 3 Image a partir de una sola línea de prompt y una relación de aspecto.',
+          prompt:
+            'Three ballerinas dancing Swan Lake, seen from the wings past the dark silhouettes of people watching.',
+          source: { label: 'Ver el ejemplo en bfl.ai', url: 'https://bfl.ai/models/flux-3-image' },
+        },
+        {
+          title: 'Escena compuesta con cajas',
+          kind: 'imagen',
+          description:
+            '“Le Festival du Soleil”: imagen generada a partir de cajas de posición para cada elemento y este prompt de escena que lo une todo.',
+          prompt:
+            'A glowing concrete dome rises from a twilight bay, a crowd on the beach before it.',
+          source: { label: 'Ver el ejemplo en bfl.ai', url: 'https://bfl.ai/models/flux-3-image' },
+        },
+      ],
+    },
+    {
       type: 'keyValues',
       title: 'Modelos actuales',
       items: [

@@ -71,6 +71,26 @@ export interface PromptBuilderConfig {
   chaos: { initial: number; min: number; max: number; steps: number[] };
 }
 
+/** Tipo de resultado de un ejemplo real. */
+export type ExampleKind = 'imagen' | 'vídeo' | 'audio' | 'texto' | 'código' | 'web' | 'documento';
+
+/**
+ * Ejemplo real publicado en la web oficial de la IA: qué se generó, con qué prompt
+ * y dónde verlo. No se copian los archivos (derechos de autor): se enlazan.
+ */
+export interface ExampleItem {
+  title: string;
+  kind: ExampleKind;
+  /** Qué muestra el resultado (y cualquier contexto útil), en español. */
+  description: string;
+  /** Prompt tal y como lo publica la web oficial (sin traducir). Si falta, la web no lo publica. */
+  prompt?: string;
+  /** `true` si el prompt está recortado: el completo está en la fuente. */
+  promptExcerpt?: boolean;
+  /** Página oficial donde se ve el resultado. */
+  source: Link;
+}
+
 interface SectionBase {
   title: string;
   intro?: string;
@@ -110,6 +130,11 @@ export interface GallerySection extends SectionBase {
   images: GalleryImage[];
 }
 
+export interface ExamplesSection extends SectionBase {
+  type: 'examples';
+  examples: ExampleItem[];
+}
+
 export interface PromptBuilderSection extends SectionBase {
   type: 'promptBuilder';
   config: PromptBuilderConfig;
@@ -122,6 +147,7 @@ export type AiSection =
   | PlansSection
   | KeyValuesSection
   | GallerySection
+  | ExamplesSection
   | PromptBuilderSection;
 
 export interface AiTheme {

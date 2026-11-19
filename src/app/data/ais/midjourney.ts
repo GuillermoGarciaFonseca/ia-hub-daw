@@ -27,6 +27,21 @@ export const MIDJOURNEY: AiProfile = {
       ],
     },
     {
+      type: 'examples',
+      title: 'Ejemplos reales (de la web oficial)',
+      intro:
+        'La documentación de Midjourney no publica ejemplos con su prompt. Donde se ven creaciones reales es en su galería oficial Explore (puede que tengas que iniciar sesión).',
+      examples: [
+        {
+          title: 'Galería Explore: lo más votado del mes',
+          kind: 'imagen',
+          description:
+            'Galería oficial con las imágenes de la comunidad mejor valoradas del mes. Ideal para inspirarte con estilos reales hechos en Midjourney.',
+          source: { label: 'Abrir Explore en midjourney.com', url: 'https://www.midjourney.com/explore?tab=top' },
+        },
+      ],
+    },
+    {
       type: 'promptBuilder',
       title: 'Constructor de prompt (pro)',
       config: {

@@ -35,6 +35,28 @@ export const GEMINI_NOTEBOOK: AiProfile = {
       ],
     },
     {
+      type: 'examples',
+      title: 'Ejemplos reales (de la web oficial)',
+      intro:
+        'Cuadernos públicos destacados en la web oficial. Puedes abrirlos, ver las fuentes y hacerles tus propias preguntas.',
+      examples: [
+        {
+          title: 'Secretos de los superlongevos',
+          kind: 'documento',
+          description:
+            'Cuaderno público con 17 fuentes sobre longevidad: resúmenes, preguntas y respuestas basadas solo en esas fuentes.',
+          source: { label: 'Abrir el cuaderno público', url: 'https://notebook.google.com/notebook/780a38ee-d0a6-4fb1-b255-aa03c8d67dce' },
+        },
+        {
+          title: 'William Shakespeare: obras completas',
+          kind: 'documento',
+          description:
+            'Cuaderno público con 45 fuentes: ideal para ver cómo responde citando obras concretas.',
+          source: { label: 'Abrir el cuaderno público', url: 'https://notebook.google.com/notebook/19bde485-a9c1-4809-8884-e872b2b67b44' },
+        },
+      ],
+    },
+    {
       type: 'cards',
       title: 'Cómo sacarle partido',
       intro: 'La idea clave: primero subes las fuentes y después preguntas.',

@@ -35,6 +35,34 @@ export const SUNO: AiProfile = {
       ],
     },
     {
+      type: 'examples',
+      title: 'Ejemplos reales (de la web oficial)',
+      intro:
+        'Canciones de la comunidad destacadas en la portada de Suno. En cada página se ven los estilos usados (la lista completa se despliega en la web) y la letra completa.',
+      examples: [
+        {
+          title: '“Porch Light On” (de kealix)',
+          kind: 'audio',
+          description:
+            'Balada indie hecha con el modelo V6 de Suno. Este es el inicio del prompt de estilo; la letra completa está en la página de la canción.',
+          prompt:
+            'indie, alternative, ballad',
+          promptExcerpt: true,
+          source: { label: 'Escuchar en suno.com', url: 'https://suno.com/song/538ab4ae-3ace-4abf-95f9-be0bed53b65d' },
+        },
+        {
+          title: '“This Is My World (V6 Edition)” (de Zombie Robby)',
+          kind: 'audio',
+          description:
+            'Canción de rock hipnótico hecha con V6-WILD, con indicaciones de estructura en la letra, como [Intro instrumental bass].',
+          prompt:
+            'slacker rock, dreamy, hypnotic',
+          promptExcerpt: true,
+          source: { label: 'Escuchar en suno.com', url: 'https://suno.com/song/057fa44a-a2c2-4089-8fca-52a637117f00' },
+        },
+      ],
+    },
+    {
       type: 'plans',
       title: 'Planes y precios',
       intro: 'Precios de la web oficial en USD al mes. Pagando el año entero ahorras hasta un 20 %.',

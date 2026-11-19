@@ -28,6 +28,7 @@ describe('AI data', () => {
         const links = [
           ...(section.buttons ?? []),
           ...(section.type === 'cards' ? section.cards.flatMap((c) => c.links ?? []) : []),
+          ...(section.type === 'examples' ? section.examples.map((e) => e.source) : []),
         ];
         for (const link of links) {
           expect(link.url, `${ai.slug}: ${link.label}`).toMatch(/^https:\/\//);
@@ -77,7 +78,7 @@ describe('AI data', () => {
   });
 
   it('should only use the existing section types in the new AIs', () => {
-    const allowed = ['prosCons', 'cards', 'prompts', 'plans', 'keyValues', 'gallery'];
+    const allowed = ['prosCons', 'cards', 'prompts', 'plans', 'keyValues', 'gallery', 'examples'];
     for (const slug of ['deepseek', 'qwen', 'gemini-notebook', 'cursor', 'ideogram', 'flux', 'runway', 'kling', 'elevenlabs', 'suno']) {
       const ai = findAiBySlug(slug)!;
       expect(ai.theme.mode, slug).toMatch(/^(light|dark)$/);
@@ -109,6 +110,31 @@ describe('AI data', () => {
     expect(groups.flatMap((g) => g.ais)).toHaveLength(AIS.length);
     for (const group of groups) {
       expect(group.ais).toEqual(AIS.filter((ai) => ai.category === group.category));
+    }
+  });
+
+  it('should give real examples to every AI except the ones without verifiable official examples', () => {
+    const sinEjemplos = AIS.filter((ai) => !ai.sections.some((s) => s.type === 'examples')).map((ai) => ai.slug);
+    // DeepSeek y Perplexity no publican (o no dejan comprobar) ejemplos con resultado en su web oficial.
+    expect(sinEjemplos.sort()).toEqual(['deepseek', 'perplexity']);
+  });
+
+  it('should keep the real examples well formed', () => {
+    const kinds = ['imagen', 'vídeo', 'audio', 'texto', 'código', 'web', 'documento'];
+    for (const ai of AIS) {
+      for (const section of ai.sections) {
+        if (section.type !== 'examples') continue;
+        expect(section.examples.length, ai.slug).toBeGreaterThan(0);
+        for (const ex of section.examples) {
+          const where = `${ai.slug}: ${ex.title}`;
+          expect(kinds, where).toContain(ex.kind);
+          expect(ex.description.trim(), where).not.toBe('');
+          expect(ex.source.label.trim(), where).not.toBe('');
+          if (ex.prompt !== undefined) expect(ex.prompt.trim(), where).not.toBe('');
+          // "fragmento" solo tiene sentido si hay prompt.
+          if (ex.promptExcerpt) expect(ex.prompt, where).toBeTruthy();
+        }
+      }
     }
   });
 

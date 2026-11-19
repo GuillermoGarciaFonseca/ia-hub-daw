@@ -35,6 +35,21 @@ export const KLING: AiProfile = {
       ],
     },
     {
+      type: 'examples',
+      title: 'Ejemplos reales (de la web oficial)',
+      intro:
+        'Vídeo de portada de la web oficial de Kling 4.0.',
+      examples: [
+        {
+          title: 'Pianista en un barco entre olas',
+          kind: 'vídeo',
+          description:
+            'Vídeo con sonido de Kling 4.0 que abre la web oficial. La web lo acompaña de este texto, pero no dice si es el prompt exacto.',
+          source: { label: 'Ver el vídeo en kling.ai', url: 'https://kling.ai/' },
+        },
+      ],
+    },
+    {
       type: 'cards',
       title: 'Qué ofrece',
       cards: [

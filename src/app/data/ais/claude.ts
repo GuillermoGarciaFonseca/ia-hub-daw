@@ -35,6 +35,34 @@ export const CLAUDE: AiProfile = {
       ],
     },
     {
+      type: 'examples',
+      title: 'Ejemplos reales (de la web oficial)',
+      intro:
+        'Casos de uso oficiales de Claude Academy (en español), con el prompt y lo que crea Claude. En la página puedes abrir el resultado y copiar el prompt completo.',
+      examples: [
+        {
+          title: 'Página web de portafolio',
+          kind: 'web',
+          description:
+            'Claude crea una página de portafolio completa como artefacto HTML a partir de tu currículum, tus proyectos y tus referencias de diseño, y después te guía para publicarla.',
+          prompt:
+            'Ayúdame a crear una página HTML de portafolio profesional para mostrar mi trayectoria profesional y mis logros. He subido mi currículum, descripciones de proyectos y algunos archivos de inspiración de diseño. Usa eso para entender mi trayectoria y mis preferencias estéticas.',
+          promptExcerpt: true,
+          source: { label: 'Ver el caso de uso en Claude Academy', url: 'https://academy.claude.com/es/use-cases/create-a-custom-webpage' },
+        },
+        {
+          title: 'De investigación a presentación',
+          kind: 'documento',
+          description:
+            'A partir de un trabajo de grupo sobre sueño y rendimiento académico, Claude saca los hallazgos clave, propone el hilo de la presentación y prepara las diapositivas y las notas del orador.',
+          prompt:
+            'Estoy subiendo nuestro trabajo grupal sobre la calidad del sueño y el rendimiento académico. Tenemos 12 minutos para presentar ante una audiencia mixta de profesores y estudiantes, con 4 presentadores compartiendo el tiempo. Analiza esta investigación para:',
+          promptExcerpt: true,
+          source: { label: 'Ver el caso de uso en Claude Academy', url: 'https://academy.claude.com/es/use-cases/turn-research-into-presentations' },
+        },
+      ],
+    },
+    {
       type: 'cards',
       title: 'Lenguajes recomendados (dónde Claude brilla)',
       intro: 'Para tu TFG: te ahorra horas con bugs y estructura.',

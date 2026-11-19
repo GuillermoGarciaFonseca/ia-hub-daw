@@ -35,6 +35,41 @@ export const RUNWAY: AiProfile = {
       ],
     },
     {
+      type: 'examples',
+      title: 'Ejemplos reales (de la web oficial)',
+      intro:
+        'Resultados publicados en la web oficial, con el prompt que se usó tal y como lo publican (normalmente en inglés). El resultado no se copia aquí: pulsa el enlace para verlo.',
+      examples: [
+        {
+          title: 'El viaje del barco de papel',
+          kind: 'vídeo',
+          description:
+            'Plano continuo de Gen-4.5: el agua de un grifo llena un cubo y un barco de papel viaja por el reguero hasta dentro de una casa.',
+          prompt:
+            'A continuous shot with no scene cut. We see water coming out of a garden faucet filling up a rusty metal bucket. Right below the bucket is a perfect folded white paper boat with a small yellow flower. The boat rides down a small river of water and enters a house, ending the journey in front of a broken TV.',
+          source: { label: 'Ver el vídeo en runway.com', url: 'https://runway.com/research/introducing-runway-gen-4.5' },
+        },
+        {
+          title: 'Oso polar en un remolque',
+          kind: 'vídeo',
+          description:
+            'Gen-4.5 coloca cada objeto donde dice el prompt y mueve la cámara para la sorpresa final.',
+          prompt:
+            'A polar bear sits huddled inside a clear frozen ice block, strapped securely to a small silver utility trailer. The camera follows the trailer pulled by a cord at eye level, then pans to the right to reveal a goat pulling the trailer.',
+          source: { label: 'Ver el vídeo en runway.com', url: 'https://runway.com/research/introducing-runway-gen-4.5' },
+        },
+        {
+          title: 'Torre de objetos en equilibrio',
+          kind: 'vídeo',
+          description:
+            'Prueba de física: objetos apilados que se tambalean de forma realista.',
+          prompt:
+            'An open watermelon, a chrome colander, a long skinny cactus in a green ceramic pot and a parrot balancing on top of each other, wobbling and shaking.',
+          source: { label: 'Ver el vídeo en runway.com', url: 'https://runway.com/research/introducing-runway-gen-4.5' },
+        },
+      ],
+    },
+    {
       type: 'cards',
       title: 'Modelos y herramientas clave',
       cards: [

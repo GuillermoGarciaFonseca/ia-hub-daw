@@ -213,6 +213,35 @@
             </div>
           }
 
+          @case ('examples') {
+            <div class="grid2">
+              @for (ex of section.examples; track ex.source.url + ex.title; let e = $index) {
+                <article class="mini example">
+                  <div class="miniTop">
+                    <h3>{{ ex.title }}</h3>
+                    <span class="badge">{{ kindLabel(ex.kind) }}</span>
+                  </div>
+
+                  <p class="miniText">{{ ex.description }}</p>
+
+                  @if (ex.prompt) {
+                    <h4 class="exampleLabel">{{ ex.promptExcerpt ? 'Prompt usado (fragmento)' : 'Prompt usado' }}</h4>
+                    <pre class="promptBox">{{ ex.prompt }}</pre>
+                    <button class="btn ghost small" type="button" (click)="copy(ex.prompt, 'ex-' + s + '-' + e)">
+                      {{ copiedKey() === 'ex-' + s + '-' + e ? '✅ Copiado' : '📋 Copiar prompt' }}
+                    </button>
+                  } @else {
+                    <p class="exampleLabel noPrompt">La web oficial no publica el prompt de este ejemplo.</p>
+                  }
+
+                  <div class="linkList">
+                    <a class="linkItem" [href]="ex.source.url" target="_blank" rel="noreferrer">{{ ex.source.label }} →</a>
+                  </div>
+                </article>
+              }
+            </div>
+          }
+
           @case ('promptBuilder') {
             <app-prompt-builder [config]="section.config" />
           }

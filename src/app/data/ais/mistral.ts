@@ -36,6 +36,21 @@ export const MISTRAL: AiProfile = {
       ],
     },
     {
+      type: 'examples',
+      title: 'Ejemplos reales (de la web oficial)',
+      intro:
+        'Demos oficiales del anuncio de Mistral Large 4 (octubre de 2026).',
+      examples: [
+        {
+          title: 'Análisis financiero en varios pasos',
+          kind: 'vídeo',
+          description:
+            'Vídeo de demostración: Mistral Large 4 resuelve el mismo problema de finanzas corporativas, en varios pasos y buscando información, frente a otros modelos abiertos.',
+          source: { label: 'Ver la demo en mistral.ai', url: 'https://mistral.ai/news/mistral-large-4/' },
+        },
+      ],
+    },
+    {
       type: 'cards',
       title: 'Cuándo usar Mistral (y cuándo no)',
       intro: 'Aquí es donde se nota que esto no es “enciclopedia”: es práctico.',

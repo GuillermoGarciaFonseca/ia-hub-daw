@@ -35,6 +35,23 @@ export const ELEVENLABS: AiProfile = {
       ],
     },
     {
+      type: 'examples',
+      title: 'Ejemplos reales (de la web oficial)',
+      intro:
+        'Demo de texto a voz de la web oficial. Fíjate en las etiquetas entre corchetes: cambian la forma de hablar.',
+      examples: [
+        {
+          title: 'Narración con emociones',
+          kind: 'audio',
+          description:
+            'Fragmento de cuento narrado con voz sintética. Las etiquetas [sarcastically], [giggles] y [whispers] hacen que la voz suene sarcástica, se ría o susurre.',
+          prompt:
+            'In the ancient land of Eldoria, where skies shimmered and forests, whispered secrets to the wind, lived a dragon named Zephyros. [sarcastically] Not the “burn it all down” kind... [giggles] but he was gentle, wise, with eyes like old stars. [whispers] Even the birds fell silent when he passed.',
+          source: { label: 'Escuchar la demo en elevenlabs.io', url: 'https://elevenlabs.io/' },
+        },
+      ],
+    },
+    {
       type: 'cards',
       title: 'Ideas para tu proyecto',
       cards: [

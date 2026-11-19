@@ -4,7 +4,8 @@ import { of } from 'rxjs';
 
 import { PromptBuilder } from '../../components/prompt-builder/prompt-builder';
 import { findAiBySlug } from '../../data/ais';
-import { AiDetail, formatReviewDate } from './ai-detail';
+import { ExamplesSection } from '../../data/ai-model';
+import { AiDetail, EXAMPLE_KIND_LABELS, formatReviewDate } from './ai-detail';
 
 async function render(slug: string) {
   await TestBed.configureTestingModule({
@@ -55,7 +56,33 @@ describe('AiDetail', () => {
     expect(page.style.getPropertyValue('--accent')).toBe(suno.theme.accent);
     expect(el.querySelectorAll('section.card').length).toBe(suno.sections.length);
     expect(el.querySelectorAll('.plan').length).toBe(3);
-    expect(el.querySelectorAll('.promptBox').length).toBe(3);
+    // 3 prompts propios + los de los ejemplos reales, que van aparte.
+    expect(el.querySelectorAll('.mini:not(.example) .promptBox').length).toBe(3);
+  });
+
+  it('should render the real examples with their prompt and official link', async () => {
+    const el = await render('runway');
+    const section = findAiBySlug('runway')!.sections.find((s) => s.type === 'examples') as ExamplesSection;
+    const cards = el.querySelectorAll('.example');
+    expect(cards.length).toBe(section.examples.length);
+    section.examples.forEach((ex, i) => {
+      expect(cards[i].querySelector('h3')?.textContent).toBe(ex.title);
+      expect(cards[i].querySelector('.badge')?.textContent).toBe(EXAMPLE_KIND_LABELS[ex.kind]);
+      expect(cards[i].querySelector('.promptBox')?.textContent).toBe(ex.prompt);
+      expect(cards[i].querySelector('.exampleLabel')?.textContent).toBe('Prompt usado');
+      expect(cards[i].querySelector('a.linkItem')?.getAttribute('href')).toBe(ex.source.url);
+    });
+  });
+
+  it('should flag excerpts and examples without a published prompt', async () => {
+    const chatgpt = await render('chatgpt');
+    expect(chatgpt.querySelector('.example .exampleLabel')?.textContent).toBe('Prompt usado (fragmento)');
+
+    TestBed.resetTestingModule();
+    const kling = await render('kling');
+    const card = kling.querySelector('.example')!;
+    expect(card.querySelector('.promptBox')).toBeNull();
+    expect(card.querySelector('.noPrompt')?.textContent).toContain('no publica el prompt');
   });
 
   it('should render the interactive prompt builder for Midjourney', async () => {
