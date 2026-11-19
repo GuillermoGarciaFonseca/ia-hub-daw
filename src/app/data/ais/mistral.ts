@@ -7,7 +7,7 @@ export const MISTRAL: AiProfile = {
   summary: 'Modelos eficientes, self-hosting friendly.',
   title: 'Mistral',
   subtitle:
-    'IA europea con enfoque muy “dev”: rápida, directa y perfecta si te mola control + modelos abiertos. Ideal para prototipar, construir features y entender código sin humo.',
+    'IA europea con enfoque muy “dev”: rápida, directa y perfecta si te mola control + modelos abiertos. Su modelo estrella, Mistral Large 4, es de pesos abiertos y está entrenado en Europa. Ideal para prototipar, construir features y entender código sin humo.',
   chips: ['Dev', 'Docs', 'Arquitectura', 'Prototipos'],
   lastReviewed: '2026-11-19',
   theme: {
@@ -22,7 +22,7 @@ export const MISTRAL: AiProfile = {
       title: 'Ventajas vs Desventajas',
       pros: [
         'Muy buena para tareas de dev: explicación + refactor + estructura.',
-        'Ecosistema con modelos abiertos (enfoque “controlable”).',
+        'Modelos abiertos de verdad: Mistral Large 4 se puede descargar, modificar y usar comercialmente.',
         'Buena para texto técnico: docs, requisitos, README, specs.',
         'Rinde bien en flujos tipo “asistente de código”.',
         'Suele ser más “to the point” (menos charla, más acción).',
@@ -48,6 +48,29 @@ export const MISTRAL: AiProfile = {
             'Vídeo de demostración: Mistral Large 4 resuelve el mismo problema de finanzas corporativas, en varios pasos y buscando información, frente a otros modelos abiertos.',
           source: { label: 'Ver la demo en mistral.ai', url: 'https://mistral.ai/news/mistral-large-4/' },
         },
+      ],
+    },
+    {
+      type: 'keyValues',
+      title: 'Modelo estrella: Mistral Large 4 (“Le Chonk”)',
+      intro:
+        'Salió en octubre de 2026, primero en versión preliminar y semanas después con los pesos abiertos. Datos de los anuncios oficiales de Mistral.',
+      items: [
+        { key: 'Tamaño', value: '1 billón de parámetros (52.000 millones activos), multimodal de serie' },
+        { key: 'Pesos abiertos', value: 'Descargables desde Hugging Face para usarlo en tu propia infraestructura (vLLM o SGLang)' },
+        {
+          key: 'Licencia',
+          value:
+            'Mistral Ecosystem Open-Weight (MIT modificada): libre para usar, modificar y comercializar; solo quien lo venda como servicio de modelos necesita una licencia aparte',
+        },
+        { key: 'En qué destaca', value: 'Programación con agentes y ciberseguridad defensiva: según Mistral, el mejor modelo abierto para programar' },
+        { key: 'Razonamiento', value: 'Tres modos de razonamiento para equilibrar rendimiento y coste' },
+        { key: 'Hecho en Europa', value: 'Entrenado desde cero en centros de datos propios de Mistral en Europa, con datos de más de 160 idiomas' },
+        { key: 'Dónde probarlo', value: 'Mistral Studio, la API de Mistral u OpenRouter' },
+      ],
+      buttons: [
+        { label: 'Anuncio de los pesos abiertos', url: 'https://mistral.ai/news/mistral-large-4-oss/', variant: 'primary' },
+        { label: 'Anuncio de la versión preliminar', url: 'https://mistral.ai/news/mistral-large-4/', variant: 'ghost' },
       ],
     },
     {
