@@ -71,6 +71,26 @@ export interface PromptBuilderConfig {
   chaos: { initial: number; min: number; max: number; steps: number[] };
 }
 
+/** Tipo de resultado de un ejemplo real. */
+export type ExampleKind = 'imagen' | 'vídeo' | 'audio' | 'texto' | 'código' | 'web' | 'documento';
+
+/**
+ * Ejemplo real publicado en la web oficial de la IA: qué se generó, con qué prompt
+ * y dónde verlo. No se copian los archivos (derechos de autor): se enlazan.
+ */
+export interface ExampleItem {
+  title: string;
+  kind: ExampleKind;
+  /** Qué muestra el resultado (y cualquier contexto útil), en español. */
+  description: string;
+  /** Prompt tal y como lo publica la web oficial (sin traducir). Si falta, la web no lo publica. */
+  prompt?: string;
+  /** `true` si el prompt está recortado: el completo está en la fuente. */
+  promptExcerpt?: boolean;
+  /** Página oficial donde se ve el resultado. */
+  source: Link;
+}
+
 interface SectionBase {
   title: string;
   intro?: string;
@@ -110,6 +130,11 @@ export interface GallerySection extends SectionBase {
   images: GalleryImage[];
 }
 
+export interface ExamplesSection extends SectionBase {
+  type: 'examples';
+  examples: ExampleItem[];
+}
+
 export interface PromptBuilderSection extends SectionBase {
   type: 'promptBuilder';
   config: PromptBuilderConfig;
@@ -122,6 +147,7 @@ export type AiSection =
   | PlansSection
   | KeyValuesSection
   | GallerySection
+  | ExamplesSection
   | PromptBuilderSection;
 
 export interface AiTheme {
@@ -135,13 +161,21 @@ export interface AiTheme {
   heroImage?: string;
 }
 
+/**
+ * Categorías del hub, en el orden en que salen en el menú y en el filtro de la portada.
+ * Cada IA pertenece a una sola categoría.
+ */
+export const AI_CATEGORIES = ['Chat', 'Productividad', 'Código', 'Imagen', 'Vídeo', 'Audio'] as const;
+
+export type AiCategory = (typeof AI_CATEGORIES)[number];
+
 export interface AiProfile {
   /** Identificador en la URL: /ia/<slug>. */
   slug: string;
   /** Nombre corto para el menú y la portada. */
   name: string;
-  /** Categoría que se muestra como etiqueta en la portada. */
-  category: string;
+  /** Categoría: agrupa la IA en el menú, en el filtro y en la etiqueta de la portada. */
+  category: AiCategory;
   /** Descripción corta para la tarjeta de la portada. */
   summary: string;
   /** Título largo de la página de detalle. */

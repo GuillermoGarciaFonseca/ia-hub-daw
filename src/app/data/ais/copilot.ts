@@ -36,6 +36,32 @@ export const COPILOT: AiProfile = {
       ],
     },
     {
+      type: 'examples',
+      title: 'Ejemplos reales (de la web oficial)',
+      intro:
+        'Prompts de la galería oficial de Microsoft. Aquí la web no enseña un resultado fijo, porque Copilot responde usando tus correos, reuniones y documentos.',
+      examples: [
+        {
+          title: 'Preparar una reunión',
+          kind: 'texto',
+          description:
+            'Copilot Chat revisa tu agenda y el contexto de la reunión para preparártela.',
+          prompt:
+            'Help me prepare for my next meeting.',
+          source: { label: 'Ver en la galería de prompts de Microsoft', url: 'https://adoption.microsoft.com/en-us/copilot/prompt-gallery/' },
+        },
+        {
+          title: 'Reflexionar sobre un cambio de trabajo',
+          kind: 'texto',
+          description:
+            'Copilot Chat te ayuda a hacerte las preguntas adecuadas antes de tomar una decisión profesional.',
+          prompt:
+            'What questions should I ask myself when making a decision about changing my career?',
+          source: { label: 'Ver en la galería de prompts de Microsoft', url: 'https://adoption.microsoft.com/en-us/copilot/prompt-gallery/' },
+        },
+      ],
+    },
+    {
       type: 'cards',
       title: 'Dónde brilla (Microsoft 365)',
       intro: 'La gracia está en usarlo dentro de Word/Excel/PowerPoint/Teams con contexto.',

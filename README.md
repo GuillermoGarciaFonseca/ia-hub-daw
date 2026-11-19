@@ -17,13 +17,17 @@ Las rutas antiguas (`/claude`, `/chatgpt`…) redirigen a las nuevas (`/ia/claud
 ## Cómo añadir una IA
 
 1. Copia un archivo de `src/app/data/ais/` (por ejemplo `claude.ts`) con el nombre de la nueva IA.
-2. Cambia `slug`, `name`, `category`, `summary`, textos, `lastReviewed` (fecha `AAAA-MM-DD` en la que revisaste los datos en la web oficial), `theme` (modo claro u oscuro y colores) y `sections`.
+2. Cambia `slug`, `name`, `category` (una de `AI_CATEGORIES` en `ai-model.ts`: Chat, Productividad, Código, Imagen, Vídeo o Audio), `summary`, textos, `lastReviewed` (fecha `AAAA-MM-DD` en la que revisaste los datos en la web oficial), `theme` (modo claro u oscuro y colores) y `sections`.
    Si no puedes verificar un precio en la web oficial, pon `price: 'Consultar web oficial'` y enlaza la web en `buttons`.
 3. Añádela a la lista `AIS` de `src/app/data/ais/index.ts`.
 4. Si usa imagen de cabecera, guárdala en `public/img/<slug>/` y ponla en `theme.heroImage`.
 
-La portada, el menú y la ruta `/ia/<slug>` se generan solos. Tipos de sección disponibles:
-`prosCons`, `cards`, `prompts`, `plans`, `keyValues`, `gallery` y `promptBuilder`.
+La portada (con su filtro por categoría, `/?categoria=Imagen`), el menú desplegable por categoría y la ruta `/ia/<slug>` se generan solos. Tipos de sección disponibles:
+`prosCons`, `cards`, `prompts`, `plans`, `keyValues`, `gallery`, `examples` y `promptBuilder`.
+
+`examples` son ejemplos reales publicados en la web oficial de la IA: el resultado se **enlaza** (no se copian
+imágenes, vídeos ni audios por derechos de autor) y el `prompt` se copia tal cual lo publican. Si la web no
+publica el prompt, se deja vacío; si solo se copia una parte, se marca con `promptExcerpt: true`.
 
 ---
 

@@ -3,7 +3,7 @@ import { AiProfile } from '../ai-model';
 export const MISTRAL: AiProfile = {
   slug: 'mistral',
   name: 'Mistral',
-  category: 'Open',
+  category: 'Chat',
   summary: 'Modelos eficientes, self-hosting friendly.',
   title: 'Mistral',
   subtitle:
@@ -33,6 +33,21 @@ export const MISTRAL: AiProfile = {
         'Algunas funciones dependen de plataforma/plan/entorno.',
         'Si el prompt es flojo, el resultado se queda a medio gas.',
         'Para info “en tiempo real”, necesitas fuentes externas.',
+      ],
+    },
+    {
+      type: 'examples',
+      title: 'Ejemplos reales (de la web oficial)',
+      intro:
+        'Demos oficiales del anuncio de Mistral Large 4 (octubre de 2026).',
+      examples: [
+        {
+          title: 'Análisis financiero en varios pasos',
+          kind: 'vídeo',
+          description:
+            'Vídeo de demostración: Mistral Large 4 resuelve el mismo problema de finanzas corporativas, en varios pasos y buscando información, frente a otros modelos abiertos.',
+          source: { label: 'Ver la demo en mistral.ai', url: 'https://mistral.ai/news/mistral-large-4/' },
+        },
       ],
     },
     {

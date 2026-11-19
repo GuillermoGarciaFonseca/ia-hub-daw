@@ -3,8 +3,19 @@ import { toSignal } from '@angular/core/rxjs-interop';
 import { ActivatedRoute } from '@angular/router';
 import { map } from 'rxjs';
 
-import { ProsConsSection } from '../../data/ai-model';
+import { ExampleKind, ProsConsSection } from '../../data/ai-model';
 import { findAiBySlug } from '../../data/ais';
+
+/** Etiqueta (con icono) de cada tipo de resultado de los ejemplos reales. */
+export const EXAMPLE_KIND_LABELS: Record<ExampleKind, string> = {
+  imagen: '🖼️ Imagen',
+  vídeo: '🎬 Vídeo',
+  audio: '🔊 Audio',
+  texto: '💬 Texto',
+  código: '💻 Código',
+  web: '🌐 Web',
+  documento: '📓 Documento',
+};
 
 /**
  * Página de detalle común para todas las IAs (/ia/:slug).
@@ -45,6 +56,10 @@ export class AiDetail {
 
   /** Clave del último prompt copiado, para mostrar "Copiado" unos segundos. */
   readonly copiedKey = signal<string | null>(null);
+
+  kindLabel(kind: ExampleKind): string {
+    return EXAMPLE_KIND_LABELS[kind];
+  }
 
   proConRows(section: ProsConsSection): { pro?: string; con?: string }[] {
     const length = Math.max(section.pros.length, section.cons.length);

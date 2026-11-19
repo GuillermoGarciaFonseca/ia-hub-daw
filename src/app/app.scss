@@ -19,26 +19,144 @@
 
 .nav {
   display: flex;
-  gap: 10px;
+  gap: 6px;
   flex-wrap: wrap;
   align-items: center;
+}
+
+.navLink {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  color: rgba(255, 255, 255, 0.75);
+  text-decoration: none;
+  padding: 6px 10px;
+  border: 0;
+  border-radius: 10px;
+  background: transparent;
+  font: inherit;
+  cursor: pointer;
+  transition: 120ms ease;
+
+  &:hover,
+  &.open {
+    color: #fff;
+    background: rgba(255, 255, 255, 0.08);
+  }
+
+  &.active {
+    color: #0f172a;
+    background: #fff;
+  }
+
+  &:focus-visible {
+    outline: 2px solid #93c5fd;
+    outline-offset: 2px;
+  }
+}
+
+.count {
+  font-size: 11px;
+  padding: 1px 6px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.14);
+}
+
+.navLink.active .count {
+  background: rgba(15, 23, 42, 0.1);
+}
+
+.caret {
+  font-size: 11px;
+  transition: transform 120ms ease;
+}
+
+.dropBtn.open .caret {
+  transform: rotate(180deg);
+}
+
+/* ---------- Desplegable de cada categoría ---------- */
+
+.dropdown {
+  position: relative;
+}
+
+.menu {
+  position: absolute;
+  top: calc(100% + 6px);
+  left: 0;
+  z-index: 20;
+  min-width: 220px;
+  margin: 0;
+  padding: 6px;
+  list-style: none;
+  background: #fff;
+  border: 1px solid rgba(15, 23, 42, 0.1);
+  border-radius: 12px;
+  box-shadow: 0 14px 34px rgba(15, 23, 42, 0.22);
 
   a {
-    color: rgba(255, 255, 255, 0.75);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 10px;
+    border-radius: 8px;
+    color: #0f172a;
     text-decoration: none;
-    padding: 6px 10px;
-    border-radius: 10px;
-    transition: 120ms ease;
 
-    &:hover {
-      color: #fff;
-      background: rgba(255, 255, 255, 0.08);
+    &:hover,
+    &:focus-visible {
+      background: rgba(15, 23, 42, 0.06);
+      outline: none;
     }
 
-    &.active {
-      color: #0f172a;
-      background: #fff;
+    &.current {
+      font-weight: 700;
+      background: rgba(15, 23, 42, 0.06);
     }
+  }
+
+  .seeAll {
+    margin-top: 4px;
+    padding-top: 4px;
+    border-top: 1px solid rgba(15, 23, 42, 0.08);
+
+    a {
+      font-size: 13px;
+      color: rgba(15, 23, 42, 0.7);
+    }
+  }
+}
+
+/* El punto lleva el color de cada IA. */
+.dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 999px;
+  background: var(--accent, #94a3b8);
+  flex: none;
+}
+
+@media (max-width: 600px) {
+  .topbar {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+
+  /* En móvil el desplegable ocupa todo el ancho, para que no se salga de la pantalla. */
+  .dropdown {
+    position: static;
+  }
+
+  .nav {
+    position: relative;
+    width: 100%;
+  }
+
+  .menu {
+    left: 0;
+    right: 0;
   }
 }
 

@@ -3,7 +3,7 @@ import { AiProfile } from '../ai-model';
 export const GROK: AiProfile = {
   slug: 'grok',
   name: 'Grok',
-  category: 'Social',
+  category: 'Chat',
   summary: 'Estilo directo, con búsqueda en tiempo real en la web y en X.',
   title: 'Grok',
   subtitle:
@@ -32,6 +32,23 @@ export const GROK: AiProfile = {
         'Puede ser demasiado “valiente” en afirmaciones si no lo guías.',
         'No es la mejor para documentos ultra largos tipo “paper”.',
         'Cambios de producto frecuentes (planes/acceso).',
+      ],
+    },
+    {
+      type: 'examples',
+      title: 'Ejemplos reales (de la web oficial)',
+      intro:
+        'Ejemplo del anuncio oficial de Grok Imagine Image 2.0. La página enseña una galería de imágenes y este prompt en su ejemplo de código de la API.',
+      examples: [
+        {
+          title: 'Póster de concierto synthwave',
+          kind: 'imagen',
+          description:
+            'Ejemplo de código oficial para generar un póster con tipografía retro usando el modelo grok-imagine-image-2.0.',
+          prompt:
+            'A concert poster for a synthwave band, bold retro typography, sharp small print',
+          source: { label: 'Ver el anuncio en x.ai', url: 'https://x.ai/news/grok-imagine-image-2' },
+        },
       ],
     },
     {

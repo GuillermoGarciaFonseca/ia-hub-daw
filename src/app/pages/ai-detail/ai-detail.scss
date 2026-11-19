@@ -477,3 +477,19 @@ table {
     font-size: 13px;
   }
 }
+
+/* ---------- Ejemplos reales ---------- */
+
+.exampleLabel {
+  margin: 10px 0 6px;
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.4px;
+  color: var(--muted);
+}
+
+.exampleLabel.noPrompt {
+  text-transform: none;
+  letter-spacing: 0;
+  font-style: italic;
+}

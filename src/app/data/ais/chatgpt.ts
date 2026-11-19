@@ -3,7 +3,7 @@ import { AiProfile } from '../ai-model';
 export const CHATGPT: AiProfile = {
   slug: 'chatgpt',
   name: 'ChatGPT',
-  category: 'Texto',
+  category: 'Chat',
   summary: 'Chat conversacional, redacción, ideas, código.',
   title: 'ChatGPT',
   subtitle:
@@ -32,6 +32,33 @@ export const CHATGPT: AiProfile = {
         'No sustituye criterio profesional (tú mandas).',
         'En gratis van limitadas las imágenes, la voz y los archivos.',
         'Temas sensibles: mejor contrastar con fuentes oficiales.',
+      ],
+    },
+    {
+      type: 'examples',
+      title: 'Ejemplos reales (de la web oficial)',
+      intro:
+        'Resultados publicados en la web oficial, con el prompt que se usó tal y como lo publican (normalmente en inglés). El resultado no se copia aquí: pulsa el enlace para verlo. Es un ejemplo de marzo de 2025: los modelos actuales son más nuevos.',
+      examples: [
+        {
+          title: 'Foto de una pizarra con texto',
+          kind: 'imagen',
+          description:
+            'Imagen generada en ChatGPT (generación de imágenes de GPT-4o): una foto hecha con el móvil de una pizarra de cristal con un esquema escrito a mano y el reflejo del fotógrafo. La mejor de 8 generaciones.',
+          prompt:
+            'A wide image taken with a phone of a glass whiteboard, in a room overlooking the Bay Bridge. The field of view shows a woman writing, sporting a tshirt wiith a large OpenAI logo. The handwriting looks natural and a bit messy, and we see the photographer\'s reflection.',
+          promptExcerpt: true,
+          source: { label: 'Ver la imagen en openai.com', url: 'https://openai.com/es-ES/index/introducing-4o-image-generation/' },
+        },
+        {
+          title: 'La misma escena, segundo turno',
+          kind: 'imagen',
+          description:
+            'Siguiente mensaje de la misma conversación: ChatGPT mantiene la escena y los personajes de la imagen anterior y cambia solo la acción.',
+          prompt:
+            'selfie view of the photographer, as she turns around to high five him',
+          source: { label: 'Ver la imagen en openai.com', url: 'https://openai.com/es-ES/index/introducing-4o-image-generation/' },
+        },
       ],
     },
     {

@@ -35,6 +35,23 @@ export const STABLE_DIFFUSION: AiProfile = {
       ],
     },
     {
+      type: 'examples',
+      title: 'Ejemplos reales (de la web oficial)',
+      intro:
+        'Ejemplos de la ficha oficial de Stable Diffusion 3.5 Large en Hugging Face (de Stability AI).',
+      examples: [
+        {
+          title: 'Astronauta en la jungla',
+          kind: 'imagen',
+          description:
+            'Prompt del ejemplo de código oficial para generar una imagen con SD 3.5 Large. En la ficha también hay una galería de muestras del modelo.',
+          prompt:
+            'Astronaut in a jungle, cold color palette, muted colors, detailed, 8k',
+          source: { label: 'Ver la ficha en Hugging Face', url: 'https://huggingface.co/stabilityai/stable-diffusion-3.5-large' },
+        },
+      ],
+    },
+    {
       type: 'cards',
       title: 'Modo “pro”: funciones clave',
       intro: 'Aquí está la gracia real de Stable Diffusion: control fino + workflows.',
