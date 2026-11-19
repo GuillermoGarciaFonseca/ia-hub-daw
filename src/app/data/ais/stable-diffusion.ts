@@ -9,6 +9,7 @@ export const STABLE_DIFFUSION: AiProfile = {
   subtitle:
     'Generación de imágenes open-source: control total (modelos, estilos, ajustes) a cambio de más “toqueteo”. Si te mola trastear, es GOD.',
   chips: ['Txt2Img', 'Img2Img', 'Inpainting', 'ControlNet', 'LoRA', 'Local'],
+  lastReviewed: '2026-11-19',
   theme: {
     mode: 'dark',
     accent: '#a855f7',
@@ -74,6 +75,35 @@ export const STABLE_DIFFUSION: AiProfile = {
           text: 'Local = control y privacidad. Cloud = comodidad sin setup.',
           bullets: ['Local: más control', 'Cloud: plug&play', 'Tú eliges'],
         },
+      ],
+    },
+    {
+      type: 'plans',
+      title: 'Modelos, licencia y precio',
+      intro:
+        'Los modelos actuales son la familia Stable Diffusion 3.5 (Large, Large Turbo y Medium), además de SDXL y SDXL Turbo. Datos de la web oficial de Stability AI.',
+      plans: [
+        {
+          tier: 'Local (Community License)',
+          price: 'Gratis',
+          forWho: 'Estudiantes, investigación, creadores y empresas pequeñas.',
+          includes: ['Uso personal, de investigación y comercial', 'Puedes hacer fine-tunes y LoRAs'],
+          limitations: ['Solo gratis si tú o tu organización facturáis menos de 1 M$ al año'],
+        },
+        {
+          tier: 'Enterprise',
+          price: 'Consultar web oficial',
+          forWho: 'Empresas que facturan más de 1 M$ al año o proveedores de API.',
+        },
+        {
+          tier: 'API y apps web de Stability',
+          price: 'Consultar web oficial',
+          forWho: 'Si no quieres instalar nada: pagas por créditos.',
+        },
+      ],
+      buttons: [
+        { label: 'Licencia (oficial)', url: 'https://stability.ai/license', variant: 'primary' },
+        { label: 'Modelos de imagen', url: 'https://stability.ai/stable-image', variant: 'ghost' },
       ],
     },
     {

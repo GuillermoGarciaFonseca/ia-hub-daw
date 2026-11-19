@@ -9,6 +9,7 @@ export const CLAUDE: AiProfile = {
   subtitle:
     'IA de Anthropic con estilo “clean” para escribir bien, resumir largo, y razonar sin tanto humo. Muy fina para análisis y coding con contexto.',
   chips: ['Escritura', 'Análisis', 'Código', 'Documentos'],
+  lastReviewed: '2026-11-19',
   theme: {
     mode: 'light',
     accent: '#f97316',
@@ -28,7 +29,7 @@ export const CLAUDE: AiProfile = {
       cons: [
         'Límites de uso: en horas punta o tareas largas puedes chocar.',
         'No es infalible: también puede inventar o equivocarse.',
-        'Algunas funciones/modelos dependen del plan/región.',
+        'Opus y Claude Code solo están en los planes de pago.',
         'Para datos “en tiempo real”, igual necesitas verificar fuera.',
         'A veces se queda demasiado prudente y toca insistir.',
       ],
@@ -109,18 +110,47 @@ export const CLAUDE: AiProfile = {
     },
     {
       type: 'plans',
-      title: 'Planes (resumen)',
+      title: 'Planes y precios',
       intro:
-        'Precios orientativos (USD) y pueden variar por región/impuestos. En general, pagar aporta sobre todo más uso/prioridad; para mucha gente el Gratis ya vale.',
+        'Precios de la web oficial en USD, sin impuestos (en España se suma el IVA). Para la mayoría de usos normales, el Gratis ya va sobrado.',
       plans: [
-        { tier: 'Gratis', forWho: 'Recomendado. Para la mayoría de usos normales va sobrado.' },
         {
-          tier: 'De pago',
-          forWho:
-            'No suele compensar: pagas por más cuota/prioridad, no por una mejora bestia y los precios son de 20/100/200 euros.',
+          tier: 'Gratis',
+          price: '$0',
+          forWho: 'Recomendado para empezar y para un uso normal del día a día.',
+          includes: [
+            'Chat en web, escritorio y móvil',
+            'Búsqueda web, creación de archivos y ejecución de código',
+            'Memoria entre conversaciones y Artifacts',
+          ],
+          limitations: ['Uso limitado cada 5 horas y cada semana', 'Sin Opus ni Claude Code'],
+        },
+        {
+          tier: 'Pro',
+          price: '$20 / mes ($17 / mes en pago anual)',
+          forWho: 'Si lo usas a diario para estudiar, escribir o programar.',
+          highlights: ['Más uso que el Gratis', 'Incluye Claude Code y Projects', 'Acceso a más modelos, incluido Opus'],
+          includes: ['Claude en Chrome y en Microsoft 365', 'Programar y delegar tareas'],
+        },
+        {
+          tier: 'Max',
+          price: '$100 / mes',
+          forWho: 'Uso intensivo: si te quedas sin cupo con Pro a menudo.',
+          highlights: ['5 veces el uso de Pro', 'Acceso prioritario en horas punta', 'Acceso anticipado a novedades'],
+          includes: ['$100 al mes en créditos de API'],
+        },
+        {
+          tier: 'Ultra',
+          price: '$200 / mes',
+          forWho: 'Profesionales que lo exprimen todo el día. Para un TFG, no compensa.',
+          highlights: ['10 veces el uso semanal de Pro', 'Sin límite de 5 horas (cuentas verificadas)'],
+          includes: ['$200 al mes en créditos de API', 'Todo lo de Max'],
         },
       ],
-      buttons: [{ label: 'Abrir Claude', url: 'https://claude.ai/', variant: 'primary' }],
+      buttons: [
+        { label: 'Ver precios oficiales', url: 'https://claude.com/pricing', variant: 'primary' },
+        { label: 'Abrir Claude', url: 'https://claude.ai/', variant: 'ghost' },
+      ],
     },
   ],
 };

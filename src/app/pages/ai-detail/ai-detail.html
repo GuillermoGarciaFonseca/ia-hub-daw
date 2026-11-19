@@ -11,6 +11,10 @@
           <span class="chip">{{ chip }}</span>
         }
       </div>
+
+      <p class="reviewed">
+        Última revisión: <time [attr.datetime]="ai.lastReviewed">{{ lastReviewedLabel() }}</time>
+      </p>
     </header>
 
     @for (section of ai.sections; track $index; let s = $index) {

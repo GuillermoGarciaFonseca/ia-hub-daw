@@ -9,6 +9,7 @@ export const PERPLEXITY: AiProfile = {
   subtitle:
     'IA enfocada en buscar y responder con fuentes. Ideal cuando quieres “respuesta + de dónde sale”, no solo texto bonito.',
   chips: ['Búsqueda', 'Fuentes', 'Resumen', 'Decisiones'],
+  lastReviewed: '2026-11-19',
   theme: {
     mode: 'dark',
     accent: '#14b8a6',
@@ -115,7 +116,7 @@ export const PERPLEXITY: AiProfile = {
           badge: '🏁',
           links: [
             { label: 'Perplexity (web)', url: 'https://www.perplexity.ai/' },
-            { label: 'Pricing', url: 'https://www.perplexity.ai/pro' },
+            { label: 'Planes', url: 'https://www.perplexity.ai/pro' },
           ],
         },
         {
@@ -131,22 +132,23 @@ export const PERPLEXITY: AiProfile = {
     {
       type: 'plans',
       title: 'Planes (simple)',
-      intro: 'Precios orientativos (USD) y pueden variar por región. Si no investigas a diario, Gratis suele bastar.',
+      intro:
+        'La web de Perplexity bloquea las comprobaciones automáticas, así que no hemos podido verificar los precios a fecha de esta revisión: míralos en su web oficial. Si no investigas a diario, el plan gratis suele bastar.',
       plans: [
         {
           tier: 'Gratis',
-          price: '$0',
+          price: 'Consultar web oficial',
           notes: ['Perfecto para investigar de vez en cuando.', 'Suficiente para uso normal y consultas puntuales.'],
         },
         {
-          tier: 'Pro',
-          price: '≈ $20/mes',
-          notes: ['Más potencia y funciones avanzadas (según región).', 'Para quien investiga todo el día.'],
+          tier: 'De pago',
+          price: 'Consultar web oficial',
+          notes: ['Más potencia y funciones avanzadas.', 'Para quien investiga todo el día.'],
         },
       ],
       buttons: [
         { label: 'Abrir Perplexity', url: 'https://www.perplexity.ai/', variant: 'primary' },
-        { label: 'Pricing', url: 'https://www.perplexity.ai/pro', variant: 'ghost' },
+        { label: 'Ver planes oficiales', url: 'https://www.perplexity.ai/pro', variant: 'ghost' },
       ],
     },
   ],

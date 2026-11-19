@@ -24,6 +24,13 @@ describe('Home', () => {
     expect(cards[0].getAttribute('href')).toBe(`/ia/${AIS[0].slug}`);
   });
 
+  it('should describe Copilot as Microsoft 365 Copilot in its card', () => {
+    const cards = Array.from((fixture.nativeElement as HTMLElement).querySelectorAll('a.card'));
+    const copilot = cards.find((c) => c.getAttribute('href') === '/ia/copilot')!;
+    expect(copilot.textContent).not.toContain('IDE');
+    expect(copilot.textContent).toContain('Word');
+  });
+
   it('should not hardcode the number of AIs in the intro', () => {
     const intro = (fixture.nativeElement as HTMLElement).querySelector('.hero p')?.textContent;
     expect(intro).toContain(`${AIS.length} IAs`);

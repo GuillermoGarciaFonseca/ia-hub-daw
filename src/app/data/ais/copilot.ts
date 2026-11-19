@@ -3,12 +3,13 @@ import { AiProfile } from '../ai-model';
 export const COPILOT: AiProfile = {
   slug: 'copilot',
   name: 'Copilot',
-  category: 'Código',
-  summary: 'Asistente en IDE, autocompletado inteligente.',
-  title: 'Microsoft Copilot (365)',
+  category: 'Productividad',
+  summary: 'IA dentro de Word, Excel, PowerPoint, Outlook y Teams.',
+  title: 'Microsoft 365 Copilot',
   subtitle:
     'IA integrada en Word/Excel/PowerPoint/Outlook/Teams. Su punto fuerte no es “ser el más listo”, sino estar dentro del flujo de trabajo y ayudarte con documentos, mails, tablas y reuniones.',
   chips: ['Word', 'Excel', 'PowerPoint', 'Teams'],
+  lastReviewed: '2026-11-19',
   theme: {
     mode: 'light',
     accent: '#2563eb',
@@ -27,7 +28,7 @@ export const COPILOT: AiProfile = {
         'Bueno para “trabajo con contexto” (archivos y entorno de M365, si tu org lo permite).',
       ],
       cons: [
-        'No siempre está disponible: depende de licencia/empresa y configuración.',
+        'Para tenerlo dentro de Word/Excel hace falta un plan de pago (o que tu empresa lo active).',
         'Si no le das contexto (documento, tabla, mail), el resultado se queda genérico.',
         'Excel “potente” requiere prompts concretos (campos, columnas, objetivo).',
         'Como cualquier IA: puede equivocarse → hay que revisar antes de enviar.',
@@ -101,29 +102,75 @@ export const COPILOT: AiProfile = {
       ],
     },
     {
-      type: 'cards',
-      title: 'Cómo se accede',
-      intro: 'Aquí no hay “planes bonitos”: depende de tu organización y de si lo tienen activado.',
-      cards: [
+      type: 'plans',
+      title: 'Cómo se accede (planes y precios)',
+      intro:
+        'Precios de la web oficial de Microsoft. Los de particulares son de la web de España (IVA incluido); los de empresa están en USD sin impuestos. Ojo con las ofertas de primer año: luego se renueva al precio normal.',
+      plans: [
         {
-          title: 'Copilot dentro de Microsoft 365',
-          badge: '🏢 Empresa / centro',
-          text: 'Normalmente lo activa tu organización: depende de licencia y permisos.',
-          bullets: [
-            'Pregunta a IT o al admin de Microsoft 365',
-            'Comprueba si aparece en Word/Excel/PowerPoint',
-            'Ojo: puede tener límites por políticas',
-          ],
+          tier: 'Copilot gratis',
+          price: '0 €',
+          forWho: 'Para dudas rápidas y borradores con una cuenta Microsoft gratuita.',
+          includes: ['Copilot Chat con uso limitado'],
+          limitations: ['No trabaja dentro de tus documentos de Word/Excel como en los planes de pago'],
         },
         {
-          title: 'Copilot “fuera” de M365',
-          badge: '🌍 Alternativas',
-          text: 'Si no lo tienes en 365, puedes usar Copilot web/Windows/Edge según tu entorno.',
-          bullets: [
-            'Útil para dudas rápidas y borradores',
-            'No tiene el mismo contexto de tus documentos de M365',
-            'Mejor para ideas que para “trabajo con archivos”',
+          tier: 'Microsoft 365 Personal',
+          price: '99 € / año o 10 € / mes',
+          forWho: 'Particulares que ya usan Word, Excel y PowerPoint.',
+          includes: [
+            'Apps de escritorio de Word, Excel, PowerPoint, Outlook y OneNote con Copilot',
+            'Copilot Chat avanzado con más uso que la versión gratuita',
+            '1 TB en la nube, para 1 persona',
           ],
+          notes: ['Oferta de primer año en la web: 69 € (o 7 € el primer mes)'],
+        },
+        {
+          tier: 'Microsoft 365 Familia',
+          price: '129 € / año o 13 € / mes',
+          forWho: 'Para compartir Office con hasta 6 personas.',
+          includes: ['De 1 a 6 usuarios', 'Hasta 2 TB compartidos en la nube'],
+          limitations: ['La IA es solo para el titular de la suscripción'],
+        },
+        {
+          tier: 'Microsoft 365 Premium',
+          price: '219 € / año o 22 € / mes',
+          forWho: 'Si usas Copilot a fondo en tu día a día personal.',
+          includes: [
+            'Copilot Chat avanzado con uso amplio',
+            'Funciones de agentes para investigación y análisis avanzados',
+            'Uso amplio de creación de imágenes con IA',
+          ],
+          notes: ['Oferta por tiempo limitado en la web: 149 € el primer año (o 15 € el primer mes)'],
+        },
+        {
+          tier: 'Microsoft 365 Copilot (empresa)',
+          price: '$21 usuario/mes (pago anual)',
+          forWho: 'Complemento para empresas y centros: lo activa tu organización.',
+          includes: [
+            'Chat con IA basado en los datos de trabajo de tu organización',
+            'Agentes ya hechos para investigación y análisis de datos',
+            'Analíticas de adopción y uso',
+          ],
+          limitations: [
+            'Se suma a una licencia de Microsoft 365 para empresas',
+            'Depende de que IT o el admin lo active',
+          ],
+          notes: [
+            'En noviembre de 2026 hay una oferta a $18 usuario/mes en pago anual; en pago mensual sale a $25,20',
+          ],
+        },
+      ],
+      buttons: [
+        {
+          label: 'Precios para particulares (España)',
+          url: 'https://www.microsoft.com/es-es/microsoft-365/buy/compare-all-microsoft-365-products',
+          variant: 'primary',
+        },
+        {
+          label: 'Precios para empresas',
+          url: 'https://www.microsoft.com/en-us/microsoft-365-copilot/pricing',
+          variant: 'ghost',
         },
       ],
     },

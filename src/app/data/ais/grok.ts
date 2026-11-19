@@ -4,11 +4,12 @@ export const GROK: AiProfile = {
   slug: 'grok',
   name: 'Grok',
   category: 'Social',
-  summary: 'Estilo directo, integrado en X (según plan).',
+  summary: 'Estilo directo, con búsqueda en tiempo real en la web y en X.',
   title: 'Grok',
   subtitle:
-    'IA integrada en X (Twitter) con tono más “directo” y buen rollo para ideas, tendencias y respuestas rápidas.',
+    'La IA de xAI: tiene app propia (grok.com, iOS y Android) y también está dentro de X. Tono más “directo”, busca en la web y en X en tiempo real y genera imágenes y vídeo.',
   chips: ['Tendencias', 'Brainstorm', 'Copy', 'Rápido'],
+  lastReviewed: '2026-11-19',
   theme: {
     mode: 'dark',
     accent: '#ff2bd6',
@@ -26,7 +27,7 @@ export const GROK: AiProfile = {
         'Ideal para contenido y copy si quieres un tono con personalidad.',
       ],
       cons: [
-        'Depende del ecosistema X (acceso/condiciones).',
+        'Su punto fuerte (X en tiempo real) también es su sesgo: contrasta fuentes.',
         'Si te hace falta precisión seria, toca verificar.',
         'Puede ser demasiado “valiente” en afirmaciones si no lo guías.',
         'No es la mejor para documentos ultra largos tipo “paper”.',
@@ -112,27 +113,33 @@ export const GROK: AiProfile = {
         {
           title: 'Acceso / planes',
           badge: '💳',
-          links: [{ label: 'X Premium', url: 'https://help.x.com/en/using-x/x-premium' }],
+          links: [{ label: 'Planes de Grok (SuperGrok)', url: 'https://grok.com/plans' }],
         },
       ],
     },
     {
       type: 'plans',
-      title: 'Acceso',
-      intro: 'Acceso y precios pueden variar por región y por cambios en X. Mejor mirarlo en X Premium.',
+      title: 'Acceso y planes',
+      intro:
+        'Se puede probar gratis en la web y en las apps. El precio de SuperGrok no aparece en la web pública de xAI, así que consúltalo en el enlace oficial.',
       plans: [
         {
-          tier: 'Acceso (X Premium)',
-          price: 'Depende del plan de X',
-          notes: [
-            'Grok suele estar ligado a X Premium (según región/condiciones).',
-            'Si solo lo usas ocasionalmente, quizá no te compensa pagar.',
-          ],
+          tier: 'Gratis',
+          price: '0 €',
+          forWho: 'Para probarlo y usarlo de vez en cuando.',
+          includes: ['Chat, búsqueda en la web y en X', 'Imágenes y vídeo con Grok Imagine', 'Web, iOS y Android'],
+          notes: ['Si solo lo usas ocasionalmente, no te hace falta pagar.'],
+        },
+        {
+          tier: 'SuperGrok',
+          price: 'Consultar web oficial',
+          forWho: 'Si lo usas a diario y te quedas sin cupo.',
+          highlights: ['Límites más altos', 'Acceso prioritario', 'Modo multiagente (varios agentes razonando en paralelo)'],
         },
       ],
       buttons: [
-        { label: 'xAI', url: 'https://x.ai/', variant: 'primary' },
-        { label: 'X Premium', url: 'https://help.x.com/en/using-x/x-premium', variant: 'ghost' },
+        { label: 'Abrir Grok', url: 'https://grok.com/', variant: 'primary' },
+        { label: 'Ver planes oficiales', url: 'https://grok.com/plans', variant: 'ghost' },
       ],
     },
   ],

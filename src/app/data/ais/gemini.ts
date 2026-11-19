@@ -9,6 +9,7 @@ export const GEMINI: AiProfile = {
   subtitle:
     'La IA de Google: muy conectada al ecosistema (Drive/Docs/Gmail), buena para productividad y capaz de generar imágenes. Si usas Google a diario, aquí brilla.',
   chips: ['Google', 'Cloud', 'Imágenes', 'Productividad'],
+  lastReviewed: '2026-11-19',
   theme: {
     mode: 'dark',
     accent: '#4285f4',
@@ -31,7 +32,7 @@ export const GEMINI: AiProfile = {
         'Funciones potentes dependen de plan/país (y cambian).',
         'A veces se nota más “corporativo” en el tono.',
         'Para dev hard (refactors complejos), depende del caso.',
-        'Precio: Pro/Ultra pueden no compensar si lo usas poco.',
+        'Precio: Pro y sobre todo Ultra pueden no compensar si lo usas poco.',
       ],
     },
     {
@@ -67,41 +68,57 @@ export const GEMINI: AiProfile = {
         {
           title: 'Precio (sí importa aquí)',
           badge: '💸 Planes',
-          text: 'Si lo usas mucho y a diario, Pro puede compensar. Si es puntual, gratis suele valer.',
+          text: 'Si lo usas mucho y a diario, Plus o Pro pueden compensar. Si es puntual, gratis suele valer.',
           bullets: [
-            'Pro: más acceso y funciones (según disponibilidad).',
+            'Plus: el doble de uso que el gratis y 400 GB en la nube.',
+            'Pro: cuatro veces más uso, Gemini en Gmail/Docs y 5 TB.',
             'Ultra: para uso intensivo (muy caro si no lo amortizas).',
           ],
-          links: [{ label: 'Planes oficiales', url: 'https://gemini.google/subscriptions/' }],
+          links: [{ label: 'Planes oficiales', url: 'https://gemini.google/es/subscriptions/' }],
         },
       ],
     },
     {
       type: 'plans',
       title: 'Planes y precios',
-      intro: 'Precios orientativos (USD) y pueden variar por país/impuestos. Revisa el enlace oficial para tu región.',
+      intro:
+        'Precios de la web oficial para España, en euros al mes. Ojo: los límites se renuevan cada 5 horas hasta llegar al tope semanal.',
       plans: [
         {
           tier: 'Gratis',
-          price: '$0',
+          price: '0 € / mes',
           forWho: 'Para empezar, tareas normales y probar el flujo.',
+          includes: ['Gemini 4 Hydrogen', 'Imágenes, Deep Research, Gemini Live y Canvas', '15 GB en la nube'],
           notes: ['Perfecto si lo usas “a ratos”', 'Te sirve para doc + ideas + estudio'],
         },
         {
-          tier: 'Pro',
-          price: '$19.99 / mes',
-          forWho: 'Si lo usas bastante y quieres más acceso/estabilidad.',
-          notes: ['Más límites y features', 'Compensa si lo abres casi a diario'],
+          tier: 'Google AI Plus',
+          price: '4,99 € / mes',
+          forWho: 'El paso intermedio: más uso sin gastar mucho.',
+          includes: ['Gemini 4 Neon', 'El doble de uso que el gratis y generación de vídeo', 'Gemini en Gmail y Vids', '400 GB en la nube'],
         },
         {
-          tier: 'Ultra',
-          price: '$249.99 / mes',
+          tier: 'Google AI Pro',
+          price: '21,99 € / mes',
+          forWho: 'Si lo usas bastante y quieres más acceso/estabilidad.',
+          includes: [
+            'Gemini 4 Carbon',
+            'Cuatro veces más uso que el gratis',
+            'Gemini en Gmail, Docs y más apps de Google',
+            '5 TB en la nube',
+          ],
+          notes: ['Compensa si lo abres casi a diario', 'La web anuncia un año de Plus sin coste para estudiantes (promoción temporal)'],
+        },
+        {
+          tier: 'Google AI Ultra',
+          price: 'Desde 99,99 € / mes',
           forWho: 'Uso intensivo pro (si no lo amortizas, duele).',
+          includes: ['99,99 €: 5 veces el uso de Pro', '219,99 €: 20 veces el uso de Pro', 'Desde 20 TB en la nube'],
           notes: ['Muy caro para un TFG', 'Solo si lo exprimes heavy'],
         },
       ],
       buttons: [
-        { label: 'Ver planes oficiales', url: 'https://gemini.google/subscriptions/', variant: 'primary' },
+        { label: 'Ver planes oficiales', url: 'https://gemini.google/es/subscriptions/', variant: 'primary' },
         { label: 'Abrir Gemini', url: 'https://gemini.google.com/', variant: 'ghost' },
       ],
     },

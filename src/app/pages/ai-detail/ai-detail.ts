@@ -37,6 +37,12 @@ export class AiDetail {
     };
   });
 
+  /** Fecha de la última revisión en formato largo español ("19 de noviembre de 2026"). */
+  readonly lastReviewedLabel = computed(() => {
+    const date = this.ai()?.lastReviewed;
+    return date ? formatReviewDate(date) : '';
+  });
+
   /** Clave del último prompt copiado, para mostrar "Copiado" unos segundos. */
   readonly copiedKey = signal<string | null>(null);
 
@@ -56,4 +62,15 @@ export class AiDetail {
       this.copiedKey.set(null);
     }
   }
+}
+
+/** Convierte "AAAA-MM-DD" en "19 de noviembre de 2026" sin depender de la zona horaria. */
+export function formatReviewDate(isoDate: string): string {
+  const [year, month, day] = isoDate.split('-').map(Number);
+  return new Intl.DateTimeFormat('es-ES', {
+    day: 'numeric',
+    month: 'long',
+    year: 'numeric',
+    timeZone: 'UTC',
+  }).format(new Date(Date.UTC(year, month - 1, day)));
 }

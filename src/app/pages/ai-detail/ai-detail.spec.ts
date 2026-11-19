@@ -4,7 +4,7 @@ import { of } from 'rxjs';
 
 import { PromptBuilder } from '../../components/prompt-builder/prompt-builder';
 import { findAiBySlug } from '../../data/ais';
-import { AiDetail } from './ai-detail';
+import { AiDetail, formatReviewDate } from './ai-detail';
 
 async function render(slug: string) {
   await TestBed.configureTestingModule({
@@ -26,6 +26,15 @@ describe('AiDetail', () => {
     expect(el.querySelectorAll('section.card').length).toBe(claude.sections.length);
   });
 
+  it('should show the last review date', async () => {
+    const el = await render('claude');
+    const claude = findAiBySlug('claude')!;
+    const reviewed = el.querySelector('.reviewed');
+    expect(reviewed?.textContent).toContain('Última revisión:');
+    expect(reviewed?.querySelector('time')?.getAttribute('datetime')).toBe(claude.lastReviewed);
+    expect(reviewed?.textContent).toContain(formatReviewDate(claude.lastReviewed));
+  });
+
   it('should render the pros/cons table with one row per pair', async () => {
     const el = await render('chatgpt');
     expect(el.querySelectorAll('table tbody tr').length).toBe(5);
@@ -42,5 +51,12 @@ describe('AiDetail', () => {
     const el = await render('midjourney');
     expect(el.querySelector('app-prompt-builder')).not.toBeNull();
     expect(el.querySelectorAll('.gallery img').length).toBe(3);
+  });
+});
+
+describe('formatReviewDate', () => {
+  it('should format ISO dates in Spanish without timezone shifts', () => {
+    expect(formatReviewDate('2026-11-19')).toBe('19 de noviembre de 2026');
+    expect(formatReviewDate('2026-01-01')).toBe('1 de enero de 2026');
   });
 });

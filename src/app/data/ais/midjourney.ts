@@ -7,8 +7,9 @@ export const MIDJOURNEY: AiProfile = {
   summary: 'Generación de imágenes top por prompts.',
   title: 'Midjourney',
   subtitle:
-    'Generación de imágenes por prompt. Ideal para conceptos visuales, portadas, posters y estilos “wow”.',
+    'Generación de imágenes y vídeo por prompt. Ideal para conceptos visuales, portadas, posters y estilos “wow”. La versión por defecto ahora es la V8.2.',
   chips: ['Imágenes', 'Estilos', 'Prompts', 'Parámetros'],
+  lastReviewed: '2026-11-19',
   theme: {
     mode: 'dark',
     accent: '#a855f7',
@@ -53,6 +54,42 @@ export const MIDJOURNEY: AiProfile = {
         { label: 'Abrir Midjourney', url: 'https://www.midjourney.com/', variant: 'ghost' },
         { label: 'Docs / Guía', url: 'https://docs.midjourney.com/', variant: 'ghost' },
       ],
+    },
+    {
+      type: 'plans',
+      title: 'Planes y precios',
+      intro:
+        'Todos los planes son de pago (suscripción mensual o anual, con un 20 % de descuento si pagas el año). Precios de la web oficial en USD.',
+      plans: [
+        {
+          tier: 'Basic',
+          price: '$10 / mes ($8 / mes en pago anual)',
+          forWho: 'Para probar y crear de vez en cuando.',
+          includes: ['3,3 h de GPU rápida al mes (200 minutos)', 'Vídeo en SD'],
+          limitations: ['Sin modo Relax: cuando gastas las horas, se acabó', 'Sin modo Stealth (tus imágenes son públicas)'],
+        },
+        {
+          tier: 'Standard',
+          price: '$30 / mes ($24 / mes en pago anual)',
+          forWho: 'El más equilibrado si lo usas a menudo.',
+          includes: ['15 h de GPU rápida al mes', 'Imágenes ilimitadas en modo Relax', 'Vídeo en SD y HD'],
+          limitations: ['Sin modo Stealth'],
+        },
+        {
+          tier: 'Pro',
+          price: '$60 / mes ($48 / mes en pago anual)',
+          forWho: 'Uso profesional o si quieres privacidad.',
+          includes: ['30 h de GPU rápida al mes', 'Imágenes y vídeo SD ilimitados en Relax', 'Modo Stealth (privado)'],
+          notes: ['Obligatorio (o Mega) para empresas que facturan más de 1 M$ al año'],
+        },
+        {
+          tier: 'Mega',
+          price: '$120 / mes ($96 / mes en pago anual)',
+          forWho: 'Estudios y uso muy intensivo.',
+          includes: ['60 h de GPU rápida al mes', 'Todo lo del plan Pro'],
+        },
+      ],
+      buttons: [{ label: 'Comparar planes (oficial)', url: 'https://docs.midjourney.com/hc/en-us/articles/27870484040333-Comparing-Midjourney-Plans', variant: 'primary' }],
     },
   ],
 };
