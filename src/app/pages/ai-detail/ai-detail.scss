@@ -40,6 +40,7 @@
 
 .back {
   display: inline-flex;
+  margin-bottom: var(--space-lg);
   align-items: center;
   min-height: 44px;
   color: var(--color-ink-2);
@@ -59,6 +60,7 @@ h1 {
   max-width: 60ch;
   color: var(--color-ink-2);
 }
+.hero.withImage .lead { max-width: none; }
 
 .chips {
   display: flex;
@@ -83,10 +85,15 @@ h1 {
   color: var(--color-muted);
 }
 
+/* La imagen de la IA con su propia proporción (apaisada o vertical), sin franjas vacías. */
 .heroArt {
-  aspect-ratio: 16 / 11;
+  justify-self: start;
+  width: auto;
+  max-width: 100%;
+  height: auto;
+  max-height: 480px;
   border-radius: var(--radius-card);
-  background: var(--hero-image) center / contain no-repeat, var(--color-paper-2);
+  background: var(--color-paper-2);
   box-shadow: var(--shadow-panel);
 }
 
@@ -148,7 +155,8 @@ td {
 
 .grid2 {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(min(100%, 380px), 1fr));
+  /* auto-fit: con una o dos tarjetas, ocupan todo el ancho en vez de un tercio. */
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 380px), 1fr));
   gap: var(--gap-columns);
 }
 
@@ -162,6 +170,23 @@ td {
   background: var(--color-paper-3);
 }
 .card:not(.band) .mini { background: var(--color-paper-2); }
+
+/* Un único ejemplo: a lo ancho, el texto a la izquierda y el prompt a la derecha. */
+.mini.example:only-child {
+  display: grid;
+  grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
+  column-gap: var(--space-2xl);
+  align-items: start;
+  > .miniTop, > .miniText, > .linkList { grid-column: 1; }
+  > .exampleLabel, > .promptBox, > .btn { grid-column: 2; }
+  > .miniTop { grid-row: 1; }
+  > .miniText { grid-row: 2; }
+  > .linkList { grid-row: 3; margin-top: 0; }
+  > .exampleLabel { grid-row: 1; }
+  > .promptBox { grid-row: 2; }
+  > .btn { grid-row: 3; justify-self: start; }
+  > .exampleLabel.noPrompt { grid-row: 1 / span 2; grid-column: 2; align-self: center; }
+}
 
 .miniTop {
   display: flex;
@@ -272,9 +297,18 @@ td {
 
 .planGrid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(min(100%, 300px), 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr));
   gap: var(--gap-columns);
   align-items: start;
+}
+
+/* Cinco planes: tres arriba y dos abajo, en vez de cuatro y uno suelto. */
+@media (min-width: 60rem) {
+  .planGrid:has(> .plan:nth-child(5):last-child) {
+    grid-template-columns: repeat(6, minmax(0, 1fr));
+    > .plan { grid-column: span 2; }
+    > .plan:nth-child(n + 4) { grid-column: span 3; }
+  }
 }
 
 .plan {
@@ -385,10 +419,12 @@ h4 {
 @media (max-width: 60rem) {
   .hero { padding-block: var(--space-2xl) var(--space-xl); }
   .hero.withImage .heroGrid { grid-template-columns: minmax(0, 1fr); }
-  .heroArt { aspect-ratio: 16 / 9; }
+  .heroArt { max-height: 360px; }
   .cardHead { grid-template-columns: minmax(0, 1fr); }
   .intro { justify-self: start; }
   .kv { grid-template-columns: minmax(0, 1fr); gap: var(--space-xs); }
+  .mini.example:only-child { grid-template-columns: minmax(0, 1fr); }
+  .mini.example:only-child > * { grid-column: 1 !important; grid-row: auto !important; }
 }
 
 @media (max-width: 40rem) {

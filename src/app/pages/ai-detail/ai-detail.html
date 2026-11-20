@@ -1,9 +1,11 @@
 @if (ai(); as ai) {
   <div class="aiPage" [class.dark]="ai.theme.mode === 'dark'" [attr.data-mode]="ai.theme.mode === 'dark' ? 'night' : 'dawn'" [style]="themeVars()">
     <header class="hero" [class.withImage]="!!ai.theme.heroImage">
+      <div class="container">
+        <a class="back" routerLink="/">Volver a la portada</a>
+      </div>
       <div class="container heroGrid">
         <div class="heroText">
-          <a class="back" routerLink="/">Volver a la portada</a>
           <h1>{{ ai.title }}</h1>
           <p class="lead">{{ ai.subtitle }}</p>
 
@@ -19,7 +21,7 @@
         </div>
 
         @if (ai.theme.heroImage) {
-          <div class="heroArt" role="img" [attr.aria-label]="'Imagen de cabecera de ' + ai.name"></div>
+          <img class="heroArt" [src]="ai.theme.heroImage" [alt]="'Imagen de cabecera de ' + ai.name" width="1200" height="800" fetchpriority="high" />
         }
       </div>
     </header>

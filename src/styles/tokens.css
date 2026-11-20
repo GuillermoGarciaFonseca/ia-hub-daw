@@ -3,9 +3,9 @@
  * axes: light/grotesk-sans/chromatic-teal · posture: committed · contrast: pass · fold: pass · v2.0.0 */
 /* Hallmark · pre-emit critique: P4 H5 E4 S4 R4 V4 · weakest: E, one template renders twenty data pages; swept four of them (light, dark, image hero, prompt builder) at every width */
 /* Hallmark · dropped the second bloom colour (theme.accent2) from the page grounds · several AIs pair a violet with a blue or a cyan, which gate 2a bans as a gradient; the value stays in the data */
-/* Hallmark · waive 44c · hero: Banner on every route, stamped above · the IA Hub index and each AI's first section start above the fold, as a reference site for students should; the hero takes about two thirds of the screen */
+/* Hallmark · waive 44c · hero: Banner on every route, stamped above · the IA Hub index and each AI's first section start above the fold; where an AI has a hero image it sits beside the whole block of title, sentence, chips and Última revisión, so the short title alone ends well before it */
+/* Hallmark · waive 77 · Ideas reales + recursos (Copilot) and Recursos (Perplexity) hold the two link cards their data gives, and Planes para empresas (ElevenLabs) three short rows on full-width hairlines · a third card or longer values would invent content */
 /* Hallmark · waive 49b · link labels such as "Ver el caso de uso en Claude Academy" come from each AI's data and name the official page · a real phrase that cannot shorten, two lines at most on a 320px phone */
-/* Hallmark · waive 77 · the Prompt usado cards hold the official examples each AI's data gives, two tall cards with their prompt and a Copiar prompt button · a third card would invent an example */
 /* Hallmark · waive 71 · index rows place the AI name, its summary and its link on one line at 1440 · Entrar and the summary sit beside the name, so the row hairline above it is the only space the name heads */
 /* Hallmark · answered F20 · card counts come from each AI's data (two to five), so the grid keeps one width and lets a last row run short */
 :root {
