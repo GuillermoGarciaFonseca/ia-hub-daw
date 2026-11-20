@@ -209,6 +209,11 @@ Pages también sirve `index.html` en cualquier ruta porque no hay un `404.html` 
 
 Cada fusión en `main` se publica sola.
 
+**Si una fusión no se publica:**
+- En Cloudflare (**web-ia → Configuración → Builds**), mira si aparece el aviso "Este proyecto está desconectado de tu cuenta de Git".
+- Si aparece, en GitHub (**Settings → Applications → Cloudflare Workers and Pages → Configure**), da a la app acceso al repositorio `ia-hub-daw` en *Repository access*.
+- Al reconectar no se lanza ningún build: se publica con la siguiente fusión en `main`.
+
 ## Historial del proyecto
 
 | Fase | Qué se hizo | PR |
