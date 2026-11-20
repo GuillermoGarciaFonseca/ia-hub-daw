@@ -1,42 +1,56 @@
 <section class="hero">
-  <h1>IA Hub</h1>
-  <p>Un panel con {{ ais.length }} IAs distintas para comparar y aprender a usarlas con cabeza. 👀</p>
+  <div class="container heroInner">
+    <h1>IA Hub</h1>
+    <p class="lead">{{ ais.length }} IAs para comparar y aprender a usarlas con cabeza.</p>
+
+    <div class="filters" role="group" aria-label="Filtrar por categoría">
+      <button type="button" class="filter" [class.active]="!selected()" [attr.aria-pressed]="!selected()" (click)="select(null)">
+        Todas <span class="count">{{ ais.length }}</span>
+      </button>
+      @for (c of categories; track c.category) {
+        <button
+          type="button"
+          class="filter"
+          [class.active]="selected() === c.category"
+          [attr.aria-pressed]="selected() === c.category"
+          (click)="select(c.category)"
+        >
+          {{ c.category }} <span class="count">{{ c.count }}</span>
+        </button>
+      }
+    </div>
+
+    <p class="resultCount" aria-live="polite">
+      @if (selected(); as category) {
+        Mostrando {{ visibleAis().length }} de {{ ais.length }} IAs en {{ category }}
+      } @else {
+        Mostrando las {{ ais.length }} IAs
+      }
+    </p>
+  </div>
 </section>
 
-<div class="filters" role="group" aria-label="Filtrar por categoría">
-  <button type="button" class="filter" [class.active]="!selected()" [attr.aria-pressed]="!selected()" (click)="select(null)">
-    Todas <span class="count">{{ ais.length }}</span>
-  </button>
-  @for (c of categories; track c.category) {
-    <button
-      type="button"
-      class="filter"
-      [class.active]="selected() === c.category"
-      [attr.aria-pressed]="selected() === c.category"
-      (click)="select(c.category)"
-    >
-      {{ c.category }} <span class="count">{{ c.count }}</span>
-    </button>
-  }
-</div>
+<section class="index" id="ias" aria-label="Índice de IAs">
+  @for (group of visibleGroups(); track group.category) {
+    <div class="group" role="group" [attr.aria-labelledby]="'grupo-' + group.category">
+      <div class="container">
+        <div class="groupHead">
+          <h2 [id]="'grupo-' + group.category">{{ group.category }}</h2>
+          <p class="groupCount">{{ group.ais.length }} {{ group.ais.length === 1 ? 'IA' : 'IAs' }}</p>
+        </div>
 
-<p class="resultCount" aria-live="polite">
-  @if (selected(); as category) {
-    Mostrando {{ visibleAis().length }} de {{ ais.length }} IAs · {{ category }}
-  } @else {
-    Mostrando las {{ ais.length }} IAs
-  }
-</p>
-
-<section class="grid">
-  @for (ai of visibleAis(); track ai.slug) {
-    <a class="card" [routerLink]="['/ia', ai.slug]" [style.--accent]="ai.theme.accent">
-      <div class="top">
-        <h2>{{ ai.name }}</h2>
-        <span class="tag">{{ ai.category }}</span>
+        <ul class="rows">
+          @for (ai of group.ais; track ai.slug) {
+            <li>
+              <a class="card" [routerLink]="['/ia', ai.slug]" [style.--accent]="ai.theme.accent">
+                <h3 class="name">{{ ai.name }}</h3>
+                <p class="desc">{{ ai.summary }}</p>
+                <span class="cta">Entrar</span>
+              </a>
+            </li>
+          }
+        </ul>
       </div>
-      <p class="desc">{{ ai.summary }}</p>
-      <span class="cta">Entrar →</span>
-    </a>
+    </div>
   }
 </section>

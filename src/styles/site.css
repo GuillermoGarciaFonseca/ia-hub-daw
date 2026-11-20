@@ -1,0 +1,89 @@
+/* Hallmark · shape: Index-First (/, swapped from the draw's Long Document: the request asks for headings that stand out), kept data sections (/ia/:slug) · genre: atmospheric · theme: Ribbon (deal 2/3, seed hub-informativo-para-estudiantes-c9dd·13b3d9d9·2026-11-20·r0) · redesign: full · draw: 04ebf1 · job: listen (a publication: the index of AIs is the issue)
+ * hero: Banner (/), Banner (/ia/:slug) · nav: floating pill · footer: mast · imagery: none, each AI's own hero image where its data has one · signature: the index of 20 AIs as grouped rows in the display face, each lit in its AI's own colour · ribbon: two-in-the-morning (chrome, home, dark AIs), dawn (light AIs)
+ * axes: light/grotesk-sans/chromatic-teal · posture: committed · contrast: pass · fold: pass · v2.0.0 */
+/* Hallmark · pre-emit critique: P4 H5 E4 S4 R4 V4 · weakest: E, one template renders twenty data pages; swept four of them (light, dark, image hero, prompt builder) at every width */
+/* Hallmark · dropped the second bloom colour (theme.accent2) from the page grounds · several AIs pair a violet with a blue or a cyan, which gate 2a bans as a gradient; the value stays in the data */
+@import url("./tokens.css");
+@import url("./base.css");
+
+/* Ribbon, two-in-the-morning: the night colourway for the chrome, the home and the AIs whose data says dark. */
+[data-mode="night"] {
+  color-scheme: dark;
+  --color-paper: oklch(13.2% 0.022 258);
+  --color-paper-2: oklch(16.4% 0.022 258);
+  --color-paper-3: oklch(19.6% 0.022 258);
+  --color-ink: oklch(93.5% 0.012 85);
+  --color-ink-2: oklch(84% 0.014 85);
+  --color-muted: oklch(74% 0.02 255);
+  --color-rule: oklch(27% 0.02 258);
+  --color-rule-2: oklch(22% 0.02 258);
+  --color-accent: oklch(82% 0.095 68);
+  --color-accent-soft: oklch(30% 0.04 68);
+  --color-accent-ink: oklch(20% 0.03 62);
+  --color-focus: oklch(82% 0.095 68);
+  --metal-hi: oklch(44% 0.012 255);
+  --metal-lo: oklch(25% 0.014 255);
+  --edge-light: inset 0 1px 0 oklch(100% 0 0 / 0.08);
+  --shadow-part: 0 1px 0 oklch(0% 0 0 / 0.4), 0 10px 18px -6px oklch(0% 0 0 / 0.5);
+  --shadow-panel: 0 1px 0 oklch(0% 0 0 / 0.35), 0 24px 48px -16px oklch(0% 0 0 / 0.6);
+  background: var(--color-paper);
+  color: var(--color-ink);
+}
+
+/* Ribbon, dawn: the light colourway, re-declared so a light page inside the night body takes it back. */
+[data-mode="dawn"] {
+  color-scheme: light;
+  --color-paper: oklch(98.2% 0.008 82);
+  --color-paper-2: oklch(95.8% 0.011 82);
+  --color-paper-3: oklch(92.3% 0.014 82);
+  --color-ink: oklch(18% 0.006 80);
+  --color-ink-2: oklch(30% 0.008 80);
+  --color-muted: oklch(45% 0.012 80);
+  --color-rule: oklch(89.5% 0.011 82);
+  --color-rule-2: oklch(93.5% 0.009 82);
+  --color-accent: oklch(44% 0.075 190);
+  --color-accent-soft: oklch(92% 0.028 190);
+  --color-accent-ink: oklch(98% 0.006 85);
+  --color-focus: oklch(52% 0.09 190);
+  --metal-hi: oklch(97% 0.006 85);
+  --metal-lo: oklch(85% 0.01 85);
+  --edge-light: inset 0 1px 0 oklch(100% 0 0 / 0.5);
+  background: var(--color-paper);
+  color: var(--color-ink);
+}
+
+body {
+  font-size: 1.0625rem;
+  line-height: 1.6;
+  --text-poster: clamp(4rem, 10vw, 9rem);
+}
+
+h1, h2, h3 { color: var(--color-ink); }
+h1, h2 { line-height: 1.04; }
+
+/* Controls: Ribbon's machined pills, all eight states. */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-xs);
+  min-height: 48px;
+  padding: 0 var(--space-lg);
+  border: var(--rule-hair) solid var(--color-rule);
+  border-radius: var(--radius-pill);
+  background: linear-gradient(var(--color-paper-2), var(--color-paper-3));
+  box-shadow: var(--edge-light), var(--shadow-part);
+  color: var(--color-ink);
+  font: 500 var(--text-md)/1 var(--font-body);
+  white-space: nowrap;
+  text-decoration: none;
+  cursor: pointer;
+  transition: background-color var(--dur-short) var(--ease-out), border-color var(--dur-short) var(--ease-out), transform var(--dur-micro) var(--ease-out);
+}
+.btn:hover { border-color: var(--color-muted); }
+.btn:active { transform: translateY(1px); }
+.btn:focus-visible { outline: 2px solid var(--color-focus); outline-offset: 2px; }
+.btn:disabled, .btn[aria-disabled="true"] { opacity: 0.55; cursor: not-allowed; transform: none; }
+.btn[aria-busy="true"] { cursor: progress; }
+
+a:hover { text-decoration-color: var(--color-accent); }

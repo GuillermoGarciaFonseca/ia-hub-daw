@@ -1,0 +1,31 @@
+[
+ {
+  "mode": "redesign",
+  "depth": "full",
+  "scope": "site",
+  "shape": "Index-First",
+  "theme": "ribbon",
+  "axes": "light/grotesk-sans/chromatic-teal",
+  "hero": "Banner",
+  "nav": "floating pill",
+  "footer": "mast",
+  "imagery": "none (AI hero images from data)",
+  "photos": [],
+  "entry": "index",
+  "fingerprint": "index-first/banner/pill/mast/ribbon/rows",
+  "sections": [
+   "Hero",
+   "Index (grouped rows)",
+   "Footer"
+  ],
+  "signature": "the index of 20 AIs as grouped rows, each lit in its AI colour",
+  "waived": [
+   "44c",
+   "49b",
+   "71",
+   "77"
+  ],
+  "prompt": "hub informativo para estudiantes que comparan 20 IAs",
+  "date": "2026-11-20"
+ }
+]
