@@ -22,6 +22,8 @@ Las rutas antiguas (`/claude`, `/chatgpt`…) redirigen a las nuevas (`/ia/claud
 3. Añádela a la lista `AIS` de `src/app/data/ais/index.ts`.
 4. Si usa imagen de cabecera, guárdala en `public/img/<slug>/` y ponla en `theme.heroImage`.
 
+El diseño está fijado en [`design.md`](design.md) (sistema Ribbon de la skill Hallmark): colores, tipografías, controles y cómo se aplica el color de cada IA. Una IA nueva solo necesita su archivo de datos; el estilo sale solo.
+
 La portada (con su filtro por categoría, `/?categoria=Imagen`), el menú desplegable por categoría y la ruta `/ia/<slug>` se generan solos. Tipos de sección disponibles:
 `prosCons`, `cards`, `prompts`, `plans`, `keyValues`, `gallery`, `examples` y `promptBuilder`.
 
