@@ -14,16 +14,18 @@ export const MIDJOURNEY: AiProfile = {
     mode: 'dark',
     accent: '#a855f7',
     accent2: '#3b82f6',
-    heroImage: '/img/midjourney/mj1.gif',
+    heroImage: '/img/midjourney/mj1.webp',
+    heroImageSize: { width: 320, height: 574 },
+    heroPoster: '/img/midjourney/mj1-poster.webp',
   },
   sections: [
     {
       type: 'gallery',
       title: 'Galería (tus gifs)',
       images: [
-        { src: '/img/midjourney/mj2.gif', alt: 'Midjourney demo 2' },
-        { src: '/img/midjourney/mj3.gif', alt: 'Midjourney demo 3' },
-        { src: '/img/midjourney/mj4.gif', alt: 'Midjourney demo 4' },
+        { src: '/img/midjourney/mj2.webp', poster: '/img/midjourney/mj2-poster.webp', alt: 'Midjourney demo 2' },
+        { src: '/img/midjourney/mj3.webp', poster: '/img/midjourney/mj3-poster.webp', alt: 'Midjourney demo 3' },
+        { src: '/img/midjourney/mj4.webp', poster: '/img/midjourney/mj4-poster.webp', alt: 'Midjourney demo 4' },
       ],
     },
     {

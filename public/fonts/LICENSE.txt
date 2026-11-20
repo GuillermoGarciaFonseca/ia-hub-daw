@@ -1,0 +1,8 @@
+Tipografías incluidas en esta carpeta (subconjunto latino, formato WOFF2, descargadas de Google Fonts):
+
+- Instrument Sans: Copyright The Instrument Sans Project Authors
+- Figtree: Copyright The Figtree Project Authors
+- JetBrains Mono: Copyright The JetBrains Mono Project Authors
+
+Las tres se distribuyen bajo la SIL Open Font License, versión 1.1:
+https://openfontlicense.org/open-font-license-official-text/

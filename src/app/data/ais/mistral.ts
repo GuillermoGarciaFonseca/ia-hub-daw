@@ -15,6 +15,7 @@ export const MISTRAL: AiProfile = {
     accent: '#a3b466',
     accent2: '#10b981',
     heroImage: '/img/mistral/fondoaguamistral.png',
+    heroImageSize: { width: 1312, height: 726 },
   },
   sections: [
     {

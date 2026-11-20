@@ -1,4 +1,5 @@
 import { Component, computed, inject } from '@angular/core';
+import { PageMeta } from '../../services/page-meta';
 import { toSignal } from '@angular/core/rxjs-interop';
 import { ActivatedRoute, Router } from '@angular/router';
 import { map } from 'rxjs';
@@ -42,6 +43,14 @@ export class Home {
     const category = this.selected();
     return category ? this.ais.filter((ai) => ai.category === category) : this.ais;
   });
+
+  constructor() {
+    inject(PageMeta).set({
+      title: 'IA Hub: compara 20 IAs y aprende a usarlas',
+      description: `${AIS.length} IAs para comparar y aprender a usarlas con cabeza: ventajas, planes, precios verificados, prompts y ejemplos reales.`,
+      path: '/',
+    });
+  }
 
   select(category: AiCategory | null): void {
     this.router.navigate([], {

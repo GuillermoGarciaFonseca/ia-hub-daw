@@ -85,13 +85,24 @@ h1 {
   color: var(--color-muted);
 }
 
+/* Figura de la cabecera y de la galería: la imagen y, si es una animación, su botón debajo. */
+.heroFigure,
+.galleryItem {
+  display: grid;
+  gap: var(--space-sm);
+  justify-items: start;
+  margin: 0;
+}
+.galleryItem .galleryImg { width: 100%; }
+
 /* La imagen de la IA con su propia proporción (apaisada o vertical), sin franjas vacías. */
+/* Sin width: auto, para que los atributos width/height reserven el hueco antes de cargar (sin saltos). */
 .heroArt {
   justify-self: start;
-  width: auto;
   max-width: 100%;
   height: auto;
   max-height: 480px;
+  object-fit: contain;
   border-radius: var(--radius-card);
   background: var(--color-paper-2);
   box-shadow: var(--shadow-panel);

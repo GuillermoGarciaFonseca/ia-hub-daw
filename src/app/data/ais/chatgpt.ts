@@ -13,7 +13,8 @@ export const CHATGPT: AiProfile = {
   theme: {
     mode: 'light',
     accent: '#10a37f',
-    heroImage: '/img/chatgpt/fondodeaguachatgpt.png',
+    heroImage: '/img/chatgpt/fondodeaguachatgpt.webp',
+    heroImageSize: { width: 1024, height: 683 },
   },
   sections: [
     {

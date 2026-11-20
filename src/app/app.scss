@@ -135,7 +135,10 @@
   }
 }
 
-.page { display: block; }
+/* Al menos una pantalla de alto: el pie no se pinta arriba y salta mientras carga la página. */
+.page { display: block; min-height: 100dvh; }
+/* El foco programático (salto al contenido, cambio de página) no pinta anillo en todo el <main>. */
+.page:focus { outline: none; }
 
 /* Footer: a mast, the wordmark large over the category links. */
 .footer {

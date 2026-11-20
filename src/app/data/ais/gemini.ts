@@ -15,6 +15,7 @@ export const GEMINI: AiProfile = {
     accent: '#4285f4',
     accent2: '#0f9d58',
     heroImage: '/img/gemini/fondoaguagemini.png',
+    heroImageSize: { width: 893, height: 221 },
   },
   sections: [
     {

@@ -36,6 +36,13 @@ describe('Home', () => {
     expect(cards()[0].getAttribute('href')).toBe(`/ia/${AIS[0].slug}`);
   });
 
+  it('should set the home title and description', async () => {
+    await setup();
+    expect(document.title).toBe('IA Hub: compara 20 IAs y aprende a usarlas');
+    expect(document.querySelector('meta[name="description"]')?.getAttribute('content')).toContain(`${AIS.length} IAs`);
+    expect(document.querySelector('meta[property="og:image"]')).toBeNull();
+  });
+
   it('should not hardcode the number of AIs in the intro', async () => {
     const { el } = await setup();
     expect(el.querySelector('.hero p')?.textContent).toContain(`${AIS.length} IAs`);
