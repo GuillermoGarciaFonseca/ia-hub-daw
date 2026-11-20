@@ -9,7 +9,7 @@ export const FLUX: AiProfile = {
   subtitle:
     'Los modelos FLUX de Black Forest Labs. FLUX 3 hace imagen, vídeo con audio y más en un solo modelo. Lo usas por API, en su playground o descargando los pesos abiertos para tu propio ordenador.',
   chips: ['Imagen', 'Vídeo', 'API', 'Pesos abiertos'],
-  lastReviewed: '2026-11-19',
+  lastReviewed: '2026-11-20',
   theme: {
     mode: 'dark',
     accent: '#a16207',
@@ -98,13 +98,19 @@ export const FLUX: AiProfile = {
         },
         {
           tier: 'Licencias de pesos abiertos',
-          price: 'Consultar web oficial',
+          price: 'Sin precio público (contactar con ventas)',
           forWho: 'Para ejecutarlo en tu propia infraestructura en un producto comercial.',
-          includes: ['Plan Builder: 10.000 imágenes/mes', 'Plan Platform: 100.000 imágenes/mes'],
+          includes: [
+            'Builder: 10.000 imágenes/mes, 1 dominio, 10 usuarios',
+            'Platform: 100.000 imágenes/mes, 1 dominio',
+            'Professional (agencias): 100.000 imágenes/mes, hasta 3 dominios',
+            'Enterprise: volumen y condiciones a medida',
+          ],
         },
       ],
       buttons: [
         { label: 'Ver precios oficiales', url: 'https://bfl.ai/pricing', variant: 'primary' },
+        { label: 'Licencias (oficial)', url: 'https://bfl.ai/open-weights', variant: 'ghost' },
         { label: 'Web de Black Forest Labs', url: 'https://bfl.ai/', variant: 'ghost' },
       ],
     },

@@ -113,10 +113,10 @@ describe('AI data', () => {
     }
   });
 
-  it('should give real examples to every AI except the ones without verifiable official examples', () => {
+  it('should give real examples to every AI', () => {
     const sinEjemplos = AIS.filter((ai) => !ai.sections.some((s) => s.type === 'examples')).map((ai) => ai.slug);
-    // DeepSeek y Perplexity no publican (o no dejan comprobar) ejemplos con resultado en su web oficial.
-    expect(sinEjemplos.sort()).toEqual(['deepseek', 'perplexity']);
+    // Desde la fase 8 todas tienen al menos un ejemplo oficial.
+    expect(sinEjemplos).toEqual([]);
   });
 
   it('should keep the real examples well formed', () => {

@@ -9,7 +9,7 @@ export const DEEPSEEK: AiProfile = {
   subtitle:
     'IA china con modo de razonamiento (DeepThink) y búsqueda web. Donde más destaca es en su API, que cuesta muy poco: ideal para trastear con tu propio proyecto sin dejarte el sueldo.',
   chips: ['Razonamiento', 'Código', 'API barata', 'Contexto largo'],
-  lastReviewed: '2026-11-19',
+  lastReviewed: '2026-11-20',
   theme: {
     mode: 'light',
     accent: '#4d6bfe',
@@ -32,6 +32,23 @@ export const DEEPSEEK: AiProfile = {
         'Menos “extras” que ChatGPT o Gemini (imágenes, vídeo, integraciones).',
         'En temas políticos sensibles puede esquivar o matizar respuestas.',
         'Los precios de la API cambian según la hora: ojo si haces cálculos de coste.',
+      ],
+    },
+    {
+      type: 'examples',
+      title: 'Ejemplos reales (de la web oficial)',
+      intro:
+        'Ejemplo de la documentación oficial de la API de DeepSeek, con el prompt y la respuesta que publican.',
+      examples: [
+        {
+          title: 'Sacar pregunta y respuesta en JSON',
+          kind: 'código',
+          description:
+            'Con el modo JSON activado, deepseek-flash convierte un texto de examen en JSON válido. Respuesta publicada: { "question": "Which is the longest river in the world?", "answer": "The Nile River" }',
+          prompt:
+            'System: The user will provide some exam text. Please parse the "question" and "answer" and output them in JSON format.\nEXAMPLE INPUT:\nWhich is the highest mountain in the world? Mount Everest.\nEXAMPLE JSON OUTPUT:\n{\n    "question": "Which is the highest mountain in the world?",\n    "answer": "Mount Everest"\n}\n\nUser: Which is the longest river in the world? The Nile River.',
+          source: { label: 'Ver la guía de JSON Output', url: 'https://api-docs.deepseek.com/guides/json_mode' },
+        },
       ],
     },
     {

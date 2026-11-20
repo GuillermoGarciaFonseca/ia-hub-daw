@@ -9,7 +9,7 @@ export const CURSOR: AiProfile = {
   subtitle:
     'Un editor de código con agentes de IA dentro: le pides una funcionalidad, planifica, toca varios archivos y te deja los cambios listos para revisar. Desde agosto de 2026 es de SpaceX y usa los modelos Grok.',
   chips: ['Agentes', 'Editor', 'CLI', 'Grok 4.7'],
-  lastReviewed: '2026-11-19',
+  lastReviewed: '2026-11-20',
   theme: {
     mode: 'dark',
     accent: '#0891b2',
@@ -106,6 +106,12 @@ export const CURSOR: AiProfile = {
           price: '$100 / mes',
           forWho: 'Uso muy intensivo.',
           includes: ['15 veces más uso que Plus', 'Acceso prioritario en horas punta'],
+        },
+        {
+          tier: 'Ultra',
+          price: '$200 / mes',
+          forWho: 'El plan más alto para uso individual.',
+          notes: ['Para equipos hay plan Teams desde $30 por usuario y mes'],
         },
       ],
       buttons: [
