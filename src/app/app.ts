@@ -1,4 +1,5 @@
-import { Component, ElementRef, HostListener, computed, inject, signal } from '@angular/core';
+import { DOCUMENT } from '@angular/common';
+import { Component, ElementRef, HostListener, computed, effect, inject, signal } from '@angular/core';
 import { toSignal } from '@angular/core/rxjs-interop';
 import { NavigationEnd, Router } from '@angular/router';
 import { filter, map } from 'rxjs';
@@ -36,7 +37,23 @@ export class App {
     return findAiBySlug(slug)?.category ?? null;
   });
 
+  /**
+   * Modo de color de la página que se ve: el de la IA en su ficha, nocturno en la portada.
+   * Se pone en <body> para que el fondo detrás del menú sea el mismo que el de la página.
+   */
+  protected readonly pageMode = computed(() => {
+    const slug = /^\/ia\/([^/?#]+)/.exec(this.url())?.[1];
+    const ai = findAiBySlug(slug);
+    return ai && ai.theme.mode !== 'dark' ? 'dawn' : 'night';
+  });
+
+  private readonly document = inject(DOCUMENT);
+
   constructor() {
+    effect(() => {
+      this.document.body.dataset['mode'] = this.pageMode();
+    });
+
     // Al cambiar de página, se cierra el desplegable.
     this.router.events
       .pipe(filter((e) => e instanceof NavigationEnd))

@@ -38,6 +38,7 @@
               }
             ],
             "styles": [
+              "src/styles/site.css",
               "src/styles.scss"
             ]
           },

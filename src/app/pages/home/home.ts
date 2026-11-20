@@ -32,6 +32,12 @@ export class Home {
     { initialValue: null },
   );
 
+  /** Grupos del índice: todos, o solo el de la categoría elegida. */
+  readonly visibleGroups = computed(() => {
+    const category = this.selected();
+    return aisByCategory().filter((g) => !category || g.category === category);
+  });
+
   readonly visibleAis = computed(() => {
     const category = this.selected();
     return category ? this.ais.filter((ai) => ai.category === category) : this.ais;

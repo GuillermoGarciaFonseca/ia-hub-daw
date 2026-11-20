@@ -1,8 +1,10 @@
-<header class="topbar">
-  <a class="brand" routerLink="/">IA Hub</a>
+<a class="skip" href="#main">Saltar al contenido</a>
 
+<header class="topbar">
+  <div class="pill">
+  <a class="brand" routerLink="/" aria-label="IA Hub, inicio">IA Hub</a>
   <nav class="nav" aria-label="IAs por categoría">
-    <a class="navLink" routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">Home</a>
+    <a class="navLink" routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">Inicio</a>
 
     @for (group of groups; track group.category; let i = $index) {
       <div class="dropdown">
@@ -17,28 +19,38 @@
         >
           {{ group.category }}
           <span class="count">{{ group.ais.length }}</span>
-          <span class="caret" aria-hidden="true">▾</span>
+          <span class="caret" aria-hidden="true"></span>
         </button>
 
         @if (openCategory() === group.category) {
           <ul class="menu" [id]="'menu-' + i">
             @for (ai of group.ais; track ai.slug) {
               <li>
-                <a [routerLink]="['/ia', ai.slug]" routerLinkActive="current" [style.--accent]="ai.theme.accent">
-                  <span class="dot" aria-hidden="true"></span>{{ ai.name }}
-                </a>
+                <a [routerLink]="['/ia', ai.slug]" routerLinkActive="current" [style.--accent]="ai.theme.accent">{{ ai.name }}</a>
               </li>
             }
             <li class="seeAll">
-              <a routerLink="/" [queryParams]="{ categoria: group.category }">Ver todas en la portada →</a>
+              <a routerLink="/" [queryParams]="{ categoria: group.category }">Ver todas en la portada</a>
             </li>
           </ul>
         }
       </div>
     }
   </nav>
+  </div>
 </header>
 
-<main class="page">
+<main class="page" id="main">
   <router-outlet></router-outlet>
 </main>
+
+<footer class="footer" data-mode="night">
+  <div class="container footerInner">
+    <a class="footerMark" routerLink="/">IA Hub</a>
+    <ul class="footerLinks" aria-label="Categorías">
+      @for (group of groups; track group.category) {
+        <li><a routerLink="/" [queryParams]="{ categoria: group.category }">{{ group.category }}</a></li>
+      }
+    </ul>
+  </div>
+</footer>

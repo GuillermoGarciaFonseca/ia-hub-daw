@@ -8,14 +8,26 @@ import { findAiBySlug } from '../../data/ais';
 
 /** Etiqueta (con icono) de cada tipo de resultado de los ejemplos reales. */
 export const EXAMPLE_KIND_LABELS: Record<ExampleKind, string> = {
-  imagen: '🖼️ Imagen',
-  vídeo: '🎬 Vídeo',
-  audio: '🔊 Audio',
-  texto: '💬 Texto',
-  código: '💻 Código',
-  web: '🌐 Web',
-  documento: '📓 Documento',
+  imagen: 'Imagen',
+  vídeo: 'Vídeo',
+  audio: 'Audio',
+  texto: 'Texto',
+  código: 'Código',
+  web: 'Web',
+  documento: 'Documento',
 };
+
+/**
+ * Quita los emojis de una etiqueta (los datos los usan como icono y el diseño no).
+ * Si no queda texto con letras o números, devuelve '' para no pintar la etiqueta.
+ */
+export function plainLabel(text: string | undefined): string {
+  const clean = (text ?? '')
+    .replace(/[\p{Extended_Pictographic}\u{FE0F}\u{200D}\u{20E3}]/gu, '')
+    .replace(/\s+/g, ' ')
+    .trim();
+  return /[\p{L}\p{N}]/u.test(clean) ? clean : '';
+}
 
 /**
  * Página de detalle común para todas las IAs (/ia/:slug).
@@ -56,6 +68,10 @@ export class AiDetail {
 
   /** Clave del último prompt copiado, para mostrar "Copiado" unos segundos. */
   readonly copiedKey = signal<string | null>(null);
+
+  plain(text: string | undefined): string {
+    return plainLabel(text);
+  }
 
   kindLabel(kind: ExampleKind): string {
     return EXAMPLE_KIND_LABELS[kind];
