@@ -54,11 +54,22 @@ export class App {
       this.document.body.dataset['mode'] = this.pageMode();
     });
 
-    // Al cambiar de página, se cierra el desplegable.
+    // Al cambiar de página: se cierra el desplegable y el foco va al contenido nuevo
+    // (para teclado y lectores de pantalla). Si solo cambia ?categoria=, no se mueve el foco.
     this.router.events
-      .pipe(filter((e) => e instanceof NavigationEnd))
-      .subscribe(() => this.closeMenu());
+      .pipe(filter((e): e is NavigationEnd => e instanceof NavigationEnd))
+      .subscribe((e) => {
+        this.closeMenu();
+        const path = e.urlAfterRedirects.split(/[?#]/)[0];
+        if (this.lastPath !== null && path !== this.lastPath) {
+          setTimeout(() => this.host.nativeElement.querySelector<HTMLElement>('#main')?.focus({ preventScroll: true }));
+        }
+        this.lastPath = path;
+      });
   }
+
+  /** Ruta (sin query) de la última navegación, para saber si ha cambiado de página o solo el filtro. */
+  private lastPath: string | null = null;
 
   toggle(category: AiCategory): void {
     this.openCategory.update((open) => (open === category ? null : category));
@@ -68,9 +79,14 @@ export class App {
     this.openCategory.set(null);
   }
 
+  /** Escape cierra el desplegable y devuelve el foco a su botón (si no, se perdería al desaparecer el menú). */
   @HostListener('document:keydown.escape')
   onEscape(): void {
+    const open = this.openCategory();
+    if (!open) return;
+    const index = this.groups.findIndex((g) => g.category === open);
     this.closeMenu();
+    this.host.nativeElement.querySelectorAll<HTMLButtonElement>('.dropBtn')[index]?.focus();
   }
 
   /** Clic fuera del menú → se cierra. */

@@ -1,3 +1,4 @@
+import { ApplicationRef } from '@angular/core';
 import { TestBed } from '@angular/core/testing';
 import { ActivatedRoute, convertToParamMap, RouterModule } from '@angular/router';
 import { of } from 'rxjs';
@@ -25,6 +26,18 @@ describe('AiDetail', () => {
     const claude = findAiBySlug('claude')!;
     expect(el.querySelector('h1')?.textContent).toBe(claude.title);
     expect(el.querySelectorAll('section.card').length).toBe(claude.sections.length);
+  });
+
+  it('should set the page title, description, canonical link and share image from the AI data', async () => {
+    await render('claude');
+    const claude = findAiBySlug('claude')!;
+    expect(document.title).toBe(`${claude.name}: ventajas, planes, precios y prompts | IA Hub`);
+    const description = document.querySelector('meta[name="description"]')?.getAttribute('content') ?? '';
+    expect(description).toContain(claude.summary);
+    expect(description.length).toBeLessThanOrEqual(300);
+    expect(document.querySelector('meta[property="og:title"]')?.getAttribute('content')).toBe(document.title);
+    expect(document.querySelector('link[rel="canonical"]')?.getAttribute('href')).toMatch(/\/ia\/claude$/);
+    expect(document.querySelector('meta[property="og:image"]')?.getAttribute('content')).toContain(claude.theme.heroImage!);
   });
 
   it('should show the last review date', async () => {
@@ -83,6 +96,27 @@ describe('AiDetail', () => {
     const card = kling.querySelector('.example')!;
     expect(card.querySelector('.promptBox')).toBeNull();
     expect(card.querySelector('.noPrompt')?.textContent).toContain('no publica el prompt');
+  });
+
+  it('should keep animations paused until the visitor plays them (WCAG 2.2.2)', async () => {
+    const el = await render('midjourney');
+    const mj = findAiBySlug('midjourney')!;
+    const hero = el.querySelector('img.heroArt') as HTMLImageElement;
+    expect(hero.getAttribute('src')).toBe(mj.theme.heroPoster);
+    expect(hero.getAttribute('width')).toBe(String(mj.theme.heroImageSize!.width));
+
+    const button = el.querySelector('.heroFigure .playBtn') as HTMLButtonElement;
+    expect(button.textContent?.trim()).toBe('Ver animación');
+    expect(button.getAttribute('aria-pressed')).toBe('false');
+
+    button.click();
+    TestBed.inject(ApplicationRef).tick();
+    expect(hero.getAttribute('src')).toBe(mj.theme.heroImage);
+    expect(button.textContent?.trim()).toBe('Pausar animación');
+    expect(button.getAttribute('aria-pressed')).toBe('true');
+
+    const galleryImgs = Array.from(el.querySelectorAll<HTMLImageElement>('.gallery img'));
+    expect(galleryImgs.every((img) => /-poster\.webp$/.test(img.getAttribute('src') ?? ''))).toBe(true);
   });
 
   it('should render the interactive prompt builder for Midjourney', async () => {

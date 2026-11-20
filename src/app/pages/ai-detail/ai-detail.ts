@@ -1,10 +1,11 @@
-import { Component, computed, inject, signal } from '@angular/core';
+import { Component, computed, effect, inject, signal } from '@angular/core';
 import { toSignal } from '@angular/core/rxjs-interop';
 import { ActivatedRoute } from '@angular/router';
 import { map } from 'rxjs';
 
 import { ExampleKind, ProsConsSection } from '../../data/ai-model';
 import { findAiBySlug } from '../../data/ais';
+import { PageMeta } from '../../services/page-meta';
 
 /** Etiqueta (con icono) de cada tipo de resultado de los ejemplos reales. */
 export const EXAMPLE_KIND_LABELS: Record<ExampleKind, string> = {
@@ -66,8 +67,40 @@ export class AiDetail {
     return date ? formatReviewDate(date) : '';
   });
 
+  private readonly pageMeta = inject(PageMeta);
+
+  constructor() {
+    // Título, descripción y vista previa al compartir, sacados de los datos de la IA.
+    effect(() => {
+      const ai = this.ai();
+      if (!ai) return;
+      this.pageMeta.set({
+        title: `${ai.name}: ventajas, planes, precios y prompts | IA Hub`,
+        description: `${ai.summary} ${ai.subtitle}`.slice(0, 300),
+        path: `/ia/${ai.slug}`,
+        image: ai.theme.heroImage,
+      });
+    });
+  }
+
   /** Clave del último prompt copiado, para mostrar "Copiado" unos segundos. */
   readonly copiedKey = signal<string | null>(null);
+
+  /** Animaciones que el visitante ha puesto en marcha (por defecto todas paradas: WCAG 2.2.2). */
+  readonly playing = signal<ReadonlySet<string>>(new Set());
+
+  isPlaying(src: string | undefined): boolean {
+    return !!src && this.playing().has(src);
+  }
+
+  togglePlay(src: string): void {
+    this.playing.update((set) => {
+      const next = new Set(set);
+      if (next.has(src)) next.delete(src);
+      else next.add(src);
+      return next;
+    });
+  }
 
   plain(text: string | undefined): string {
     return plainLabel(text);

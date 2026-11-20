@@ -96,6 +96,43 @@ describe('App', () => {
     expect(el.querySelectorAll('.menu').length).toBe(0);
   });
 
+  it('should return focus to the dropdown button when Escape closes it', async () => {
+    const { el, buttons, render } = await setup();
+    document.body.appendChild(el);
+    buttons()[1].click();
+    await render();
+    (el.querySelector('.menu a') as HTMLElement).focus();
+    document.dispatchEvent(new KeyboardEvent('keydown', { key: 'Escape' }));
+    await render();
+    expect(el.querySelectorAll('.menu').length).toBe(0);
+    expect(document.activeElement).toBe(buttons()[1]);
+    el.remove();
+  });
+
+  it('should make <main> focusable for the skip link and move focus there on a page change only', async () => {
+    const { el, render } = await setup();
+    document.body.appendChild(el);
+    const main = el.querySelector('#main') as HTMLElement;
+    expect(main.getAttribute('tabindex')).toBe('-1');
+    expect(el.querySelector('a.skip')?.getAttribute('href')).toBe('#main');
+
+    const router = TestBed.inject(Router);
+    await router.navigateByUrl('/'); // carga inicial: no mueve el foco
+    await render();
+    await router.navigateByUrl('/ia/claude');
+    await render();
+    await new Promise((r) => setTimeout(r));
+    expect(document.activeElement).toBe(main);
+
+    const button = el.querySelector('.dropBtn') as HTMLElement;
+    button.focus();
+    await router.navigateByUrl('/ia/claude?x=1');
+    await render();
+    await new Promise((r) => setTimeout(r));
+    expect(document.activeElement).toBe(button);
+    el.remove();
+  });
+
   it('should link each dropdown to the filtered home page', async () => {
     const { el, buttons, render } = await setup();
     buttons()[0].click();

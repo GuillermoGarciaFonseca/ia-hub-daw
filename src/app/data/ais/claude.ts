@@ -14,6 +14,7 @@ export const CLAUDE: AiProfile = {
     mode: 'light',
     accent: '#f97316',
     heroImage: '/img/claude/fondoclaude.png',
+    heroImageSize: { width: 754, height: 260 },
   },
   sections: [
     {

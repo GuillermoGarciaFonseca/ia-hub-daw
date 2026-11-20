@@ -39,6 +39,7 @@
             ],
             "styles": [
               "src/styles/site.css",
+              "src/styles/fonts.css",
               "src/styles.scss"
             ]
           },

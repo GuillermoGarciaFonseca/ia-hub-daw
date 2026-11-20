@@ -20,8 +20,22 @@
           </p>
         </div>
 
-        @if (ai.theme.heroImage) {
-          <img class="heroArt" [src]="ai.theme.heroImage" [alt]="'Imagen de cabecera de ' + ai.name" width="1200" height="800" fetchpriority="high" />
+        @if (ai.theme.heroImage; as heroImage) {
+          <figure class="heroFigure">
+            <img
+              class="heroArt"
+              [src]="ai.theme.heroPoster && !isPlaying(heroImage) ? ai.theme.heroPoster : heroImage"
+              [alt]="'Imagen de cabecera de ' + ai.name"
+              [attr.width]="ai.theme.heroImageSize?.width ?? 1200"
+              [attr.height]="ai.theme.heroImageSize?.height ?? 800"
+              fetchpriority="high"
+            />
+            @if (ai.theme.heroPoster) {
+              <button class="btn small playBtn" type="button" [attr.aria-pressed]="isPlaying(heroImage)" (click)="togglePlay(heroImage)">
+                {{ isPlaying(heroImage) ? 'Pausar animación' : 'Ver animación' }}
+              </button>
+            }
+          </figure>
         }
       </div>
     </header>
@@ -215,7 +229,14 @@
             @case ('gallery') {
               <div class="gallery">
                 @for (img of section.images; track img.src) {
-                  <img class="galleryImg" loading="lazy" [src]="img.src" [alt]="img.alt" width="640" height="400" />
+                  <figure class="galleryItem">
+                    <img class="galleryImg" loading="lazy" [src]="img.poster && !isPlaying(img.src) ? img.poster : img.src" [alt]="img.alt" width="640" height="400" />
+                    @if (img.poster) {
+                      <button class="btn small playBtn" type="button" [attr.aria-pressed]="isPlaying(img.src)" (click)="togglePlay(img.src)">
+                        {{ isPlaying(img.src) ? 'Pausar animación' : 'Ver animación' }}
+                      </button>
+                    }
+                  </figure>
                 }
               </div>
             }

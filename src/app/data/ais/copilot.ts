@@ -15,6 +15,7 @@ export const COPILOT: AiProfile = {
     accent: '#2563eb',
     accent2: '#3b82f6',
     heroImage: '/img/microsoft365/fondodeaguamicrosoft365.png',
+    heroImageSize: { width: 512, height: 512 },
   },
   sections: [
     {

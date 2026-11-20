@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url><loc>https://web-ia.guillegarfon.workers.dev/</loc></url>
+  <url><loc>https://web-ia.guillegarfon.workers.dev/ia/chatgpt</loc><lastmod>2026-11-19</lastmod></url>
+  <url><loc>https://web-ia.guillegarfon.workers.dev/ia/claude</loc><lastmod>2026-11-19</lastmod></url>
+  <url><loc>https://web-ia.guillegarfon.workers.dev/ia/copilot</loc><lastmod>2026-11-19</lastmod></url>
+  <url><loc>https://web-ia.guillegarfon.workers.dev/ia/cursor</loc><lastmod>2026-11-20</lastmod></url>
+  <url><loc>https://web-ia.guillegarfon.workers.dev/ia/deepseek</loc><lastmod>2026-11-20</lastmod></url>
+  <url><loc>https://web-ia.guillegarfon.workers.dev/ia/elevenlabs</loc><lastmod>2026-11-19</lastmod></url>
+  <url><loc>https://web-ia.guillegarfon.workers.dev/ia/flux</loc><lastmod>2026-11-20</lastmod></url>
+  <url><loc>https://web-ia.guillegarfon.workers.dev/ia/gemini</loc><lastmod>2026-11-19</lastmod></url>
+  <url><loc>https://web-ia.guillegarfon.workers.dev/ia/gemini-notebook</loc><lastmod>2026-11-19</lastmod></url>
+  <url><loc>https://web-ia.guillegarfon.workers.dev/ia/grok</loc><lastmod>2026-11-20</lastmod></url>
+  <url><loc>https://web-ia.guillegarfon.workers.dev/ia/ideogram</loc><lastmod>2026-11-20</lastmod></url>
+  <url><loc>https://web-ia.guillegarfon.workers.dev/ia/kling</loc><lastmod>2026-11-20</lastmod></url>
+  <url><loc>https://web-ia.guillegarfon.workers.dev/ia/llama</loc><lastmod>2026-11-19</lastmod></url>
+  <url><loc>https://web-ia.guillegarfon.workers.dev/ia/midjourney</loc><lastmod>2026-11-19</lastmod></url>
+  <url><loc>https://web-ia.guillegarfon.workers.dev/ia/mistral</loc><lastmod>2026-11-20</lastmod></url>
+  <url><loc>https://web-ia.guillegarfon.workers.dev/ia/perplexity</loc><lastmod>2026-11-20</lastmod></url>
+  <url><loc>https://web-ia.guillegarfon.workers.dev/ia/qwen</loc><lastmod>2026-11-20</lastmod></url>
+  <url><loc>https://web-ia.guillegarfon.workers.dev/ia/runway</loc><lastmod>2026-11-19</lastmod></url>
+  <url><loc>https://web-ia.guillegarfon.workers.dev/ia/stable-diffusion</loc><lastmod>2026-11-20</lastmod></url>
+  <url><loc>https://web-ia.guillegarfon.workers.dev/ia/suno</loc><lastmod>2026-11-19</lastmod></url>
+</urlset>

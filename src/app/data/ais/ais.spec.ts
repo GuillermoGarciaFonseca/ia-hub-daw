@@ -138,6 +138,23 @@ describe('AI data', () => {
     }
   });
 
+  it('should give every hero image its real size, and a poster to every animation', () => {
+    for (const ai of AIS) {
+      const { heroImage, heroImageSize, heroPoster } = ai.theme;
+      if (heroImage) {
+        expect(heroImageSize?.width, ai.slug).toBeGreaterThan(0);
+        expect(heroImageSize?.height, ai.slug).toBeGreaterThan(0);
+      }
+      if (heroPoster) expect(heroImage, ai.slug).toBeTruthy();
+      // Las animaciones (GIF) no se sirven: pesan demasiado; van en WebP con su fotograma fijo.
+      expect(heroImage ?? '', ai.slug).not.toMatch(/\.gif$/i);
+      for (const section of ai.sections) {
+        if (section.type !== 'gallery') continue;
+        for (const img of section.images) expect(img.src, ai.slug).not.toMatch(/\.gif$/i);
+      }
+    }
+  });
+
   it('should find AIs by slug', () => {
     expect(findAiBySlug('claude')?.name).toBe('Claude');
     expect(findAiBySlug('no-existe')).toBeUndefined();

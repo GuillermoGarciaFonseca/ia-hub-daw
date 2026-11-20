@@ -52,6 +52,8 @@ export interface KeyValue {
 export interface GalleryImage {
   src: string;
   alt: string;
+  /** Fotograma fijo de una animación: se muestra hasta que el visitante pulsa "Ver animación". */
+  poster?: string;
 }
 
 export interface PromptBuilderStyle {
@@ -157,8 +159,12 @@ export interface AiTheme {
   accent: string;
   /** Segundo color para los degradados del fondo. Si falta, se usa `accent`. */
   accent2?: string;
-  /** Imagen de fondo de la cabecera (ruta dentro de `public/`). */
+  /** Imagen de la cabecera (ruta dentro de `public/`). */
   heroImage?: string;
+  /** Tamaño real de `heroImage` en píxeles: reserva su hueco y evita saltos al cargar. */
+  heroImageSize?: { width: number; height: number };
+  /** Fotograma fijo si `heroImage` es una animación (se reproduce solo si el visitante lo pide). */
+  heroPoster?: string;
 }
 
 /**

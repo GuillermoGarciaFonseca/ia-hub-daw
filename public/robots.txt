@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://web-ia.guillegarfon.workers.dev/sitemap.xml
