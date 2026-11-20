@@ -9,7 +9,7 @@ export const STABLE_DIFFUSION: AiProfile = {
   subtitle:
     'Generación de imágenes open-source: control total (modelos, estilos, ajustes) a cambio de más “toqueteo”. Si te mola trastear, es GOD.',
   chips: ['Txt2Img', 'Img2Img', 'Inpainting', 'ControlNet', 'LoRA', 'Local'],
-  lastReviewed: '2026-11-19',
+  lastReviewed: '2026-11-20',
   theme: {
     mode: 'dark',
     accent: '#a855f7',
@@ -109,18 +109,24 @@ export const STABLE_DIFFUSION: AiProfile = {
         },
         {
           tier: 'Enterprise',
-          price: 'Consultar web oficial',
+          price: 'A medida (contactar con ventas)',
           forWho: 'Empresas que facturan más de 1 M$ al año o proveedores de API.',
         },
         {
-          tier: 'API y apps web de Stability',
-          price: 'Consultar web oficial',
+          tier: 'API de Stability',
+          price: '1 crédito = $0,01',
           forWho: 'Si no quieres instalar nada: pagas por créditos.',
+          includes: [
+            '25 créditos gratis para empezar',
+            'SD 3.5 Large: 6,5 créditos por imagen',
+            'SD 3.5 Large Turbo: 4 créditos; SD 3.5 Medium: 3,5',
+            'Stable Image Ultra: 8 créditos por imagen',
+          ],
         },
       ],
       buttons: [
         { label: 'Licencia (oficial)', url: 'https://stability.ai/license', variant: 'primary' },
-        { label: 'Modelos de imagen', url: 'https://stability.ai/stable-image', variant: 'ghost' },
+        { label: 'Precios de la API', url: 'https://docs.stability.ai/pricing', variant: 'ghost' },
       ],
     },
     {

@@ -9,7 +9,7 @@ export const PERPLEXITY: AiProfile = {
   subtitle:
     'IA enfocada en buscar y responder con fuentes. Ideal cuando quieres “respuesta + de dónde sale”, no solo texto bonito.',
   chips: ['Búsqueda', 'Fuentes', 'Resumen', 'Decisiones'],
-  lastReviewed: '2026-11-19',
+  lastReviewed: '2026-11-20',
   theme: {
     mode: 'dark',
     accent: '#14b8a6',
@@ -32,6 +32,21 @@ export const PERPLEXITY: AiProfile = {
         'Para creatividad pura suele ser mejor otro chat.',
         'Si la pregunta es vaga, te devuelve un mix raro.',
         'Algunas funciones avanzadas dependen del plan.',
+      ],
+    },
+    {
+      type: 'examples',
+      title: 'Ejemplos reales (de la web oficial)',
+      intro: 'Demostración de la página oficial de planes: la pregunta tal cual y el arranque de la respuesta, con sus fuentes.',
+      examples: [
+        {
+          title: 'Investigación con fuentes citadas',
+          kind: 'texto',
+          description:
+            'Perplexity combina varios modelos y cita cada dato. Arranque de la respuesta publicada: «La infraestructura nativa de IA lidera la financiación de SaaS en 2025, con 18,7 B$ recaudados en 340 acuerdos, un aumento interanual del 72%.» Fuentes citadas: PitchBook, Statista, Crunchbase y S&P Capital IQ.',
+          prompt: '¿Cuáles son los verticales de SaaS de más rápido crecimiento por financiación de venture en 2025?',
+          source: { label: 'Ver la demo en perplexity.ai', url: 'https://www.perplexity.ai/pro' },
+        },
       ],
     },
     {
@@ -133,17 +148,29 @@ export const PERPLEXITY: AiProfile = {
       type: 'plans',
       title: 'Planes (simple)',
       intro:
-        'La web de Perplexity bloquea las comprobaciones automáticas, así que no hemos podido verificar los precios a fecha de esta revisión: míralos en su web oficial. Si no investigas a diario, el plan gratis suele bastar.',
+        'Precios de la web oficial en USD, al mes y pagando el año entero (sin impuestos). Si no investigas a diario, el plan gratis suele bastar.',
       plans: [
         {
           tier: 'Gratis',
-          price: 'Consultar web oficial',
+          price: '0 €',
           notes: ['Perfecto para investigar de vez en cuando.', 'Suficiente para uso normal y consultas puntuales.'],
         },
         {
-          tier: 'De pago',
-          price: 'Consultar web oficial',
-          notes: ['Más potencia y funciones avanzadas.', 'Para quien investiga todo el día.'],
+          tier: 'Pro',
+          price: '17 US$ / mes (pago anual)',
+          forWho: 'Para quien investiga todos los días.',
+          includes: [
+            'Investigación profunda y 4000 créditos adicionales',
+            'Elegir modelo: GPT-6.2 Sol, Gemini 4 Neon, Claude Sonnet 5.5, Grok 4.7…',
+            'Crear documentos y apps con Computer',
+            'Más límites de uso y memoria',
+          ],
+        },
+        {
+          tier: 'Max',
+          price: '167 US$ / mes (pago anual)',
+          forWho: 'Uso intensivo y profesional.',
+          includes: ['Uso máximo de Computer', '35.000 créditos adicionales y 10.000 al mes', 'Investigación a nivel experto', 'Acceso prioritario a novedades'],
         },
       ],
       buttons: [

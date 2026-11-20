@@ -9,7 +9,7 @@ export const QWEN: AiProfile = {
   subtitle:
     'La familia de modelos de Alibaba. El asistente es gratis y hace de todo: chat, búsqueda, investigación, webs, imágenes y vídeo. Además publica muchos modelos de código abierto para usarlos en local.',
   chips: ['Gratis', 'Open-source', 'Multimodal', 'Deep Research'],
-  lastReviewed: '2026-11-19',
+  lastReviewed: '2026-11-20',
   theme: {
     mode: 'dark',
     accent: '#615ced',
@@ -103,7 +103,7 @@ export const QWEN: AiProfile = {
     {
       type: 'plans',
       title: 'Planes y precios',
-      intro: 'El asistente es gratuito. La API se paga por uso: mira los precios en la web oficial.',
+      intro: 'El asistente es gratuito. La API se paga por uso en Alibaba Cloud.',
       plans: [
         {
           tier: 'Asistente Qwen',
@@ -112,15 +112,16 @@ export const QWEN: AiProfile = {
           includes: ['Web, móvil y escritorio', 'Búsqueda, Deep Research, imágenes y vídeo'],
         },
         {
-          tier: 'API de Qwen',
-          price: 'Consultar web oficial',
-          forWho: 'Si quieres meter Qwen en tu propia app.',
-          includes: ['Formato compatible con la API de OpenAI'],
+          tier: 'API de Qwen (Alibaba Cloud)',
+          price: 'Qwen4-Max: $1,50 entrada / $4,50 salida',
+          forWho: 'Si quieres meter Qwen en tu propia app. Precios por millón de tokens (región internacional).',
+          includes: ['Formato compatible con la API de OpenAI', 'Por lotes, la mitad de precio'],
+          notes: ['1 millón de tokens gratis durante 90 días, solo en la región de Singapur'],
         },
       ],
       buttons: [
         { label: 'Abrir Qwen', url: 'https://chat.qwen.ai/', variant: 'primary' },
-        { label: 'Web oficial', url: 'https://qwen.ai/', variant: 'ghost' },
+        { label: 'Precios de la API', url: 'https://www.alibabacloud.com/help/en/model-studio/model-pricing', variant: 'ghost' },
       ],
     },
     {

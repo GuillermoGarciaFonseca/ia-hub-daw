@@ -9,7 +9,7 @@ export const MISTRAL: AiProfile = {
   subtitle:
     'IA europea con enfoque muy “dev”: rápida, directa y perfecta si te mola control + modelos abiertos. Su modelo estrella, Mistral Large 4, es de pesos abiertos y está entrenado en Europa. Ideal para prototipar, construir features y entender código sin humo.',
   chips: ['Dev', 'Docs', 'Arquitectura', 'Prototipos'],
-  lastReviewed: '2026-11-19',
+  lastReviewed: '2026-11-20',
   theme: {
     mode: 'dark',
     accent: '#a3b466',
@@ -224,7 +224,7 @@ export const MISTRAL: AiProfile = {
         },
         {
           tier: 'Enterprise',
-          price: 'Consultar web oficial',
+          price: 'A medida (contactar con ventas)',
           forWho: 'Despliegues privados con modelos y agentes a medida.',
         },
       ],

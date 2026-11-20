@@ -9,7 +9,7 @@ export const KLING: AiProfile = {
   subtitle:
     'Generador de vídeo e imagen con IA. Kling 4.0 hace vídeos con sonido muy realistas y Canvas te ayuda a montar un proyecto entero con un agente: guion, storyboard, imágenes y vídeo.',
   chips: ['Vídeo con audio', 'Kling 4.0', 'Canvas', 'MCP / CLI'],
-  lastReviewed: '2026-11-19',
+  lastReviewed: '2026-11-20',
   theme: {
     mode: 'dark',
     accent: '#16a34a',
@@ -27,7 +27,7 @@ export const KLING: AiProfile = {
         'Usado en anuncios premiados en Cannes Lions 2026.',
       ],
       cons: [
-        'Los precios no se ven sin entrar: hay que mirarlos en la web.',
+        'Los precios cambian con las ofertas: fíjate en lo que pagas después del descuento.',
         'Generar vídeo de calidad consume muchos créditos.',
         'Revisa la privacidad antes de subir caras o datos personales.',
         'Hay que iterar bastante para tener el plano exacto que quieres.',
@@ -46,6 +46,26 @@ export const KLING: AiProfile = {
           description:
             'Vídeo con sonido de Kling 4.0 que abre la web oficial. La web lo acompaña de este texto, pero no dice si es el prompt exacto.',
           source: { label: 'Ver el vídeo en kling.ai', url: 'https://kling.ai/' },
+        },
+        {
+          title: 'Foto documental de un puerto',
+          kind: 'imagen',
+          description:
+            'Imagen de la galería de Kling Image 4.0 en la portada oficial, publicada junto a su prompt completo: un puerto mediterráneo al atardecer con pescadores y una red.',
+          prompt:
+            '3:4 vertical format. A realistic documentary photograph of an old Mediterranean harbor, with the viewpoint close to the eye level of the crouching figures, using a wide-angle lens without obvious distortion. Rough gray paving-stone quay fills approximately the bottom third of the image. […]',
+          promptExcerpt: true,
+          source: { label: 'Ver la galería en kling.ai', url: 'https://kling.ai/' },
+        },
+        {
+          title: 'Carta de un restaurante con texto exacto',
+          kind: 'imagen',
+          description:
+            'Otra imagen de la galería: una carta de desayunos en la que cada plato y su precio salen escritos tal cual los pide el prompt (texto pequeño y legible).',
+          prompt:
+            'Generate a vertical 2:3 commercial menu for an American breakfast restaurant. Show only one complete, standalone, finished menu facing the camera straight on. All four edges of the menu must be fully visible, with a pure-white background outside it. […]',
+          promptExcerpt: true,
+          source: { label: 'Ver la galería en kling.ai', url: 'https://kling.ai/' },
         },
       ],
     },
@@ -82,16 +102,37 @@ export const KLING: AiProfile = {
     {
       type: 'plans',
       title: 'Planes y precios',
-      intro: 'Su página de precios no se muestra a las herramientas automáticas, así que no copiamos importes: míralos en la web oficial.',
+      intro:
+        'Precios de la web oficial en USD al mes, pago mensual y sin impuestos. Ahora hay una oferta para los tres primeros meses; aquí ponemos el precio que pagas después. Todo funciona con créditos.',
       plans: [
         {
-          tier: 'Planes de Kling',
-          price: 'Consultar web oficial',
-          forWho: 'Funciona con créditos: cuanto mejor el modelo y más largo el vídeo, más créditos gasta.',
+          tier: 'Standard',
+          price: '$8,80 / mes',
+          forWho: 'Para empezar a crear en serio.',
+          includes: ['660 créditos al mes', 'Vídeo en 1080p y 4K', 'Sin marca de agua', 'Uso comercial'],
+          notes: ['Oferta: $6,50 al mes los 3 primeros meses'],
+        },
+        {
+          tier: 'Pro',
+          price: '$32,56 / mes',
+          forWho: 'Creadores habituales.',
+          includes: ['3.000 créditos al mes', 'Acceso prioritario a novedades'],
+        },
+        {
+          tier: 'Premier',
+          price: '$181,99 / mes',
+          forWho: 'Producción profesional.',
+          includes: ['18.000 créditos al mes'],
+        },
+        {
+          tier: 'Ultra+',
+          price: '$544,99 / mes',
+          forWho: 'Estudios y uso muy intensivo.',
+          includes: ['57.000 créditos al mes', 'El menor precio por crédito'],
         },
       ],
       buttons: [
-        { label: 'Ver precios oficiales', url: 'https://kling.ai/pricing', variant: 'primary' },
+        { label: 'Ver precios oficiales', url: 'https://kling.ai/app/membership/membership-plan', variant: 'primary' },
         { label: 'Abrir Kling', url: 'https://kling.ai/', variant: 'ghost' },
       ],
     },

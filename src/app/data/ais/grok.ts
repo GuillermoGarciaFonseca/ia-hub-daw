@@ -9,7 +9,7 @@ export const GROK: AiProfile = {
   subtitle:
     'La IA de xAI: tiene app propia (grok.com, iOS y Android) y también está dentro de X. Tono más “directo”, busca en la web y en X en tiempo real y genera imágenes y vídeo.',
   chips: ['Tendencias', 'Brainstorm', 'Copy', 'Rápido'],
-  lastReviewed: '2026-11-19',
+  lastReviewed: '2026-11-20',
   theme: {
     mode: 'dark',
     accent: '#ff2bd6',
@@ -130,7 +130,7 @@ export const GROK: AiProfile = {
         {
           title: 'Acceso / planes',
           badge: '💳',
-          links: [{ label: 'Planes de Grok (SuperGrok)', url: 'https://grok.com/plans' }],
+          links: [{ label: 'Planes de Grok', url: 'https://grok.com/plans' }],
         },
       ],
     },
@@ -138,7 +138,7 @@ export const GROK: AiProfile = {
       type: 'plans',
       title: 'Acceso y planes',
       intro:
-        'Se puede probar gratis en la web y en las apps. El precio de SuperGrok no aparece en la web pública de xAI, así que consúltalo en el enlace oficial.',
+        'Se puede probar gratis. Los planes de pago son una sola suscripción que incluye Grok, Cursor y ventajas de X. Precios de la web oficial en USD, sin impuestos; las ofertas solo duran el primer mes.',
       plans: [
         {
           tier: 'Gratis',
@@ -148,10 +148,32 @@ export const GROK: AiProfile = {
           notes: ['Si solo lo usas ocasionalmente, no te hace falta pagar.'],
         },
         {
-          tier: 'SuperGrok',
-          price: 'Consultar web oficial',
-          forWho: 'Si lo usas a diario y te quedas sin cupo.',
-          highlights: ['Límites más altos', 'Acceso prioritario', 'Modo multiagente (varios agentes razonando en paralelo)'],
+          tier: 'Plus',
+          price: '8 US$ / mes',
+          forWho: 'El plan de entrada.',
+          includes: ['Grok Chat, Voice, Imagine y Build', 'API de Grok y Cursor', 'Ventajas de X: verificación y menos anuncios'],
+        },
+        {
+          tier: 'Premium',
+          price: '30 US$ / mes',
+          forWho: 'El más popular si lo usas a diario.',
+          highlights: ['4 veces más uso que Plus', 'Los modelos de Grok más recientes'],
+          includes: ['Grok Bot', 'Agentes y automatizaciones en la nube'],
+          notes: ['Oferta: 15 US$ el primer mes'],
+        },
+        {
+          tier: 'Super',
+          price: '100 US$ / mes',
+          forWho: 'Uso intensivo.',
+          includes: ['15 veces más uso que Plus', 'Acceso prioritario en horas punta'],
+          notes: ['Oferta: 50 US$ el primer mes'],
+        },
+        {
+          tier: 'Ultra',
+          price: '200 US$ / mes',
+          forWho: 'Lo máximo: profesionales que lo exprimen todo el día.',
+          includes: ['50 veces más uso que Plus', 'Los modelos de chat más potentes', 'Acceso anticipado a todo'],
+          notes: ['Oferta: 100 US$ el primer mes'],
         },
       ],
       buttons: [

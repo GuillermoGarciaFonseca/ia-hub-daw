@@ -9,7 +9,7 @@ export const IDEOGRAM: AiProfile = {
   subtitle:
     'Generador y editor de imágenes famoso por escribir texto bien dentro de la imagen. Perfecto para pósters, logos, miniaturas y cartelería. Además, sus modelos 4.0 son abiertos.',
   chips: ['Texto en imagen', 'Logos', 'Pósters', 'Edición'],
-  lastReviewed: '2026-11-19',
+  lastReviewed: '2026-11-20',
   theme: {
     mode: 'light',
     accent: '#e11d48',
@@ -66,7 +66,7 @@ export const IDEOGRAM: AiProfile = {
       type: 'plans',
       title: 'Planes y precios',
       intro:
-        'Tiene plan gratis y tres suscripciones (Plus, Pro y Team), más créditos de pago por uso. Su página de precios bloquea las comprobaciones automáticas, así que consulta los importes allí.',
+        'Tiene plan gratis y tres suscripciones, más créditos de pago por uso y la API aparte. Precios de la web oficial en USD, sin impuestos; pagando el año sale más barato.',
       plans: [
         {
           tier: 'Gratis',
@@ -75,9 +75,24 @@ export const IDEOGRAM: AiProfile = {
           includes: ['Créditos semanales (si entras con Google, Apple o Microsoft)', 'Todos los modelos de Ideogram'],
           limitations: ['Todo lo que generas es público'],
         },
-        { tier: 'Plus', price: 'Consultar web oficial', forWho: 'Uso personal frecuente.' },
-        { tier: 'Pro', price: 'Consultar web oficial', forWho: 'Uso profesional.' },
-        { tier: 'Team', price: 'Consultar web oficial', forWho: 'Equipos de diseño o marketing.' },
+        {
+          tier: 'Plus',
+          price: '$20 / mes ($180 al año)',
+          forWho: 'Proyectos creativos del día a día.',
+          includes: ['2.400 créditos prioritarios al mes', 'Generación privada', 'Créditos lentos ilimitados', 'Todos los modelos de imagen y vídeo'],
+        },
+        {
+          tier: 'Pro',
+          price: '$60 / mes ($504 al año)',
+          forWho: 'Creadores con mucho volumen.',
+          includes: ['7.500 créditos prioritarios al mes', 'El mejor precio por crédito', 'Generación por lotes'],
+        },
+        {
+          tier: 'Team',
+          price: '$30 / usuario / mes ($240 al año)',
+          forWho: 'Equipos que crean juntos.',
+          includes: ['3.600 créditos prioritarios por usuario al mes', 'Facturación y administración centralizadas'],
+        },
       ],
       buttons: [
         { label: 'Ver precios oficiales', url: 'https://ideogram.ai/pricing', variant: 'primary' },
